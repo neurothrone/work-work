@@ -53,6 +53,8 @@ struct TodoListScreen: View {
           ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: changeTodoMode) {
               Image(systemName: activeModeSystemName)
+                .imageScale(.large)
+                .foregroundColor(.purple)
             }
           }
         }

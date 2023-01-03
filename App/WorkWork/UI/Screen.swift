@@ -17,7 +17,7 @@ extension Screen: Identifiable, CaseIterable {
   var systemImage: String {
     switch self {
     case .lists:
-      return "list.dash"
+      return "checklist"
     case .settings:
       return "gear"
     }

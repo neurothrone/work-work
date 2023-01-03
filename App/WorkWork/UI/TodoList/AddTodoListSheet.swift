@@ -36,7 +36,7 @@ struct AddTodoListSheet: View {
   private var content: some View {
     VStack {
       VStack {
-        TextField("Name", text: $listTitle)
+        TextField("List title", text: $listTitle)
           .autocorrectionDisabled(true)
           .textFieldStyle(.roundedBorder)
           .textInputAutocapitalization(.sentences)

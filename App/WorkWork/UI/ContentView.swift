@@ -27,6 +27,7 @@ struct ContentView: View {
       .toolbarBackground(.visible, for: .tabBar)
       .toolbarBackground(.ultraThinMaterial, for: .tabBar)
     }
+    .tint(.purple)
   }
 }
 

@@ -14,6 +14,8 @@
 		2F352157296425FC0092B587 /* WorkWorkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F352156296425FC0092B587 /* WorkWorkKit */; };
 		2F35215D296455230092B587 /* BaseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F352159296455230092B587 /* BaseEntity+CoreDataClass.swift */; };
 		2F35215F296455230092B587 /* MoveableEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35215B296455230092B587 /* MoveableEntity+CoreDataClass.swift */; };
+		2F352162296457040092B587 /* MoveableNSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F352161296457040092B587 /* MoveableNSManagedObject.swift */; };
+		2F3521642964572E0092B587 /* MoveableEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */; };
 		2F7F7B942962C0D200AA554B /* Entities.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7B922962C0D200AA554B /* Entities.xcdatamodeld */; };
 		2F7F7B982962C10500AA554B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7B972962C10500AA554B /* Constants.swift */; };
 		2F7F7B9D2962C20D00AA554B /* TodoList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7B992962C20D00AA554B /* TodoList+CoreDataClass.swift */; };
@@ -47,6 +49,8 @@
 		2F124C022962A6BE00E84795 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F352159296455230092B587 /* BaseEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2F35215B296455230092B587 /* MoveableEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveableEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2F352161296457040092B587 /* MoveableNSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveableNSManagedObject.swift; sourceTree = "<group>"; };
+		2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveableEntity+Extensions.swift"; sourceTree = "<group>"; };
 		2F7F7B932962C0D200AA554B /* Entities.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Entities.xcdatamodel; sourceTree = "<group>"; };
 		2F7F7B972962C10500AA554B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F7F7B992962C20D00AA554B /* TodoList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 			children = (
 				2F352159296455230092B587 /* BaseEntity+CoreDataClass.swift */,
 				2F35215B296455230092B587 /* MoveableEntity+CoreDataClass.swift */,
+				2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */,
+				2F352161296457040092B587 /* MoveableNSManagedObject.swift */,
 				2F7F7BCF296418E500AA554B /* Todo */,
 				2F7F7BD0296418E800AA554B /* TodoList */,
 			);
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F124BFE2962A6BD00E84795 /* ContentView.swift in Sources */,
+				2F3521642964572E0092B587 /* MoveableEntity+Extensions.swift in Sources */,
 				2F7F7B9F2962C20D00AA554B /* Todo+CoreDataClass.swift in Sources */,
 				2F7F7BAE2963C06400AA554B /* UIApplication+Extensions.swift in Sources */,
 				2F7F7BC52963E6A700AA554B /* Todo+Preview.swift in Sources */,
@@ -319,6 +326,7 @@
 				2F7F7BA62963BF1C00AA554B /* NSManagedObject+Extensions.swift in Sources */,
 				2F7F7BAB2963C02900AA554B /* TodoList+Preview.swift in Sources */,
 				2F7F7BA92963BF4200AA554B /* CustomError.swift in Sources */,
+				2F352162296457040092B587 /* MoveableNSManagedObject.swift in Sources */,
 				2F7F7BC12963DFE600AA554B /* Todo+Extensions.swift in Sources */,
 				2F35215F296455230092B587 /* MoveableEntity+CoreDataClass.swift in Sources */,
 				2F7F7BBD2963C4EE00AA554B /* TodoList+Extensions.swift in Sources */,

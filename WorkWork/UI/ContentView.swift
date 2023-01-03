@@ -13,15 +13,19 @@ struct ContentView: View {
   
   var body: some View {
     TabView(selection: $selectedScreen) {
-      ForEach(Screen.allCases) { screen in
-        screen.view()
-          .tabItem {
-            Label(
-              screen.rawValue.capitalized,
-              systemImage: screen.systemImage
-            )
-          }
+      Group {
+        ForEach(Screen.allCases) { screen in
+          screen.view
+            .tabItem {
+              Label(
+                screen.rawValue.capitalized,
+                systemImage: screen.systemImage
+              )
+            }
+        }
       }
+      .toolbarBackground(.visible, for: .tabBar)
+      .toolbarBackground(.ultraThinMaterial, for: .tabBar)
     }
   }
 }
@@ -29,5 +33,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
   }
 }

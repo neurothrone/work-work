@@ -11,7 +11,7 @@ struct AllTodoListsScreen: View {
   @Environment(\.managedObjectContext) var moc
   
   @FetchRequest(
-    fetchRequest: TodoList.all,
+    fetchRequest: TodoList.allByOrder(),
     animation: .default
   )
   private var todoLists: FetchedResults<TodoList>
@@ -34,7 +34,7 @@ struct AllTodoListsScreen: View {
           Button {
             isAddSheetPresented.toggle()
           } label: {
-            Label("Add", systemImage: "plus")
+            Label("Add", systemImage: "note.text.badge.plus")
           }
         }
       }
@@ -60,9 +60,19 @@ struct AllTodoListsScreen: View {
               })
           }
         }
+        .onMove(perform: moveList)
       }
     }
     .listStyle(.grouped)
+  }
+  
+  private func moveList(from source: IndexSet, to destination: Int) {
+    TodoList.move(
+      elements: Array(todoLists),
+      from: source,
+      to: destination,
+      using: moc
+    )
   }
 }
 

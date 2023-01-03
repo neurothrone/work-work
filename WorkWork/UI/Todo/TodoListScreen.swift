@@ -64,12 +64,21 @@ struct TodoListScreen: View {
   private var content: some View {
     List {
       if activeTodoMode != nil {
-        TextField("Todo title", text: $todoTitle)
-          .autocorrectionDisabled(true)
-          .textInputAutocapitalization(.sentences)
-          .textFieldStyle(.roundedBorder)
-          .focused($isTextFieldFocused)
-          .listRowSeparator(.hidden)
+        HStack {
+          TextField("Todo title", text: $todoTitle)
+            .autocorrectionDisabled(true)
+            .textInputAutocapitalization(.sentences)
+            .textFieldStyle(.roundedBorder)
+            .focused($isTextFieldFocused)
+          
+          Button(action: addOrUpdateTodo) {
+            Text(activeTodoMode == .add ? "Add" : "Update")
+          }
+          .buttonStyle(.borderedProminent)
+          .disabled(todoTitle.isEmpty)
+          .tint(.purple)
+        }
+        .listRowSeparator(.hidden)
           .padding(.bottom)
       }
       
@@ -82,7 +91,7 @@ struct TodoListScreen: View {
               todo: todo,
               onDelete: {
                 // NOTE: It is necessary to wrap deletion logic with NSManagedObjectContext.perform to prevent a race condition from causing a crash
-                moc.perform { todo.delete(using: moc) }
+                moc.perform { deleteTodo(todo) }
               },
               onEdit: {
                 changeViewToEditingTodo(todo)
@@ -118,6 +127,41 @@ struct TodoListScreen: View {
     activeTodoMode = .edit
     todoTitle = todo.title
     selectedTodo = todo
+  }
+  
+  private func addOrUpdateTodo() {
+    if let selectedTodo {
+      selectedTodo.title = todoTitle
+      selectedTodo.save(using: moc)
+      
+      withAnimation(.linear) {
+        self.selectedTodo = nil
+        activeTodoMode = nil
+      }
+    } else {
+      Todo.addTodo(with: todoTitle, to: todoList, using: moc)
+      
+      withAnimation(.linear) {
+        isTextFieldFocused = true
+      }
+    }
+    
+    withAnimation(.linear) {
+      todoTitle = ""
+    }
+  }
+  
+  private func deleteTodo(_ todo: Todo) {
+    withAnimation {
+      todo.delete(using: moc)
+    }
+    
+    guard activeTodoMode == .edit else { return }
+    
+    withAnimation(.linear) {
+      todoTitle = ""
+      activeTodoMode = nil
+    }
   }
 }
 

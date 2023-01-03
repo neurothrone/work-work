@@ -17,15 +17,14 @@ struct TodoListRowView: View {
   
   var body: some View {
     content
-      .contextMenu {
-        Button(action: onEdit) {
-          Label("Edit", systemImage: "pencil")
-        }
-      }
       .swipeActions(edge: .trailing, allowsFullSwipe: true) {
         Button(role: .destructive, action: onDelete) {
           Label("Delete", systemImage: "trash")
         }
+        Button(action: onEdit) {
+          Label("Edit", systemImage: "pencil")
+        }
+        .tint(.mint)
       }
   }
   

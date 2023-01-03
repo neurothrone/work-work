@@ -18,12 +18,11 @@ struct TodoRowView: View {
   
   var body: some View {
     content
-      .contextMenu {
-        Button(action: onEdit) {
-          Label("Edit", systemImage: "pencil")
-        }
-
-      }
+//      .contextMenu {
+//        Button(action: onEdit) {
+//          Label("Edit", systemImage: "pencil")
+//        }
+//      }
       .swipeActions(edge: .leading, allowsFullSwipe: true) {
         Button(action: onToggle) {
           Label("Toggle", systemImage: todo.isDone
@@ -39,6 +38,10 @@ struct TodoRowView: View {
         Button(role: .destructive, action: onDelete) {
           Label("Delete", systemImage: "trash")
         }
+        Button(action: onEdit) {
+          Label("Edit", systemImage: "pencil")
+        }
+        .tint(.mint)
       }
   }
   

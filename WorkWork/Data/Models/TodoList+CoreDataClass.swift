@@ -15,10 +15,16 @@ public class TodoList: NSManagedObject {
     return NSFetchRequest<TodoList>(entityName: String(describing: TodoList.self))
   }
   
+  @NSManaged public var id: String
   @NSManaged public var name: String
   @NSManaged public var order: Int16
   @NSManaged public var todos: [Todo]
   
+  public override func awakeFromInsert() {
+    super.awakeFromInsert()
+    
+    id = UUID().uuidString
+  }
 }
 
 // MARK: Generated accessors for todos

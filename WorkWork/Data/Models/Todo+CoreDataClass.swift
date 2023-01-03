@@ -17,8 +17,14 @@ public class Todo: NSManagedObject {
   
   @NSManaged public var title: String
   @NSManaged public var isDone: Bool
+  @NSManaged public var createdDate: Date
   @NSManaged public var list: TodoList
   
+  public override func awakeFromInsert() {
+    super.awakeFromInsert()
+    
+    createdDate = .now
+  }
 }
 
 extension Todo : Identifiable {}

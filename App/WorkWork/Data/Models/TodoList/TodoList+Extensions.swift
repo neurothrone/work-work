@@ -21,6 +21,7 @@ extension TodoList {
     using context: NSManagedObjectContext
   ) -> TodoList {
     let todoList = TodoList(context: context)
+    todoList.order = TodoList.nextOrder(for: self)
     todoList.title = title
     todoList.save(using: context)
     

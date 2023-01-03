@@ -33,6 +33,17 @@ struct TodoListScreen: View {
     )
   }
   
+  private var activeModeSystemName: String {
+    switch activeTodoMode {
+    case .add:
+      return "plus.circle"
+    case .edit:
+      return "pencil.circle"
+    default:
+      return "circle.slash"
+    }
+  }
+  
   var body: some View {
     NavigationStack {
       content
@@ -41,9 +52,7 @@ struct TodoListScreen: View {
         .toolbar {
           ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: changeTodoMode) {
-              Image(systemName: activeTodoMode != nil
-                    ? "rectangle.slash"
-                    : "plus")
+              Image(systemName: activeModeSystemName)
             }
           }
         }

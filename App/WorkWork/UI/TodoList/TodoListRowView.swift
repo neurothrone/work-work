@@ -30,7 +30,7 @@ struct TodoListRowView: View {
   
   private var content: some View {
     HStack {
-      Text(todoList.name)
+      Text(todoList.title)
     }
   }
 }

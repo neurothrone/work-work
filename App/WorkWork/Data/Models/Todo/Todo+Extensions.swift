@@ -10,7 +10,7 @@ import CoreData
 extension Todo {
   //MARK: - Requests
   static func all(in list: TodoList) -> NSFetchRequest<Todo> {
-    let request = Todo.fetchRequest()
+    let request: NSFetchRequest<Todo> = Todo.fetchRequest()
     request.sortDescriptors = [.init(keyPath: \Todo.createdDate, ascending: false)]
     request.predicate = NSPredicate(format: "%K == %@", "list.id", list.id as CVarArg)
     return request

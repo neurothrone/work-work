@@ -46,7 +46,7 @@ struct TodoListScreen: View {
   
   var body: some View {
       content
-        .navigationTitle(todoList.name)
+        .navigationTitle(todoList.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem(placement: .navigationBarTrailing) {

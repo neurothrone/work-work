@@ -10,21 +10,19 @@ import CoreData
 import Foundation
 
 @objc(TodoList)
-public class TodoList: NSManagedObject {
+public class TodoList: MoveableEntity {
   @nonobjc public class func fetchRequest() -> NSFetchRequest<TodoList> {
     return NSFetchRequest<TodoList>(entityName: String(describing: TodoList.self))
   }
   
-  @NSManaged public var id: String
-  @NSManaged public var name: String
-  @NSManaged public var order: Int16
-  @NSManaged public var todos: [Todo]
-  
-  public override func awakeFromInsert() {
-    super.awakeFromInsert()
-    
-    id = UUID().uuidString
+  @objc var todosCount: Int {
+    willAccessValue(forKey: "todos")
+    let count = todos.count
+    didAccessValue(forKey: "todos")
+    return count
   }
+  
+  @NSManaged public var todos: [Todo]
 }
 
 // MARK: Generated accessors for todos
@@ -43,5 +41,3 @@ extension TodoList {
   @NSManaged public func removeFromTodos(_ values: NSSet)
   
 }
-
-extension TodoList : Identifiable {}

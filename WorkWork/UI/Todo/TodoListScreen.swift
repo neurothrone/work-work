@@ -45,7 +45,6 @@ struct TodoListScreen: View {
   }
   
   var body: some View {
-    NavigationStack {
       content
         .navigationTitle(todoList.name)
         .navigationBarTitleDisplayMode(.inline)
@@ -58,7 +57,6 @@ struct TodoListScreen: View {
             }
           }
         }
-    }
   }
   
   private var content: some View {
@@ -170,7 +168,9 @@ struct TodoListScreen_Previews: PreviewProvider {
     let context = CoreDataProvider.preview.viewContext
     let todoList = TodoList.Preview.generateSample(using: context)
     
-    return TodoListScreen(todoList: todoList)
-      .environment(\.managedObjectContext, context)
+    return NavigationStack {
+      TodoListScreen(todoList: todoList)
+        .environment(\.managedObjectContext, context)
+    }
   }
 }

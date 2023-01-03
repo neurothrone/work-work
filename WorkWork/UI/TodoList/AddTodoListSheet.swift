@@ -14,10 +14,9 @@ struct AddTodoListSheet: View {
   @State private var newListName = ""
   
   var body: some View {
-    NavigationStack {
-      content
-        .navigationTitle("Add List")
-        .navigationBarTitleDisplayMode(.inline)
+    content
+      .navigationTitle("Add List")
+      .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
           Button("Cancel", role: .cancel, action: { dismiss() })
@@ -32,7 +31,6 @@ struct AddTodoListSheet: View {
           .tint(.purple)
         }
       }
-    }
   }
   
   private var content: some View {
@@ -50,7 +48,9 @@ struct AddTodoListSheet: View {
 
 struct AddTodoListSheet_Previews: PreviewProvider {
   static var previews: some View {
-    return AddTodoListSheet()
-      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+    NavigationStack {
+      AddTodoListSheet()
+        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+    }
   }
 }

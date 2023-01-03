@@ -19,7 +19,7 @@ struct AllTodoListsScreen: View {
   @State private var isAddSheetPresented = false
   
   var body: some View {
-    NavigationStack {
+//    NavigationStack {
       content
         .sheet(isPresented: $isAddSheetPresented) {
           AddTodoListSheet()
@@ -33,7 +33,7 @@ struct AllTodoListsScreen: View {
             }
           }
         }
-    }
+//    }
   }
   
   private var content: some View {

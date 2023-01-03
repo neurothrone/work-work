@@ -44,12 +44,15 @@ struct TodoRowView: View {
   
   private var content: some View {
     HStack {
-      Image(systemName: todo.isDone
-            ? "checkmark.circle.fill"
-            : "circle"
-      )
-      .foregroundColor(.purple)
-      .imageScale(.large)
+      Button(action: onToggle) {
+        Image(systemName: todo.isDone
+              ? "checkmark.circle.fill"
+              : "circle"
+        )
+        .foregroundColor(.purple)
+        .imageScale(.large)
+      }
+      .buttonStyle(.plain)
       
       Text(todo.title)
     }

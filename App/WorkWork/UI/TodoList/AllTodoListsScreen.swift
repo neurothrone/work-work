@@ -19,21 +19,25 @@ struct AllTodoListsScreen: View {
   @State private var isAddSheetPresented = false
   
   var body: some View {
-//    NavigationStack {
-      content
-        .sheet(isPresented: $isAddSheetPresented) {
+    content
+      .sheet(isPresented: $isAddSheetPresented) {
+#if DEBUG
+        NavigationStack {
           AddTodoListSheet()
         }
-        .toolbar {
-          ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-              isAddSheetPresented.toggle()
-            } label: {
-              Label("Add", systemImage: "plus")
-            }
+#else
+        AddTodoListSheet()
+#endif
+      }
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            isAddSheetPresented.toggle()
+          } label: {
+            Label("Add", systemImage: "plus")
           }
         }
-//    }
+      }
   }
   
   private var content: some View {
@@ -64,7 +68,7 @@ struct AllTodoListsScreen: View {
 
 struct AllTodoListsScreen_Previews: PreviewProvider {
   static var previews: some View {
-    AllTodoListsScreen()
+    Screen.lists.view
       .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
   }
 }

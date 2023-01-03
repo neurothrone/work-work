@@ -23,8 +23,16 @@ extension Screen: Identifiable, CaseIterable {
     }
   }
   
+  var view: some View {
+    NavigationStack {
+      self.screen
+        .navigationTitle(self.rawValue.capitalized)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+  }
+  
   @ViewBuilder
-  func view() -> some View {
+  private var screen: some View {
     switch self {
     case .lists:
       AllTodoListsScreen()

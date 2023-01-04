@@ -116,10 +116,10 @@
 				2F7F7B972962C10500AA554B /* Constants.swift */,
 				2F7F7BBB2963C32800AA554B /* Info.plist */,
 				2F7F7BBA2963C31E00AA554B /* WorkWork.entitlements */,
+				2F124BFF2962A6BE00E84795 /* Assets.xcassets */,
 				2F7F7BAC2963C05B00AA554B /* Extensions */,
 				2F7F7B952962C0F400AA554B /* Data */,
 				2F7F7BB12963C13900AA554B /* UI */,
-				2F124BFF2962A6BE00E84795 /* Assets.xcassets */,
 				2F124C012962A6BE00E84795 /* Preview Content */,
 			);
 			path = WorkWork;

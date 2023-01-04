@@ -24,7 +24,7 @@ extension MoveableNSManagedObject {
     let results: [T] = T.all()
     let maxOrder: Int16? = results.max { $0.order < $1.order }?.order
     
-    if let maxOrder = maxOrder {
+    if let maxOrder {
       return maxOrder + 1
     } else {
       return .zero

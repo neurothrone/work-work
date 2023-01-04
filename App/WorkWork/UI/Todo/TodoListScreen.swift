@@ -106,6 +106,9 @@ struct TodoListScreen: View {
               })
           }
         }
+        .onMove { source, destination in
+          Todo.move(elements: Array(todos), from: source, to: destination, using: moc)
+        }
       }
     }
     .listStyle(.grouped)
@@ -144,7 +147,7 @@ struct TodoListScreen: View {
         activeTodoMode = nil
       }
     } else {
-      Todo.addTodo(with: todoTitle, to: todoList, using: moc)
+      Todo.create(with: todoTitle, in: todoList, using: moc)
       
       withAnimation(.linear) {
         isTextFieldFocused = true

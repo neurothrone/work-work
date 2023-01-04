@@ -60,21 +60,21 @@ struct AllTodoListsScreen: View {
               })
           }
         }
-        .onMove(perform: moveList)
+        .onMove { source, destination in
+          TodoList.move(
+            elements: Array(todoLists),
+            from: source,
+            to: destination,
+            using: moc
+          )
+        }
       }
     }
     .listStyle(.grouped)
   }
-  
-  private func moveList(from source: IndexSet, to destination: Int) {
-    TodoList.move(
-      elements: Array(todoLists),
-      from: source,
-      to: destination,
-      using: moc
-    )
-  }
 }
+
+
 
 struct AllTodoListsScreen_Previews: PreviewProvider {
   static var previews: some View {

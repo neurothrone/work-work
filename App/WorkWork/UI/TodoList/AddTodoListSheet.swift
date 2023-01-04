@@ -11,7 +11,7 @@ struct AddTodoListSheet: View {
   @Environment(\.dismiss) var dismiss
   @Environment(\.managedObjectContext) var moc
   
-  @State private var listTitle = ""
+  @State private var title = ""
   
   var body: some View {
     content
@@ -24,10 +24,10 @@ struct AddTodoListSheet: View {
         
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Add") {
-            _ = TodoList.createWith(title: listTitle, using: moc)
+            _ = TodoList.createWith(title, using: moc)
             dismiss()
           }
-          .disabled(listTitle.isEmpty)
+          .disabled(title.isEmpty)
           .tint(.purple)
         }
       }
@@ -36,7 +36,7 @@ struct AddTodoListSheet: View {
   private var content: some View {
     VStack {
       VStack {
-        TextField("List title", text: $listTitle)
+        TextField("List title", text: $title)
           .autocorrectionDisabled(true)
           .textFieldStyle(.roundedBorder)
           .textInputAutocapitalization(.sentences)

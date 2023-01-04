@@ -10,23 +10,28 @@ import CoreData
 extension Todo {
   //MARK: - Requests
   static func all(in list: TodoList) -> NSFetchRequest<Todo> {
-    let request: NSFetchRequest<Todo> = Todo.fetchRequest()
-    request.sortDescriptors = [.init(keyPath: \Todo.createdDate, ascending: false)]
-    request.predicate = NSPredicate(format: "%K == %@", "list.id", list.id as CVarArg)
-    return request
+    MoveableEntity.allByOrder(
+      predicate: NSPredicate(format: "%K == %@", "list.id", list.id as CVarArg)
+    )
   }
   
   //MARK: - Data
-  static func toggleIsDone(for todo: Todo, using context: NSManagedObjectContext) {
-    todo.isDone.toggle()
-    todo.save(using: context)
-  }
-  
-  
-  static func addTodo(with title: String, to list: TodoList, using context: NSManagedObjectContext) {
+  static func create(
+    with title: String,
+    in list: TodoList,
+    using context: NSManagedObjectContext
+  ) {
     let todo = Todo(context: context)
     todo.title = title
     todo.list = list
+    todo.order = Int16(list.todosCount)
+    
+    CoreDataProvider.save(using: context)
+//    todo.save(using: context)
+  }
+  
+  static func toggleIsDone(for todo: Todo, using context: NSManagedObjectContext) {
+    todo.isDone.toggle()
     todo.save(using: context)
   }
 }

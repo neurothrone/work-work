@@ -49,6 +49,11 @@ struct TodoListScreen: View {
         .navigationTitle(todoList.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+          ToolbarItemGroup(placement: .keyboard) {
+            Spacer()
+            Button("Dismiss", action: { isTextFieldFocused = false })
+          }
+          
           ToolbarItem(placement: .navigationBarTrailing) {
             Button(action: changeTodoMode) {
               Image(systemName: activeModeSystemName)
@@ -68,6 +73,8 @@ struct TodoListScreen: View {
             .textInputAutocapitalization(.sentences)
             .textFieldStyle(.roundedBorder)
             .focused($isTextFieldFocused)
+            .submitLabel(.done)
+            .onSubmit(addOrUpdateTodo)
           
           Button(action: addOrUpdateTodo) {
             Text(activeTodoMode == .add ? "Add" : "Update")

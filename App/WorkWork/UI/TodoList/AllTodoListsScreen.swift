@@ -22,6 +22,9 @@ struct AllTodoListsScreen: View {
   @State private var isAddSheetPresented = false
   @State private var title = ""
   
+  @StateObject private var viewModel: TodoListViewModel = .init()
+  @FocusState var isTextFieldFocused: Bool
+  
   var body: some View {
     content
       .sheet(isPresented: $isAddSheetPresented) {
@@ -32,6 +35,9 @@ struct AllTodoListsScreen: View {
 #else
         AddTodoListSheet()
 #endif
+      }
+      .onChange(of: viewModel.isTextFieldFocused) {
+        isTextFieldFocused = $0
       }
       .toolbar {
         //MARK: Navigation Bar
@@ -49,15 +55,13 @@ struct AllTodoListsScreen: View {
         
         //MARK: Bottom Bar
         ToolbarItemGroup(placement: .bottomBar) {
-          Button {
-            isAddSheetPresented.toggle()
-          } label: {
+          Button(action: viewModel.changeActionMode) {
             Label(
-              "Add",
-              systemImage: MyApp.SystemImage.showAddListTextField
+              viewModel.activeModeText,
+              systemImage: viewModel.activeModeSystemName
             )
-            .tint(selectedColor.color)
           }
+          .tint(selectedColor.color)
           
           Spacer()
         }
@@ -65,31 +69,43 @@ struct AllTodoListsScreen: View {
         //MARK: Keyboard
         ToolbarItemGroup(placement: .keyboard) {
           HStack {
-            Button(action: {}) {
-              Label(
-                "Add",
-                systemImage: MyApp.SystemImage.quickAdd
-              )
+            Button(action: { viewModel.addOrUpdate(using: moc) }) {
+              Group {
+                if viewModel.actionMode == .add {
+                  Label(
+                    "Add",
+                    systemImage: MyApp.SystemImage.quickAdd
+                  )
+                } else {
+                  Label(
+                    "Update",
+                    systemImage: MyApp.SystemImage.editActionMode
+                  )
+                }
+              }
               .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.borderedProminent)
-            .tint(selectedColor.color)
             
-            Spacer()
-            
-            Button(action: {}) {
-              Label(
-                "More",
-                systemImage: MyApp.SystemImage.moreOptionsAdd
-              )
-              .labelStyle(.titleAndIcon)
+            if viewModel.actionMode == .add {
+              Spacer()
+              
+              Button(action: {}) {
+                Label(
+                  "More",
+                  systemImage: MyApp.SystemImage.moreOptionsAdd
+                )
+                .labelStyle(.titleAndIcon)
+              }
+              .buttonStyle(.borderedProminent)
+              .tint(selectedColor.color.opacity(0.5))
             }
-            .buttonStyle(.borderedProminent)
-            .tint(selectedColor.color.opacity(0.5))
             
             Spacer()
             
-            Button(role: .cancel, action: {}) {
+            Button(role: .cancel) {
+              viewModel.isTextFieldFocused = false
+            } label: {
               Label(
                 "Dismiss",
                 systemImage: MyApp.SystemImage.dismissKeyboard
@@ -97,26 +113,29 @@ struct AllTodoListsScreen: View {
               .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.bordered)
-            .tint(selectedColor.color)
           }
+          .tint(selectedColor.color)
         }
       }
   }
   
   private var content: some View {
     List {
-      TextField("List title", text: $title)
-        .autocorrectionDisabled(true)
-        .textInputAutocapitalization(.sentences)
-        .textFieldStyle(.roundedBorder)
-      //          .focused($isTextFieldFocused)
-        .submitLabel(.done)
-        .onSubmit {
-          _ = TodoList.createWith(title, using: moc)
+      if viewModel.actionMode != nil {
+        HStack {
+          TextField("Title", text: $viewModel.title)
+            .autocorrectionDisabled(true)
+            .textInputAutocapitalization(.sentences)
+            .textFieldStyle(.roundedBorder)
+            .focused($isTextFieldFocused)
+            .submitLabel(.done)
+            .onSubmit {
+              viewModel.addOrUpdate(using: moc)
+            }
         }
-        .padding(.bottom)
         .listRowSeparator(.hidden)
-        .scrollDisabled(true)
+        .padding(.bottom)
+      }
       
       
       if todoLists.isEmpty {
@@ -133,12 +152,14 @@ struct AllTodoListsScreen: View {
                 moc.perform { todoList.delete(using: moc) }
               },
               onEdit: {
-                
+                viewModel.changeToEditingOf(todoList)
               })
           }
         }
         .onMove { source, destination in
-          TodoList.moveEntities(todoLists, from: source, to: destination, using: moc)
+          moc.perform {
+            TodoList.moveEntities(todoLists, from: source, to: destination, using: moc)
+          }
         }
       }
     }

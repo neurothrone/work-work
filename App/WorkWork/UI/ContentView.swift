@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+  @EnvironmentObject var appState: AppState
+  
   @AppStorage(MyApp.AppStorage.selectedColor)
   var selectedColor: CustomColor = .purple
   
@@ -18,7 +20,10 @@ struct ContentView: View {
         .toolbar {
           //MARK: Navigation Bar
           ToolbarItem(placement: .navigationBarTrailing) {
-            NavigationLink(destination: SettingsScreen()) {
+            NavigationLink {
+              SettingsScreen()
+                .environmentObject(appState)
+            } label: {
               Label(
                 "Settings",
                 systemImage: MyApp.SystemImage.settings
@@ -36,6 +41,7 @@ struct ContentView_Previews: PreviewProvider {
     NavigationStack {
       ContentView()
         .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+        .environmentObject(AppState())
         .preferredColorScheme(.dark)
     }
   }

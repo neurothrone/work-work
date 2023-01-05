@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TodoListRowView: View {
+  @AppStorage(MyApp.AppStorage.selectedColor)
+  var selectedColor: CustomColor = .purple
+  
   @Environment(\.managedObjectContext) var moc
   
   @ObservedObject var todoList: TodoList
@@ -21,6 +24,8 @@ struct TodoListRowView: View {
         Button(role: .destructive, action: onDelete) {
           Label("Delete", systemImage: "trash")
         }
+//        .tint(.red)
+        
         Button(action: onEdit) {
           Label("Edit", systemImage: "pencil")
         }
@@ -30,8 +35,8 @@ struct TodoListRowView: View {
   
   private var content: some View {
     HStack {
-      Image(systemName: "folder")
-        .foregroundColor(.purple)
+      Image(systemName: MyApp.SystemImage.folder)
+        .foregroundColor(selectedColor.color)
       
       Text(todoList.title)
       

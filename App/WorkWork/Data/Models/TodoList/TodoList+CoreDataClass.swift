@@ -12,11 +12,10 @@ import CoreData
 @objc(TodoList)
 public class TodoList: MoveableEntity {
   @nonobjc public class func fetchRequest() -> NSFetchRequest<TodoList> {
-      return NSFetchRequest<TodoList>(entityName: "TodoList")
+    return NSFetchRequest<TodoList>(entityName: String(String(describing: TodoList.self)))
   }
 
   @NSManaged public var todos: [Todo]
-//  @NSManaged public var todos: NSSet?
   
   @objc var todosCount: Int {
     willAccessValue(forKey: "todos")
@@ -24,5 +23,4 @@ public class TodoList: MoveableEntity {
     didAccessValue(forKey: "todos")
     return count
   }
-
 }

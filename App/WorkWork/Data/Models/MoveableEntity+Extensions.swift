@@ -34,13 +34,3 @@ extension MoveableEntity {
     )
   }
 }
-
-extension FetchedResults where Element == MoveableEntity {
-  mutating func moveEntity(
-    from source: IndexSet,
-    to destination: Int,
-    using context: NSManagedObjectContext
-  ) {
-    MoveableEntity.move(elements: Array(self), from: source, to: destination, using: context)
-  }
-}

@@ -17,6 +17,7 @@ struct AllTodoListsScreen: View {
   private var todoLists: FetchedResults<TodoList>
   
   @State private var isAddSheetPresented = false
+  @State private var title = ""
   
   var body: some View {
     content
@@ -42,6 +43,28 @@ struct AllTodoListsScreen: View {
   
   private var content: some View {
     List {
+      HStack {
+        TextField("List title", text: $title)
+          .autocorrectionDisabled(true)
+          .textInputAutocapitalization(.sentences)
+          .textFieldStyle(.roundedBorder)
+//          .focused($isTextFieldFocused)
+          .submitLabel(.done)
+          .onSubmit {
+            _ = TodoList.createWith(title, using: moc)
+          }
+//          .onSubmit(addOrUpdateTodo)
+        
+//        Button(action: addOrUpdateTodo) {
+//          Text(activeTodoMode == .add ? "Add" : "Update")
+//        }
+//        .buttonStyle(.borderedProminent)
+//        .disabled(title.isEmpty)
+//        .tint(.purple)
+      }
+      .listRowSeparator(.hidden)
+      .padding(.bottom)
+      
       if todoLists.isEmpty {
         Text("No list yet.")
       } else {
@@ -56,7 +79,7 @@ struct AllTodoListsScreen: View {
                 moc.perform { todoList.delete(using: moc) }
               },
               onEdit: {
-                
+
               })
           }
         }

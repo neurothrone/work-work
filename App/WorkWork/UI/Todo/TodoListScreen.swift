@@ -84,7 +84,7 @@ struct TodoListScreen: View {
           .tint(.purple)
         }
         .listRowSeparator(.hidden)
-          .padding(.bottom)
+        .padding(.bottom)
       }
       
       if todos.isEmpty {
@@ -106,9 +106,7 @@ struct TodoListScreen: View {
               })
           }
         }
-        .onMove { source, destination in
-          Todo.move(elements: Array(todos), from: source, to: destination, using: moc)
-        }
+        .onMove(perform: move(from:to:))
       }
     }
     .listStyle(.grouped)
@@ -170,6 +168,11 @@ struct TodoListScreen: View {
       todoTitle = ""
       activeTodoMode = nil
     }
+  }
+  
+  private func move(from source: IndexSet, to destination: Int) {
+    MoveableEntity.moveEntities(todos, from: source, to: destination, using: moc)
+//    Todo.move(elements: Array(todos), from: source, to: destination, using: moc)
   }
 }
 

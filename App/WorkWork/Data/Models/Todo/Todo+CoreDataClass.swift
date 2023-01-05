@@ -12,11 +12,9 @@ import CoreData
 @objc(Todo)
 public class Todo: MoveableEntity {
   @nonobjc public class func fetchRequest() -> NSFetchRequest<Todo> {
-      return NSFetchRequest<Todo>(entityName: "Todo")
+    return NSFetchRequest<Todo>(entityName: String(describing: Todo.self))
   }
 
   @NSManaged public var isDone: Bool
   @NSManaged public var list: TodoList
-//  @NSManaged public var list: TodoList?
-
 }

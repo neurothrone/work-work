@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BaseEntity" representedClassName="BaseEntity" isAbstract="YES" syncable="YES">
-        <attribute name="createdDate" attributeType="Date" defaultDateTimeInterval="694533480" usesScalarValueType="NO"/>
+    <entity name="MoveableEntity" representedClassName="MoveableEntity" isAbstract="YES" syncable="YES">
+        <attribute name="createdDate" attributeType="Date" defaultDateTimeInterval="694553460" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="String" defaultValueString=""/>
-        <attribute name="title" attributeType="String" defaultValueString=""/>
-    </entity>
-    <entity name="MoveableEntity" representedClassName="MoveableEntity" isAbstract="YES" parentEntity="BaseEntity" syncable="YES">
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
     </entity>
     <entity name="Todo" representedClassName="Todo" parentEntity="MoveableEntity" syncable="YES">
         <attribute name="isDone" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>

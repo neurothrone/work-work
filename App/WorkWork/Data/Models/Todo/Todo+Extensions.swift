@@ -26,8 +26,7 @@ extension Todo {
     todo.list = list
     todo.order = Int16(list.todosCount)
     
-    CoreDataProvider.save(using: context)
-//    todo.save(using: context)
+    todo.save(using: context)
   }
   
   static func toggleIsDone(for todo: Todo, using context: NSManagedObjectContext) {

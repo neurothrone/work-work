@@ -15,7 +15,6 @@
 		2F352162296457040092B587 /* MoveableNSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F352161296457040092B587 /* MoveableNSManagedObject.swift */; };
 		2F3521642964572E0092B587 /* MoveableEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */; };
 		2F35217B2965BD440092B587 /* Entities.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521792965BD440092B587 /* Entities.xcdatamodeld */; };
-		2F3521852965C9FB0092B587 /* BaseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35217D2965C9FB0092B587 /* BaseEntity+CoreDataClass.swift */; };
 		2F3521872965C9FB0092B587 /* TodoList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35217F2965C9FB0092B587 /* TodoList+CoreDataClass.swift */; };
 		2F3521892965C9FB0092B587 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521812965C9FB0092B587 /* Todo+CoreDataClass.swift */; };
 		2F35218B2965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521832965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift */; };
@@ -50,7 +49,6 @@
 		2F352161296457040092B587 /* MoveableNSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveableNSManagedObject.swift; sourceTree = "<group>"; };
 		2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveableEntity+Extensions.swift"; sourceTree = "<group>"; };
 		2F35217A2965BD440092B587 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
-		2F35217D2965C9FB0092B587 /* BaseEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2F35217F2965C9FB0092B587 /* TodoList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2F3521812965C9FB0092B587 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2F3521832965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveableEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 		2F7F7BA72963BF3600AA554B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2F35217D2965C9FB0092B587 /* BaseEntity+CoreDataClass.swift */,
 				2F3521832965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift */,
 				2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */,
 				2F352161296457040092B587 /* MoveableNSManagedObject.swift */,
@@ -327,7 +324,6 @@
 				2F7F7BA92963BF4200AA554B /* CustomError.swift in Sources */,
 				2F352162296457040092B587 /* MoveableNSManagedObject.swift in Sources */,
 				2F7F7BC12963DFE600AA554B /* Todo+Extensions.swift in Sources */,
-				2F3521852965C9FB0092B587 /* BaseEntity+CoreDataClass.swift in Sources */,
 				2F7F7BBD2963C4EE00AA554B /* TodoList+Extensions.swift in Sources */,
 				2F7F7BC32963E66F00AA554B /* TodoRowView.swift in Sources */,
 				2F7F7BA22963BE1E00AA554B /* CoreDataProvider.swift in Sources */,

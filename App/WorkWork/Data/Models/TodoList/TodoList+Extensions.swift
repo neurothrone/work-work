@@ -14,11 +14,9 @@ extension TodoList {
   ) -> TodoList {
     let todoList = TodoList(context: context)
     todoList.title = title
-    todoList.order = TodoList.nextOrder(for: self)
-    
-    CoreDataProvider.save(using: context)
-//    todoList.save(using: context)
-    
+    todoList.order = TodoList.nextOrder(for: TodoList.self, using: context)
+    todoList.save(using: context)
+
     return todoList
   }
 }

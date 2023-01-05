@@ -8,14 +8,6 @@
 import CoreData
 
 extension NSManagedObject {
-  private static var viewContext: NSManagedObjectContext {
-#if DEBUG
-    CoreDataProvider.preview.viewContext
-#else
-    CoreDataProvider.shared.viewContext
-#endif
-  }
-  
   func save(using context: NSManagedObjectContext) {
     CoreDataProvider.save(using: context)
   }
@@ -24,23 +16,23 @@ extension NSManagedObject {
     CoreDataProvider.delete(object: self, using: context)
   }
   
-  static func getBy<T: NSManagedObject>(id: String) -> T? {
+  static func getBy<T: NSManagedObject>(id: String, using context: NSManagedObjectContext) -> T? {
     let request: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
     request.fetchLimit = 1
     
     do {
-      return try viewContext.fetch(request).first
+      return try context.fetch(request).first
     } catch {
       print("❌ -> Failed to fetch Core Data entity: (\(String(describing: T.self))")
       return nil
     }
   }
   
-  static func all<T: NSManagedObject>() -> [T] {
+  static func all<T: NSManagedObject>(using context: NSManagedObjectContext) -> [T] {
     let request: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
     
     do {
-      return try viewContext.fetch(request)
+      return try context.fetch(request)
     } catch {
       print("❌ -> Failed to fetch Core Data entities: (\(String(describing: T.self))")
       return []

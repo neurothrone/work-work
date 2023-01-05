@@ -12,8 +12,9 @@ final class CoreDataProvider {
 
   static var preview: CoreDataProvider = {
     let provider = CoreDataProvider(inMemory: true)
+    let context = provider.viewContext
 
-    TodoList.Preview.generateSamples(using: provider.viewContext)
+    TodoList.Preview.generateSamples(using: context)
 
     return provider
   }()

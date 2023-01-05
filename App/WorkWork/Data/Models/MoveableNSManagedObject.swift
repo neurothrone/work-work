@@ -10,7 +10,11 @@ import CoreData
 protocol MoveableNSManagedObject: NSManagedObject {
   var order: Int16 { get set }
   
-  static func nextOrder<T: MoveableNSManagedObject>(for: T.Type) -> Int16
+  static func nextOrder<T: MoveableNSManagedObject>(
+    for: T.Type,
+    using context: NSManagedObjectContext
+  ) -> Int16
+  
   static func move<T: MoveableNSManagedObject>(
     elements: [T],
     from source: IndexSet,
@@ -20,8 +24,8 @@ protocol MoveableNSManagedObject: NSManagedObject {
 }
 
 extension MoveableNSManagedObject {
-  static func nextOrder<T: MoveableNSManagedObject>(for: T.Type) -> Int16 {
-    let results: [T] = T.all()
+  static func nextOrder<T: MoveableNSManagedObject>(for: T.Type, using context: NSManagedObjectContext) -> Int16 {
+    let results: [T] = T.all(using: context)
     let maxOrder: Int16? = results.max { $0.order < $1.order }?.order
     
     if let maxOrder {

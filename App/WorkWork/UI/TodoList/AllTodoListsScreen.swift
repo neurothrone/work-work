@@ -9,7 +9,10 @@ import SwiftUI
 
 struct AllTodoListsScreen: View {
   @Environment(\.managedObjectContext) var moc
-
+  
+  @AppStorage(MyApp.AppStorage.selectedColor)
+  var selectedColor: CustomColor = .purple
+  
   @FetchRequest(
     fetchRequest: TodoList.allByOrder(),
     animation: .default
@@ -31,96 +34,116 @@ struct AllTodoListsScreen: View {
 #endif
       }
       .toolbar {
+        //MARK: Navigation Bar
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button {
+            
+          } label: {
+            Label(
+              "Settings",
+              systemImage: MyApp.SystemImage.settings
+            )
+            .tint(selectedColor.color)
+          }
+        }
+        
+        //MARK: Bottom Bar
         ToolbarItemGroup(placement: .bottomBar) {
           Button {
             isAddSheetPresented.toggle()
           } label: {
-            Label("Add", systemImage: "folder.badge.plus")
+            Label(
+              "Add",
+              systemImage: MyApp.SystemImage.showAddListTextField
+            )
+            .tint(selectedColor.color)
           }
           
           Spacer()
         }
         
+        //MARK: Keyboard
         ToolbarItemGroup(placement: .keyboard) {
           HStack {
             Button(action: {}) {
-              Label("Add", systemImage: "folder.fill.badge.plus")
-                .labelStyle(.titleAndIcon)
+              Label(
+                "Add",
+                systemImage: MyApp.SystemImage.quickAdd
+              )
+              .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.purple)
+            .tint(selectedColor.color)
             
             Spacer()
             
             Button(action: {}) {
-              Label("More", systemImage: "square.grid.3x1.folder.fill.badge.plus")
-                .labelStyle(.titleAndIcon)
+              Label(
+                "More",
+                systemImage: MyApp.SystemImage.moreOptionsAdd
+              )
+              .labelStyle(.titleAndIcon)
             }
-            .buttonStyle(.bordered)
-            .tint(.purple)
+            .buttonStyle(.borderedProminent)
+            .tint(selectedColor.color.opacity(0.5))
             
             Spacer()
             
-            Button(action: {}) {
-              Label("Dismiss", systemImage: "keyboard.chevron.compact.down.fill")
-                .labelStyle(.titleAndIcon)
+            Button(role: .cancel, action: {}) {
+              Label(
+                "Dismiss",
+                systemImage: MyApp.SystemImage.dismissKeyboard
+              )
+              .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.bordered)
+            .tint(selectedColor.color)
           }
-        }
-        
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button {
-            
-          } label: {
-            Label("Settings", systemImage: "gear")
-          }
-
         }
       }
   }
   
   private var content: some View {
-        List {
-          TextField("List title", text: $title)
-            .autocorrectionDisabled(true)
-            .textInputAutocapitalization(.sentences)
-            .textFieldStyle(.roundedBorder)
-  //          .focused($isTextFieldFocused)
-            .submitLabel(.done)
-            .onSubmit {
-              _ = TodoList.createWith(title, using: moc)
-            }
-          .padding(.bottom)
-          .listRowSeparator(.hidden)
-          .scrollDisabled(true)
-          
-          
-          if todoLists.isEmpty {
-            Text("No list yet.")
-          } else {
-            ForEach(todoLists) { todoList in
-              NavigationLink {
-                TodoListScreen(todoList: todoList)
-              } label: {
-                TodoListRowView(
-                  todoList: todoList,
-                  onDelete: {
-                    // NOTE: It is necessary to wrap deletion logic with NSManagedObjectContext.perform to prevent a race condition from causing a crash
-                    moc.perform { todoList.delete(using: moc) }
-                  },
-                  onEdit: {
-
-                  })
-              }
-            }
-            .onMove { source, destination in
-              TodoList.moveEntities(todoLists, from: source, to: destination, using: moc)
-            }
+    List {
+      TextField("List title", text: $title)
+        .autocorrectionDisabled(true)
+        .textInputAutocapitalization(.sentences)
+        .textFieldStyle(.roundedBorder)
+      //          .focused($isTextFieldFocused)
+        .submitLabel(.done)
+        .onSubmit {
+          _ = TodoList.createWith(title, using: moc)
+        }
+        .padding(.bottom)
+        .listRowSeparator(.hidden)
+        .scrollDisabled(true)
+      
+      
+      if todoLists.isEmpty {
+        Text("No list yet.")
+      } else {
+        ForEach(todoLists) { todoList in
+          NavigationLink {
+            TodoListScreen(todoList: todoList)
+          } label: {
+            TodoListRowView(
+              todoList: todoList,
+              onDelete: {
+                // NOTE: It is necessary to wrap deletion logic with NSManagedObjectContext.perform to prevent a race condition from causing a crash
+                moc.perform { todoList.delete(using: moc) }
+              },
+              onEdit: {
+                
+              })
           }
         }
-        .listStyle(.insetGrouped)
-        .scrollContentBackground(.hidden)
+        .onMove { source, destination in
+          TodoList.moveEntities(todoLists, from: source, to: destination, using: moc)
+        }
+      }
+    }
+    .listStyle(.insetGrouped)
+    .scrollContentBackground(.hidden)
   }
 }
 

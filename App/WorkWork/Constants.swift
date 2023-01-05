@@ -16,11 +16,17 @@ enum MyApp {
   
   enum SystemImage {
     static let settings = "gear"
+    static let showAddListTextField = "folder.badge.plus"
+    static let quickAdd = "folder.fill.badge.plus"
+    static let moreOptionsAdd = "square.grid.3x1.folder.fill.badge.plus"
+    static let dismissKeyboard = "keyboard.chevron.compact.down.fill"
   }
   
   enum AppStorage {
-    static let selectedScreen = "selectedScreen"
+    static let selectedColor = "selectedColor"
     static let isOnboardingPresented = true
+    static let selectedScreen = "selectedScreen"
+    
   }
   
   enum Link {

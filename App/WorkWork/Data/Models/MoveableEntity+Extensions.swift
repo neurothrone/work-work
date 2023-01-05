@@ -8,8 +8,6 @@
 import CoreData
 import SwiftUI
 
-extension MoveableEntity: MoveableNSManagedObject {}
-
 extension MoveableEntity {
   //MARK: - Requests
   static func allByOrder<T: MoveableEntity>(predicate: NSPredicate? = nil) -> NSFetchRequest<T> {
@@ -20,17 +18,33 @@ extension MoveableEntity {
   }
   
   //MARK: - Data
+    static func nextOrder<T: MoveableEntity>(
+      for: T.Type,
+      using context: NSManagedObjectContext
+    ) -> Int16 {
+      let results: [T] = T.all(using: context)
+      let maxOrder: Int16? = results.max { $0.order < $1.order }?.order
+  
+      if let maxOrder {
+        return maxOrder + 1
+      } else {
+        return .zero
+      }
+    }
+  
   static func moveEntities<T: MoveableEntity>(
     _ entities: FetchedResults<T>,
     from source: IndexSet,
     to destination: Int,
     using context: NSManagedObjectContext
   ) {
-    MoveableEntity.move(
-      elements: Array(entities),
-      from: source,
-      to: destination,
-      using: context
-    )
+    var items: [T] = entities.map { $0 }
+    items.move(fromOffsets: source, toOffset: destination)
+    
+    for reverseIndex in stride(from: items.count - 1, through: .zero, by: -1) {
+      items[reverseIndex].order = Int16(reverseIndex)
+    }
+    
+    CoreDataProvider.save(using: context)
   }
 }

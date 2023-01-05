@@ -17,20 +17,20 @@ extension MoveableEntity {
     return request
   }
   
-  //MARK: - Data
-    static func nextOrder<T: MoveableEntity>(
-      for: T.Type,
-      using context: NSManagedObjectContext
-    ) -> Int16 {
-      let results: [T] = T.all(using: context)
-      let maxOrder: Int16? = results.max { $0.order < $1.order }?.order
-  
-      if let maxOrder {
-        return maxOrder + 1
-      } else {
-        return .zero
-      }
+  //MARK: - Data  
+  static func nextOrder<T: MoveableEntity>(
+    for: T.Type,
+    using context: NSManagedObjectContext
+  ) -> Int16 {
+    let results: [T] = T.all(using: context)
+    let maxOrder: Int16? = results.max { $0.order < $1.order }?.order
+    
+    if let maxOrder {
+      return maxOrder + 1
+    } else {
+      return .zero
     }
+  }
   
   static func moveEntities<T: MoveableEntity>(
     _ entities: FetchedResults<T>,

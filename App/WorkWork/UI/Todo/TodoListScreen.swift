@@ -27,6 +27,20 @@ struct TodoListScreen: View {
     _viewModel = StateObject(wrappedValue: vm)
   }
   
+  private var isValid: Bool {
+    if viewModel.title.isEmpty {
+      return false
+    }
+    
+    if let selection = viewModel.selection,
+       viewModel.actionMode == .edit,
+       viewModel.title == selection.title {
+      return false
+    }
+    
+    return true
+  }
+  
   var body: some View {
     content
       .navigationTitle(viewModel.todoList.title)
@@ -68,7 +82,7 @@ struct TodoListScreen: View {
               .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.borderedProminent)
-            .disabled(viewModel.title.isEmpty)
+            .disabled(!isValid)
             
             Spacer()
             

@@ -19,9 +19,23 @@ struct AllTodoListsScreen: View {
   )
   private var todoLists: FetchedResults<TodoList>
   
-  @FocusState var isTextFieldFocused: Bool  
+  @FocusState var isTextFieldFocused: Bool
   @State private var isAddSheetPresented = false
   @StateObject private var viewModel: TodoListViewModel = .init()
+  
+  private var isValid: Bool {
+    if viewModel.title.isEmpty {
+      return false
+    }
+    
+    if let selection = viewModel.selection,
+       viewModel.actionMode == .edit,
+       viewModel.title == selection.title {
+      return false
+    }
+    
+    return true
+  }
   
   var body: some View {
     content
@@ -37,7 +51,7 @@ struct AllTodoListsScreen: View {
       .onChange(of: viewModel.isTextFieldFocused) {
         isTextFieldFocused = $0
       }
-      .toolbar {        
+      .toolbar {
         //MARK: Bottom Bar
         ToolbarItemGroup(placement: .bottomBar) {
           Button(action: viewModel.changeActionMode) {
@@ -71,7 +85,7 @@ struct AllTodoListsScreen: View {
               .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.borderedProminent)
-            .disabled(viewModel.title.isEmpty)
+            .disabled(!isValid)
             
             if viewModel.actionMode == .add {
               Spacer()
@@ -92,7 +106,7 @@ struct AllTodoListsScreen: View {
             Button(role: .cancel) {
               // TODO: Temporary fix until root cause is discovered
               hideKeyboard()
-//              viewModel.isTextFieldFocused = false
+              //              viewModel.isTextFieldFocused = false
             } label: {
               Label(
                 "Dismiss",

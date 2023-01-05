@@ -14,16 +14,14 @@ struct CustomTextField: View {
   let onSubmit: () -> Void
   
   var body: some View {
-    HStack {
-      TextField(placeholder, text: $text)
-        .autocorrectionDisabled(true)
-        .textInputAutocapitalization(.sentences)
-        .textFieldStyle(.roundedBorder)
-        .submitLabel(.done)
-        .onSubmit(onSubmit)
-    }
-    .listRowSeparator(.hidden)
-    .padding(.bottom)
+    TextField(placeholder, text: $text)
+      .autocorrectionDisabled(true)
+      .textInputAutocapitalization(.sentences)
+      .textFieldStyle(.roundedBorder)
+      .submitLabel(.done)
+      .onSubmit(onSubmit)
+      .listRowSeparator(.hidden)
+      .padding(.bottom)
   }
 }
 

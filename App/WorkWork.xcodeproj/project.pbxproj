@@ -24,6 +24,7 @@
 		2F7241CB29672C4300E85C81 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */; };
 		2F7241CD2967380300E85C81 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CC2967380300E85C81 /* IconPickerView.swift */; };
 		2F7241D029673E3400E85C81 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CF29673E3400E85C81 /* BaseViewModel.swift */; };
+		2F7241D229674A8000E85C81 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241D129674A8000E85C81 /* View+Extensions.swift */; };
 		2F7F7B982962C10500AA554B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7B972962C10500AA554B /* Constants.swift */; };
 		2F7F7BA22963BE1E00AA554B /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BA12963BE1E00AA554B /* CoreDataProvider.swift */; };
 		2F7F7BA42963BF0400AA554B /* CoreDataProvider+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BA32963BF0400AA554B /* CoreDataProvider+Extensions.swift */; };
@@ -64,6 +65,7 @@
 		2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		2F7241CC2967380300E85C81 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		2F7241CF29673E3400E85C81 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		2F7241D129674A8000E85C81 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		2F7F7B972962C10500AA554B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F7F7BA12963BE1E00AA554B /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		2F7F7BA32963BF0400AA554B /* CoreDataProvider+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataProvider+Extensions.swift"; sourceTree = "<group>"; };
@@ -188,9 +190,10 @@
 		2F7F7BAC2963C05B00AA554B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */,
 				2F7F7BAD2963C06400AA554B /* UIApplication+Extensions.swift */,
 				2F7F7BAF2963C07D00AA554B /* URL+Extensions.swift */,
-				2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */,
+				2F7241D129674A8000E85C81 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				2F124BFE2962A6BD00E84795 /* ContentView.swift in Sources */,
 				2F3521642964572E0092B587 /* MoveableEntity+Extensions.swift in Sources */,
 				2F7241CD2967380300E85C81 /* IconPickerView.swift in Sources */,
+				2F7241D229674A8000E85C81 /* View+Extensions.swift in Sources */,
 				2F7F7BAE2963C06400AA554B /* UIApplication+Extensions.swift in Sources */,
 				2F7F7BC52963E6A700AA554B /* Todo+Preview.swift in Sources */,
 				2F7241C529671BEC00E85C81 /* TodoListViewModel.swift in Sources */,

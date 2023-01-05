@@ -17,9 +17,12 @@ enum MyApp {
   enum SystemImage {
     static let settings = "gear"
     static let showAddListTextField = "folder.badge.plus"
-    static let quickAdd = "folder.fill.badge.plus"
-    static let moreOptionsAdd = "square.grid.3x1.folder.fill.badge.plus"
+    static let quickAddList = "folder.fill.badge.plus"
+    static let moreOptionsAddList = "square.grid.3x1.folder.fill.badge.plus"
     static let dismissKeyboard = "keyboard.chevron.compact.down.fill"
+    
+    static let showAddTodoTextField = "plus.circle.fill"
+    static let addTodo = "plus.circle"
     
     static let editActionMode = "pencil.circle"
     static let noActionMode = "circle.slash"

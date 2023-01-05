@@ -24,7 +24,7 @@ struct AddTodoListSheet: View {
         
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Add") {
-            _ = TodoList.createWith(title, using: moc)
+            _ = TodoList.create(with: title, using: moc)
             dismiss()
           }
           .disabled(title.isEmpty)

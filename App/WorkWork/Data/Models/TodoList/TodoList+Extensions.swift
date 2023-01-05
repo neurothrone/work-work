@@ -8,8 +8,8 @@
 import CoreData
 
 extension TodoList {
-  static func createWith(
-    _ title: String,
+  static func create(
+    with title: String,
     using context: NSManagedObjectContext
   ) -> TodoList {
     let todoList = TodoList(context: context)

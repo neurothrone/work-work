@@ -25,6 +25,7 @@
 		2F7241CD2967380300E85C81 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CC2967380300E85C81 /* IconPickerView.swift */; };
 		2F7241D029673E3400E85C81 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CF29673E3400E85C81 /* BaseViewModel.swift */; };
 		2F7241D229674A8000E85C81 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241D129674A8000E85C81 /* View+Extensions.swift */; };
+		2F7241D529674FBF00E85C81 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241D429674FBF00E85C81 /* CustomTextField.swift */; };
 		2F7F7B982962C10500AA554B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7B972962C10500AA554B /* Constants.swift */; };
 		2F7F7BA22963BE1E00AA554B /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BA12963BE1E00AA554B /* CoreDataProvider.swift */; };
 		2F7F7BA42963BF0400AA554B /* CoreDataProvider+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BA32963BF0400AA554B /* CoreDataProvider+Extensions.swift */; };
@@ -66,6 +67,7 @@
 		2F7241CC2967380300E85C81 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		2F7241CF29673E3400E85C81 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		2F7241D129674A8000E85C81 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		2F7241D429674FBF00E85C81 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2F7F7B972962C10500AA554B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F7F7BA12963BE1E00AA554B /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		2F7F7BA32963BF0400AA554B /* CoreDataProvider+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataProvider+Extensions.swift"; sourceTree = "<group>"; };
@@ -163,6 +165,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		2F7241D329674FB700E85C81 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2F7241D429674FBF00E85C81 /* CustomTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		2F7F7B952962C0F400AA554B /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +217,7 @@
 				2F7F7BC82963F80700AA554B /* TodoList */,
 				2F7F7BB72963C2B400AA554B /* Todo */,
 				2F7F7BB62963C2AD00AA554B /* Settings */,
+				2F7241D329674FB700E85C81 /* Components */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -343,6 +354,7 @@
 				2F7F7BC52963E6A700AA554B /* Todo+Preview.swift in Sources */,
 				2F7241C529671BEC00E85C81 /* TodoListViewModel.swift in Sources */,
 				2F7F7BB32963C1BC00AA554B /* AllTodoListsScreen.swift in Sources */,
+				2F7241D529674FBF00E85C81 /* CustomTextField.swift in Sources */,
 				2F124BFC2962A6BD00E84795 /* AppMain.swift in Sources */,
 				2F7F7BB02963C07D00AA554B /* URL+Extensions.swift in Sources */,
 				2F7241C92967257A00E85C81 /* CustomColor.swift in Sources */,

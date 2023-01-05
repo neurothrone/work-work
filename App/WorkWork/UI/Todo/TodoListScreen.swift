@@ -92,17 +92,14 @@ struct TodoListScreen: View {
   private var content: some View {
     List {
       if viewModel.actionMode != nil {
-        HStack {
-          TextField("Todo Title", text: $viewModel.title)
-            .autocorrectionDisabled(true)
-            .textInputAutocapitalization(.sentences)
-            .textFieldStyle(.roundedBorder)
-            .focused($isTextFieldFocused)
-            .submitLabel(.done)
-            .onSubmit {
-              viewModel.addOrUpdate(using: moc)
-            }
-        }
+        CustomTextField(
+          text: $viewModel.title,
+          placeholder: "Todo Title",
+          onSubmit: {
+            viewModel.addOrUpdate(using: moc)
+          }
+        )
+        .focused($isTextFieldFocused)
         .listRowSeparator(.hidden)
         .padding(.bottom)
       }

@@ -104,7 +104,9 @@ struct AllTodoListsScreen: View {
             Spacer()
             
             Button(role: .cancel) {
-              viewModel.isTextFieldFocused = false
+              // TODO: Temporary fix until root cause is discovered
+              hideKeyboard()
+//              viewModel.isTextFieldFocused = false
             } label: {
               Label(
                 "Dismiss",
@@ -149,7 +151,7 @@ struct AllTodoListsScreen: View {
               todoList: todoList,
               onDelete: {
                 // NOTE: It is necessary to wrap deletion logic with NSManagedObjectContext.perform to prevent a race condition from causing a crash
-                moc.perform { todoList.delete(using: moc) }
+                moc.perform { viewModel.delete(todoList, using: moc) }
               },
               onEdit: {
                 viewModel.changeToEditingOf(todoList)

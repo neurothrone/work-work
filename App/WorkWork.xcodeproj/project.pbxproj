@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F0EF4FD29676F11009342E0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF4FC29676F11009342E0 /* AppState.swift */; };
+		2F0EF4FF29677CE6009342E0 /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF4FE29677CE6009342E0 /* CustomLinkView.swift */; };
 		2F124BFC2962A6BD00E84795 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F124BFB2962A6BD00E84795 /* AppMain.swift */; };
 		2F124BFE2962A6BD00E84795 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F124BFD2962A6BD00E84795 /* ContentView.swift */; };
 		2F124C002962A6BE00E84795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F124BFF2962A6BE00E84795 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		2F0EF4FC29676F11009342E0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		2F0EF4FE29677CE6009342E0 /* CustomLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkView.swift; sourceTree = "<group>"; };
 		2F124BF82962A6BD00E84795 /* WorkWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F124BFB2962A6BD00E84795 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		2F124BFD2962A6BD00E84795 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				2F124BFB2962A6BD00E84795 /* AppMain.swift */,
 				2F0EF4FC29676F11009342E0 /* AppState.swift */,
+				2F7241C82967257A00E85C81 /* CustomColor.swift */,
 				2F7F7B972962C10500AA554B /* Constants.swift */,
 				2F124BFF2962A6BE00E84795 /* Assets.xcassets */,
 				2F7F7BBB2963C32800AA554B /* Info.plist */,
@@ -169,6 +172,7 @@
 			children = (
 				2F7241D429674FBF00E85C81 /* CustomTextField.swift */,
 				2F7241CC2967380300E85C81 /* IconPickerView.swift */,
+				2F0EF4FE29677CE6009342E0 /* CustomLinkView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -212,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				2F124BFD2962A6BD00E84795 /* ContentView.swift */,
-				2F7241C82967257A00E85C81 /* CustomColor.swift */,
 				2F7F7BC82963F80700AA554B /* TodoList */,
 				2F7F7BB72963C2B400AA554B /* Todo */,
 				2F7F7BB62963C2AD00AA554B /* Settings */,
@@ -366,6 +369,7 @@
 				2F7F7BA92963BF4200AA554B /* CustomError.swift in Sources */,
 				2F7241D029673E3400E85C81 /* BaseViewModel.swift in Sources */,
 				2F7F7BC12963DFE600AA554B /* Todo+Extensions.swift in Sources */,
+				2F0EF4FF29677CE6009342E0 /* CustomLinkView.swift in Sources */,
 				2F7F7BBD2963C4EE00AA554B /* TodoList+Extensions.swift in Sources */,
 				2F7F7BC32963E66F00AA554B /* TodoRowView.swift in Sources */,
 				2F7F7BA22963BE1E00AA554B /* CoreDataProvider.swift in Sources */,

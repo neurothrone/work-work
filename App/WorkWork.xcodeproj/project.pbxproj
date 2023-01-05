@@ -12,7 +12,6 @@
 		2F124C002962A6BE00E84795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F124BFF2962A6BE00E84795 /* Assets.xcassets */; };
 		2F124C032962A6BE00E84795 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F124C022962A6BE00E84795 /* Preview Assets.xcassets */; };
 		2F352157296425FC0092B587 /* WorkWorkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F352156296425FC0092B587 /* WorkWorkKit */; };
-		2F352162296457040092B587 /* MoveableNSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F352161296457040092B587 /* MoveableNSManagedObject.swift */; };
 		2F3521642964572E0092B587 /* MoveableEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */; };
 		2F35217B2965BD440092B587 /* Entities.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521792965BD440092B587 /* Entities.xcdatamodeld */; };
 		2F3521872965C9FB0092B587 /* TodoList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35217F2965C9FB0092B587 /* TodoList+CoreDataClass.swift */; };
@@ -46,7 +45,6 @@
 		2F124BFD2962A6BD00E84795 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F124BFF2962A6BE00E84795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F124C022962A6BE00E84795 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2F352161296457040092B587 /* MoveableNSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveableNSManagedObject.swift; sourceTree = "<group>"; };
 		2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveableEntity+Extensions.swift"; sourceTree = "<group>"; };
 		2F35217A2965BD440092B587 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		2F35217F2965C9FB0092B587 /* TodoList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 			children = (
 				2F3521832965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift */,
 				2F3521632964572E0092B587 /* MoveableEntity+Extensions.swift */,
-				2F352161296457040092B587 /* MoveableNSManagedObject.swift */,
 				2F7F7BA52963BF1C00AA554B /* NSManagedObject+Extensions.swift */,
 				2F7F7BD0296418E800AA554B /* TodoList */,
 				2F7F7BCF296418E500AA554B /* Todo */,
@@ -322,7 +319,6 @@
 				2F7F7BA62963BF1C00AA554B /* NSManagedObject+Extensions.swift in Sources */,
 				2F7F7BAB2963C02900AA554B /* TodoList+Preview.swift in Sources */,
 				2F7F7BA92963BF4200AA554B /* CustomError.swift in Sources */,
-				2F352162296457040092B587 /* MoveableNSManagedObject.swift in Sources */,
 				2F7F7BC12963DFE600AA554B /* Todo+Extensions.swift in Sources */,
 				2F7F7BBD2963C4EE00AA554B /* TodoList+Extensions.swift in Sources */,
 				2F7F7BC32963E66F00AA554B /* TodoRowView.swift in Sources */,

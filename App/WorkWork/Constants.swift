@@ -39,8 +39,6 @@ enum MyApp {
   enum AppStorage {
     static let selectedColor = "selectedColor"
     static let isOnboardingPresented = true
-    static let selectedScreen = "selectedScreen"
-    
   }
   
   enum Link {

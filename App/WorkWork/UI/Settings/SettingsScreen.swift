@@ -39,8 +39,6 @@ struct SettingsScreen: View {
       
       // TODO: Manual Dark / Light Theme toggle
       
-      Text("Interactive color style. Selection of built-in dark/light mode supported colors. Start with 5-6 colors.")
-      
       Text("Todo isDone style. Swipe only, Tap Only, Both")
             
       Text("List style. Inset Grouped or Grouped")

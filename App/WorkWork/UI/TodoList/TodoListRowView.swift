@@ -30,7 +30,17 @@ struct TodoListRowView: View {
   
   private var content: some View {
     HStack {
+      Image(systemName: "folder")
+        .foregroundColor(.purple)
+      
       Text(todoList.title)
+      
+      if todoList.todos.isNotEmpty {
+        Spacer()
+        Text(todoList.todosCount.description)
+          .foregroundColor(.primary.opacity(0.8))
+      }
+      
     }
   }
 }

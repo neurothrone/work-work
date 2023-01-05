@@ -84,12 +84,7 @@ struct AllTodoListsScreen: View {
           }
         }
         .onMove { source, destination in
-          TodoList.move(
-            elements: Array(todoLists),
-            from: source,
-            to: destination,
-            using: moc
-          )
+          TodoList.moveEntities(todoLists, from: source, to: destination, using: moc)
         }
       }
     }

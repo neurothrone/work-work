@@ -106,7 +106,9 @@ struct TodoListScreen: View {
               })
           }
         }
-        .onMove(perform: move(from:to:))
+        .onMove { source, destination in
+          Todo.moveEntities(todos, from: source, to: destination, using: moc)
+        }
       }
     }
     .id(UUID()) // NOTE: one-line fix for slow SwiftUI lists
@@ -169,11 +171,6 @@ struct TodoListScreen: View {
       todoTitle = ""
       activeTodoMode = nil
     }
-  }
-  
-  private func move(from source: IndexSet, to destination: Int) {
-    MoveableEntity.moveEntities(todos, from: source, to: destination, using: moc)
-//    Todo.move(elements: Array(todos), from: source, to: destination, using: moc)
   }
 }
 

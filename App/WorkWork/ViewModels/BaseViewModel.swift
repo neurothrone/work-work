@@ -98,16 +98,20 @@ class BaseViewModel<T: MoveableEntity>: ObservableObject, CanCreateEntity {
     }
   }
   
-  func delete(entity: TodoList, using context: NSManagedObjectContext) {
-    withAnimation {
-      entity.delete(using: context)
+  func delete(_ entity: T, using context: NSManagedObjectContext) {
+    // If the entity that will be deleted is also actively being edited
+    if actionMode == .edit,
+       let selection,
+       selection == entity {
+      withAnimation(.linear) {
+        title = ""
+        actionMode = nil
+        isTextFieldFocused = false
+      }
     }
     
-    guard actionMode == .edit else { return }
-    
     withAnimation(.linear) {
-      title = ""
-      actionMode = nil
+      entity.delete(using: context)
     }
   }
 }

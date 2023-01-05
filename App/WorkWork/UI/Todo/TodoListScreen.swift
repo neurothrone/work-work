@@ -68,6 +68,7 @@ struct TodoListScreen: View {
               .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(viewModel.title.isEmpty)
             
             Spacer()
             
@@ -96,7 +97,13 @@ struct TodoListScreen: View {
           text: $viewModel.title,
           placeholder: "Todo Title",
           onSubmit: {
+            guard viewModel.title.isNotEmpty else { return }
+            
             viewModel.addOrUpdate(using: moc)
+            
+            if viewModel.actionMode == .add {
+              isTextFieldFocused = true
+            }
           }
         )
         .focused($isTextFieldFocused)

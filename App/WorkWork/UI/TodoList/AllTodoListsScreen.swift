@@ -71,6 +71,7 @@ struct AllTodoListsScreen: View {
               .labelStyle(.titleAndIcon)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(viewModel.title.isEmpty)
             
             if viewModel.actionMode == .add {
               Spacer()
@@ -113,7 +114,13 @@ struct AllTodoListsScreen: View {
           text: $viewModel.title,
           placeholder: "Folder Title",
           onSubmit: {
+            guard viewModel.title.isNotEmpty else { return }
+            
             viewModel.addOrUpdate(using: moc)
+            
+            if viewModel.actionMode == .add {
+              isTextFieldFocused = true
+            }
           }
         )
         .focused($isTextFieldFocused)

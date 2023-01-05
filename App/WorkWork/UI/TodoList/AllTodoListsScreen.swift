@@ -19,11 +19,9 @@ struct AllTodoListsScreen: View {
   )
   private var todoLists: FetchedResults<TodoList>
   
+  @FocusState var isTextFieldFocused: Bool  
   @State private var isAddSheetPresented = false
-  @State private var title = ""
-  
   @StateObject private var viewModel: TodoListViewModel = .init()
-  @FocusState var isTextFieldFocused: Bool
   
   var body: some View {
     content
@@ -74,7 +72,7 @@ struct AllTodoListsScreen: View {
                 if viewModel.actionMode == .add {
                   Label(
                     "Add",
-                    systemImage: MyApp.SystemImage.quickAdd
+                    systemImage: MyApp.SystemImage.quickAddList
                   )
                 } else {
                   Label(
@@ -93,7 +91,7 @@ struct AllTodoListsScreen: View {
               Button(action: {}) {
                 Label(
                   "More",
-                  systemImage: MyApp.SystemImage.moreOptionsAdd
+                  systemImage: MyApp.SystemImage.moreOptionsAddList
                 )
                 .labelStyle(.titleAndIcon)
               }

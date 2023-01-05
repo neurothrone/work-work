@@ -29,7 +29,7 @@ struct TodoListRowView: View {
         Button(action: onEdit) {
           Label("Edit", systemImage: MyApp.SystemImage.edit)
         }
-        .tint(.mint)
+        .tint(selectedColor.color.opacity(0.75))
       }
   }
   

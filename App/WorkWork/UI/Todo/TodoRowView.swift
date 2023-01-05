@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TodoRowView: View {
+  @AppStorage(MyApp.AppStorage.selectedColor)
+  var selectedColor: CustomColor = .purple
+  
   @Environment(\.managedObjectContext) var moc
   
   @ObservedObject var todo: Todo
@@ -24,9 +27,7 @@ struct TodoRowView: View {
                 ? MyApp.SystemImage.todoIsNotDone
                 : MyApp.SystemImage.todoIsDone)
         }
-        .tint(todo.isDone
-              ? .purple.opacity(0.75)
-              : .purple)
+        .tint(selectedColor.color.opacity(0.5))
         
       }
       .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -38,7 +39,7 @@ struct TodoRowView: View {
         Button(action: onEdit) {
           Label("Edit", systemImage: MyApp.SystemImage.edit)
         }
-        .tint(.mint)
+        .tint(selectedColor.color.opacity(0.75))
       }
   }
   
@@ -49,7 +50,7 @@ struct TodoRowView: View {
               ? MyApp.SystemImage.todoIsDone
               : MyApp.SystemImage.circle
         )
-        .foregroundColor(.purple)
+        .foregroundColor(selectedColor.color)
         .imageScale(.large)
       }
       .buttonStyle(.plain)

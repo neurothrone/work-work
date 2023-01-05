@@ -50,16 +50,22 @@ struct TodoListScreen: View {
       .toolbar {
         //MARK: Bottom Bar
         ToolbarItemGroup(placement: .bottomBar) {
-          Button(action: viewModel.changeActionMode) {
-            Label(
-              viewModel.activeModeText,
-              systemImage: viewModel.activeModeSystemName
-            )
+          ZStack {
+            Text("\(todos.count) Todos")
+              .font(.callout.bold())
+              .foregroundColor(.secondary)
+              .frame(maxWidth: .infinity, alignment: .center)
+            
+            Button(action: viewModel.changeActionMode) {
+              Label(
+                viewModel.activeModeText,
+                systemImage: viewModel.activeModeSystemName
+              )
+            }
+            .tint(selectedColor.color)
+            .frame(maxWidth: .infinity, alignment: .trailing)
           }
-          .tint(selectedColor.color)
-          
-          Spacer()
-        }
+        }        
         
         //MARK: Keyboard
         ToolbarItemGroup(placement: .keyboard) {

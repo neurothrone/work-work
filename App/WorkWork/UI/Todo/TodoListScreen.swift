@@ -109,6 +109,7 @@ struct TodoListScreen: View {
         .onMove(perform: move(from:to:))
       }
     }
+    .id(UUID()) // NOTE: one-line fix for slow SwiftUI lists
     .listStyle(.grouped)
   }
   

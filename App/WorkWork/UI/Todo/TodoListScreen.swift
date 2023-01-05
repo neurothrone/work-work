@@ -8,79 +8,64 @@
 import SwiftUI
 
 struct TodoListScreen: View {
-  private enum TodoMode {
-    case add,
-         edit
-  }
-  
   @Environment(\.managedObjectContext) var moc
-  
   @FetchRequest private var todos: FetchedResults<Todo>
   
-  @ObservedObject var todoList: TodoList
-  
-  @FocusState private var isTextFieldFocused: Bool
-  @State private var todoTitle = ""
-  @State private var selectedTodo: Todo? = nil
-  @State private var activeTodoMode: TodoMode? = nil
+  @FocusState var isTextFieldFocused: Bool
+  @StateObject private var viewModel: TodosViewModel
   
   init(todoList: TodoList) {
-    self.todoList = todoList
-    
     _todos = FetchRequest(
       fetchRequest: Todo.all(in: todoList),
       animation: .default
     )
-  }
-  
-  private var activeModeSystemName: String {
-    switch activeTodoMode {
-    case .add:
-      return "plus.circle"
-    case .edit:
-      return "pencil.circle"
-    default:
-      return "circle.slash"
-    }
+    
+    let vm = TodosViewModel(todoList: todoList)
+    _viewModel = StateObject(wrappedValue: vm)
   }
   
   var body: some View {
-      content
-        .navigationTitle(todoList.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-          ToolbarItemGroup(placement: .keyboard) {
-            Spacer()
-            Button("Dismiss", action: { isTextFieldFocused = false })
-          }
-          
-          ToolbarItem(placement: .navigationBarTrailing) {
-            Button(action: changeTodoMode) {
-              Image(systemName: activeModeSystemName)
-                .imageScale(.large)
-                .foregroundColor(.purple)
-            }
+    content
+      .navigationTitle(viewModel.todoList.title)
+      .navigationBarTitleDisplayMode(.inline)
+      .onChange(of: viewModel.isTextFieldFocused) {
+        isTextFieldFocused = $0
+      }
+      .toolbar {
+        ToolbarItemGroup(placement: .keyboard) {
+          Spacer()
+          Button("Dismiss", action: { viewModel.isTextFieldFocused = false })
+        }
+        
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button(action: viewModel.changeTodoMode) {
+            Image(systemName: viewModel.activeModeSystemName)
+              .imageScale(.large)
+              .foregroundColor(.purple)
           }
         }
+      }
   }
   
   private var content: some View {
     List {
-      if activeTodoMode != nil {
+      if viewModel.activeTodoMode != nil {
         HStack {
-          TextField("Todo title", text: $todoTitle)
+          TextField("Todo title", text: $viewModel.todoTitle)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.sentences)
             .textFieldStyle(.roundedBorder)
             .focused($isTextFieldFocused)
             .submitLabel(.done)
-            .onSubmit(addOrUpdateTodo)
+            .onSubmit {
+              viewModel.addOrUpdateTodo(using: moc)
+            }
           
-          Button(action: addOrUpdateTodo) {
-            Text(activeTodoMode == .add ? "Add" : "Update")
+          Button(action: { viewModel.addOrUpdateTodo(using: moc) }) {
+            Text(viewModel.activeTodoMode == .add ? "Add" : "Update")
           }
           .buttonStyle(.borderedProminent)
-          .disabled(todoTitle.isEmpty)
+          .disabled(viewModel.todoTitle.isEmpty)
           .tint(.purple)
         }
         .listRowSeparator(.hidden)
@@ -91,15 +76,15 @@ struct TodoListScreen: View {
         Text("No todos yet.")
       } else {
         ForEach(todos) { todo in
-          if todo != selectedTodo {
+          if todo != viewModel.selectedTodo {
             TodoRowView(
               todo: todo,
               onDelete: {
                 // NOTE: It is necessary to wrap deletion logic with NSManagedObjectContext.perform to prevent a race condition from causing a crash
-                moc.perform { deleteTodo(todo) }
+                moc.perform { viewModel.deleteTodo(todo, using: moc) }
               },
               onEdit: {
-                changeViewToEditingTodo(todo)
+                viewModel.changeViewToEditingTodo(todo)
               },
               onToggle: {
                 Todo.toggleIsDone(for: todo, using: moc)
@@ -107,70 +92,15 @@ struct TodoListScreen: View {
           }
         }
         .onMove { source, destination in
-          Todo.moveEntities(todos, from: source, to: destination, using: moc)
+          moc.perform {
+            Todo.moveEntities(todos, from: source, to: destination, using: moc)
+          }
         }
       }
     }
-    .id(UUID()) // NOTE: one-line fix for slow SwiftUI lists
     .listStyle(.grouped)
-  }
-  
-  private func changeTodoMode() {
-    withAnimation(.linear) {
-      switch activeTodoMode {
-      case .add:
-        isTextFieldFocused = false
-        activeTodoMode = nil
-      case .edit:
-        isTextFieldFocused = false
-        todoTitle = ""
-        selectedTodo = nil
-        activeTodoMode = nil
-      case nil:
-        activeTodoMode = .add
-      }
-    }
-  }
-  
-  private func changeViewToEditingTodo(_ todo: Todo) {
-    activeTodoMode = .edit
-    todoTitle = todo.title
-    selectedTodo = todo
-  }
-  
-  private func addOrUpdateTodo() {
-    if let selectedTodo {
-      selectedTodo.title = todoTitle
-      selectedTodo.save(using: moc)
-      
-      withAnimation(.linear) {
-        self.selectedTodo = nil
-        activeTodoMode = nil
-      }
-    } else {
-      Todo.create(with: todoTitle, in: todoList, using: moc)
-      
-      withAnimation(.linear) {
-        isTextFieldFocused = true
-      }
-    }
-    
-    withAnimation(.linear) {
-      todoTitle = ""
-    }
-  }
-  
-  private func deleteTodo(_ todo: Todo) {
-    withAnimation {
-      todo.delete(using: moc)
-    }
-    
-    guard activeTodoMode == .edit else { return }
-    
-    withAnimation(.linear) {
-      todoTitle = ""
-      activeTodoMode = nil
-    }
+    // NOTE: one-line fix for slow SwiftUI lists. Trade-off is gain in speed for loss in animation
+    //    .id(UUID())
   }
 }
 

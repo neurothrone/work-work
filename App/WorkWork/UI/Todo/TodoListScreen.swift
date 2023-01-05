@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TodoListScreen: View {
+  @AppStorage(MyApp.AppStorage.selectedColor)
+  var selectedColor: CustomColor = .purple
+  
   @Environment(\.managedObjectContext) var moc
   @FetchRequest private var todos: FetchedResults<Todo>
   
@@ -32,41 +35,73 @@ struct TodoListScreen: View {
         isTextFieldFocused = $0
       }
       .toolbar {
-        ToolbarItemGroup(placement: .keyboard) {
+        //MARK: Bottom Bar
+        ToolbarItemGroup(placement: .bottomBar) {
+          Button(action: viewModel.changeActionMode) {
+            Label(
+              viewModel.activeModeText,
+              systemImage: viewModel.activeModeSystemName
+            )
+          }
+          .tint(selectedColor.color)
+          
           Spacer()
-          Button("Dismiss", action: { viewModel.isTextFieldFocused = false })
         }
         
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button(action: viewModel.changeTodoMode) {
-            Image(systemName: viewModel.activeModeSystemName)
-              .imageScale(.large)
-              .foregroundColor(.purple)
+        //MARK: Keyboard
+        ToolbarItemGroup(placement: .keyboard) {
+          HStack {
+            Button(action: { viewModel.addOrUpdate(using: moc) }) {
+              Group {
+                if viewModel.actionMode == .add {
+                  Label(
+                    "Add",
+                    systemImage: MyApp.SystemImage.showAddTodoTextField
+                  )
+                } else {
+                  Label(
+                    "Update",
+                    systemImage: MyApp.SystemImage.editActionMode
+                  )
+                }
+              }
+              .labelStyle(.titleAndIcon)
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Spacer()
+            
+            Button(role: .cancel) {
+              // TODO: Temporary fix until root cause is discovered
+              hideKeyboard()
+//              viewModel.isTextFieldFocused = false
+            } label: {
+              Label(
+                "Dismiss",
+                systemImage: MyApp.SystemImage.dismissKeyboard
+              )
+              .labelStyle(.titleAndIcon)
+            }
+            .buttonStyle(.bordered)
           }
+          .tint(selectedColor.color)
         }
       }
   }
   
   private var content: some View {
     List {
-      if viewModel.activeTodoMode != nil {
+      if viewModel.actionMode != nil {
         HStack {
-          TextField("Todo title", text: $viewModel.todoTitle)
+          TextField("Todo Title", text: $viewModel.title)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.sentences)
             .textFieldStyle(.roundedBorder)
             .focused($isTextFieldFocused)
             .submitLabel(.done)
             .onSubmit {
-              viewModel.addOrUpdateTodo(using: moc)
+              viewModel.addOrUpdate(using: moc)
             }
-          
-          Button(action: { viewModel.addOrUpdateTodo(using: moc) }) {
-            Text(viewModel.activeTodoMode == .add ? "Add" : "Update")
-          }
-          .buttonStyle(.borderedProminent)
-          .disabled(viewModel.todoTitle.isEmpty)
-          .tint(.purple)
         }
         .listRowSeparator(.hidden)
         .padding(.bottom)
@@ -76,20 +111,18 @@ struct TodoListScreen: View {
         Text("No todos yet.")
       } else {
         ForEach(todos) { todo in
-          if todo != viewModel.selectedTodo {
-            TodoRowView(
-              todo: todo,
-              onDelete: {
-                // NOTE: It is necessary to wrap deletion logic with NSManagedObjectContext.perform to prevent a race condition from causing a crash
-                moc.perform { viewModel.deleteTodo(todo, using: moc) }
-              },
-              onEdit: {
-                viewModel.changeViewToEditingTodo(todo)
-              },
-              onToggle: {
-                Todo.toggleIsDone(for: todo, using: moc)
-              })
-          }
+          TodoRowView(
+            todo: todo,
+            onDelete: {
+              // NOTE: It is necessary to wrap deletion logic with NSManagedObjectContext.perform to prevent a race condition from causing a crash
+              moc.perform { viewModel.delete(todo, using: moc) }
+            },
+            onEdit: {
+              viewModel.changeToEditingOf(todo)
+            },
+            onToggle: {
+              Todo.toggleIsDone(for: todo, using: moc)
+            })
         }
         .onMove { source, destination in
           moc.perform {
@@ -98,7 +131,8 @@ struct TodoListScreen: View {
         }
       }
     }
-    .listStyle(.grouped)
+    .listStyle(.insetGrouped)
+    .scrollContentBackground(.hidden)
     // NOTE: one-line fix for slow SwiftUI lists. Trade-off is gain in speed for loss in animation
     //    .id(UUID())
   }
@@ -112,6 +146,7 @@ struct TodoListScreen_Previews: PreviewProvider {
     return NavigationStack {
       TodoListScreen(todoList: todoList)
         .environment(\.managedObjectContext, context)
+        .preferredColorScheme(.dark)
     }
   }
 }

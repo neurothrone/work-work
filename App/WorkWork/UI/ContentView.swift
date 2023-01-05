@@ -15,7 +15,6 @@ struct ContentView: View {
     NavigationStack {
       AllTodoListsScreen()
         .navigationTitle("Folders")
-        .navigationBarTitleDisplayMode(.automatic)
         .toolbar {
           //MARK: Navigation Bar
           ToolbarItem(placement: .navigationBarTrailing) {

@@ -177,8 +177,10 @@ struct AllTodoListsScreen: View {
 
 struct AllTodoListsScreen_Previews: PreviewProvider {
   static var previews: some View {
-    Screen.lists.view
-      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+    NavigationStack {
+      AllTodoListsScreen()
+        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
       .preferredColorScheme(.dark)
+    }
   }
 }

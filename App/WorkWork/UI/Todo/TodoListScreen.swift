@@ -44,7 +44,6 @@ struct TodoListScreen: View {
   var body: some View {
     content
       .navigationTitle(viewModel.todoList.title)
-      .navigationBarTitleDisplayMode(.inline)
       .onChange(of: viewModel.isTextFieldFocused) {
         isTextFieldFocused = $0
       }

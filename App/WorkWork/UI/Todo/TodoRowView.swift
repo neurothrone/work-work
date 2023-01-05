@@ -21,8 +21,8 @@ struct TodoRowView: View {
       .swipeActions(edge: .leading, allowsFullSwipe: true) {
         Button(action: onToggle) {
           Label("Toggle", systemImage: todo.isDone
-                ? "x.circle"
-                : "checkmark.circle.fill")
+                ? MyApp.SystemImage.todoIsNotDone
+                : MyApp.SystemImage.todoIsDone)
         }
         .tint(todo.isDone
               ? .purple.opacity(0.75)
@@ -31,10 +31,12 @@ struct TodoRowView: View {
       }
       .swipeActions(edge: .trailing, allowsFullSwipe: true) {
         Button(role: .destructive, action: onDelete) {
-          Label("Delete", systemImage: "trash")
+          Label("Delete", systemImage: MyApp.SystemImage.delete)
         }
+        .tint(.red)
+        
         Button(action: onEdit) {
-          Label("Edit", systemImage: "pencil")
+          Label("Edit", systemImage: MyApp.SystemImage.edit)
         }
         .tint(.mint)
       }
@@ -44,8 +46,8 @@ struct TodoRowView: View {
     HStack {
       Button(action: onToggle) {
         Image(systemName: todo.isDone
-              ? "checkmark.circle.fill"
-              : "circle"
+              ? MyApp.SystemImage.todoIsDone
+              : MyApp.SystemImage.circle
         )
         .foregroundColor(.purple)
         .imageScale(.large)

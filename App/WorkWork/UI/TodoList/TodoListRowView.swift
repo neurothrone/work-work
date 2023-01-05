@@ -22,12 +22,12 @@ struct TodoListRowView: View {
     content
       .swipeActions(edge: .trailing, allowsFullSwipe: true) {
         Button(role: .destructive, action: onDelete) {
-          Label("Delete", systemImage: "trash")
+          Label("Delete", systemImage: MyApp.SystemImage.delete)
         }
-//        .tint(.red)
+        .tint(.red)
         
         Button(action: onEdit) {
-          Label("Edit", systemImage: "pencil")
+          Label("Edit", systemImage: MyApp.SystemImage.edit)
         }
         .tint(.mint)
       }
@@ -45,7 +45,6 @@ struct TodoListRowView: View {
         Text(todoList.todosCount.description)
           .foregroundColor(.primary.opacity(0.8))
       }
-      
     }
   }
 }

@@ -23,11 +23,17 @@ enum MyApp {
     
     static let showAddTodoTextField = "plus.circle.fill"
     static let addTodo = "plus.circle"
+    static let todoIsDone = "checkmark.circle.fill"
+    static let todoIsNotDone = "x.circle"
+    static let circle = "circle"
     
     static let editActionMode = "pencil.circle"
     static let noActionMode = "circle.slash"
     
     static let folder = "folder"
+    
+    static let delete = "trash"
+    static let edit = "pencil"
   }
   
   enum AppStorage {

@@ -169,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				2F7241D429674FBF00E85C81 /* CustomTextField.swift */,
+				2F7241CC2967380300E85C81 /* IconPickerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -248,7 +249,6 @@
 				2F7F7BB22963C1BC00AA554B /* AllTodoListsScreen.swift */,
 				2F7F7BC92963F84C00AA554B /* TodoListRowView.swift */,
 				2F7F7BC62963F65900AA554B /* AddTodoListSheet.swift */,
-				2F7241CC2967380300E85C81 /* IconPickerView.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";

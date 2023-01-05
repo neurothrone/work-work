@@ -13,6 +13,8 @@ enum CustomColor: String {
        blue,
        purple,
        indigo,
+       orange,
+       yellow,
        mint
 }
 
@@ -31,6 +33,10 @@ extension CustomColor: Identifiable, CaseIterable {
       return Color.purple
     case .indigo:
       return Color.indigo
+    case .orange:
+      return Color.orange
+    case .yellow:
+      return Color.yellow
     case .mint:
       return Color.mint
     }

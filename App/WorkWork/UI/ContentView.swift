@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
-  @AppStorage(MyApp.AppStorage.selectedScreen)
-  var selectedScreen: Screen = .lists
+  @AppStorage(MyApp.AppStorage.selectedColor)
+  var selectedColor: CustomColor = .purple
   
   var body: some View {
-    TabView(selection: $selectedScreen) {
-      Group {
-        ForEach(Screen.allCases) { screen in
-          screen.view
-            .tabItem {
+    NavigationStack {
+      AllTodoListsScreen()
+        .navigationTitle("Folders")
+        .navigationBarTitleDisplayMode(.automatic)
+        .toolbar {
+          //MARK: Navigation Bar
+          ToolbarItem(placement: .navigationBarTrailing) {
+            NavigationLink {
+              SettingsScreen()
+            } label: {
               Label(
-                screen.rawValue.capitalized,
-                systemImage: screen.systemImage
+                "Settings",
+                systemImage: MyApp.SystemImage.settings
               )
+              .tint(selectedColor.color)
             }
+          }
         }
-      }
-      .toolbarBackground(.visible, for: .tabBar)
-      .toolbarBackground(.ultraThinMaterial, for: .tabBar)
     }
-    .tint(.purple)
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
-      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+    NavigationStack {
+      ContentView()
+        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+        .preferredColorScheme(.dark)
+    }
   }
 }

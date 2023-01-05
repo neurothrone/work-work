@@ -18,11 +18,6 @@ struct TodoRowView: View {
   
   var body: some View {
     content
-//      .contextMenu {
-//        Button(action: onEdit) {
-//          Label("Edit", systemImage: "pencil")
-//        }
-//      }
       .swipeActions(edge: .leading, allowsFullSwipe: true) {
         Button(action: onToggle) {
           Label("Toggle", systemImage: todo.isDone
@@ -66,7 +61,7 @@ struct TodoRowView_Previews: PreviewProvider {
   static var previews: some View {
     let context = CoreDataProvider.preview.viewContext
     let todo = Todo.Preview.generateSample(using: context)
-
+    
     return List {
       TodoRowView(todo: todo, onDelete: {}, onEdit: {}, onToggle: {})
         .environment(\.managedObjectContext, context)

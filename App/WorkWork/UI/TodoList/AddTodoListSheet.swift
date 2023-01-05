@@ -41,11 +41,6 @@ struct AddTodoListSheet: View {
           .textFieldStyle(.roundedBorder)
           .textInputAutocapitalization(.sentences)
       }
-//      .padding()
-//      .background(
-//        RoundedRectangle(cornerRadius: 20)
-//          .fill(Color.mint)
-//      )
         
       Spacer()
     }

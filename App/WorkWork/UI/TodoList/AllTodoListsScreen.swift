@@ -37,20 +37,7 @@ struct AllTodoListsScreen: View {
       .onChange(of: viewModel.isTextFieldFocused) {
         isTextFieldFocused = $0
       }
-      .toolbar {
-        //MARK: Navigation Bar
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button {
-            
-          } label: {
-            Label(
-              "Settings",
-              systemImage: MyApp.SystemImage.settings
-            )
-            .tint(selectedColor.color)
-          }
-        }
-        
+      .toolbar {        
         //MARK: Bottom Bar
         ToolbarItemGroup(placement: .bottomBar) {
           Button(action: viewModel.changeActionMode) {

@@ -8,8 +8,37 @@
 import SwiftUI
 
 struct SettingsScreen: View {
+  @AppStorage(MyApp.AppStorage.selectedColor)
+  var selectedColor: CustomColor = .purple
+  
   var body: some View {
     Form {
+      Section {
+        HStack {
+          ForEach(CustomColor.allCases) { customColor in
+            Button {
+              withAnimation(.easeInOut) {
+                selectedColor = customColor
+              }
+            } label: {
+              Image(systemName: selectedColor == customColor
+                    ? MyApp.SystemImage.circleFill
+                    : MyApp.SystemImage.circle
+              )
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(width: 44, height: 44)
+              .foregroundColor(customColor.color)
+            }
+            .buttonStyle(.plain)
+          }
+        }
+      } header: {
+        Text("App Color Style")
+      }
+      
+      // TODO: Manual Dark / Light Theme toggle
+      
       Text("Interactive color style. Selection of built-in dark/light mode supported colors. Start with 5-6 colors.")
       
       Text("Todo isDone style. Swipe only, Tap Only, Both")
@@ -26,6 +55,7 @@ struct SettingsScreen_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       SettingsScreen()
+        .preferredColorScheme(.dark)
     }
   }
 }

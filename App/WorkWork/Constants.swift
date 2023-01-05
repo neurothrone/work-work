@@ -26,6 +26,7 @@ enum MyApp {
     static let todoIsDone = "checkmark.circle.fill"
     static let todoIsNotDone = "x.circle"
     static let circle = "circle"
+    static let circleFill = "circle.fill"
     
     static let editActionMode = "pencil.circle"
     static let noActionMode = "circle.slash"

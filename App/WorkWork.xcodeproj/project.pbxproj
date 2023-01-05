@@ -19,6 +19,9 @@
 		2F35218B2965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3521832965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift */; };
 		2F7241C12966C18900E85C81 /* TodosListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C02966C18900E85C81 /* TodosListView.swift */; };
 		2F7241C32966C30100E85C81 /* TodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C22966C30100E85C81 /* TodosViewModel.swift */; };
+		2F7241C529671BEC00E85C81 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C429671BEC00E85C81 /* TodoListViewModel.swift */; };
+		2F7241C92967257A00E85C81 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C82967257A00E85C81 /* CustomColor.swift */; };
+		2F7241CB29672C4300E85C81 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */; };
 		2F7F7B982962C10500AA554B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7B972962C10500AA554B /* Constants.swift */; };
 		2F7F7BA22963BE1E00AA554B /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BA12963BE1E00AA554B /* CoreDataProvider.swift */; };
 		2F7F7BA42963BF0400AA554B /* CoreDataProvider+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BA32963BF0400AA554B /* CoreDataProvider+Extensions.swift */; };
@@ -54,6 +57,9 @@
 		2F3521832965C9FB0092B587 /* MoveableEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveableEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2F7241C02966C18900E85C81 /* TodosListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosListView.swift; sourceTree = "<group>"; };
 		2F7241C22966C30100E85C81 /* TodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewModel.swift; sourceTree = "<group>"; };
+		2F7241C429671BEC00E85C81 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		2F7241C82967257A00E85C81 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		2F7F7B972962C10500AA554B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F7F7BA12963BE1E00AA554B /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		2F7F7BA32963BF0400AA554B /* CoreDataProvider+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataProvider+Extensions.swift"; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 			children = (
 				2F7F7BAD2963C06400AA554B /* UIApplication+Extensions.swift */,
 				2F7F7BAF2963C07D00AA554B /* URL+Extensions.swift */,
+				2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 			children = (
 				2F124BFD2962A6BD00E84795 /* ContentView.swift */,
 				2F7F7BB82963C2C700AA554B /* Screen.swift */,
+				2F7241C82967257A00E85C81 /* CustomColor.swift */,
 				2F7F7BC82963F80700AA554B /* TodoList */,
 				2F7F7BB72963C2B400AA554B /* Todo */,
 				2F7F7BB62963C2AD00AA554B /* Settings */,
@@ -210,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				2F7F7BB22963C1BC00AA554B /* AllTodoListsScreen.swift */,
+				2F7241C429671BEC00E85C81 /* TodoListViewModel.swift */,
 				2F7F7BC92963F84C00AA554B /* TodoListRowView.swift */,
 				2F7F7BC62963F65900AA554B /* AddTodoListSheet.swift */,
 			);
@@ -313,9 +322,11 @@
 				2F3521642964572E0092B587 /* MoveableEntity+Extensions.swift in Sources */,
 				2F7F7BAE2963C06400AA554B /* UIApplication+Extensions.swift in Sources */,
 				2F7F7BC52963E6A700AA554B /* Todo+Preview.swift in Sources */,
+				2F7241C529671BEC00E85C81 /* TodoListViewModel.swift in Sources */,
 				2F7F7BB32963C1BC00AA554B /* AllTodoListsScreen.swift in Sources */,
 				2F124BFC2962A6BD00E84795 /* AppMain.swift in Sources */,
 				2F7F7BB02963C07D00AA554B /* URL+Extensions.swift in Sources */,
+				2F7241C92967257A00E85C81 /* CustomColor.swift in Sources */,
 				2F7F7BCC296418C000AA554B /* AboutSheet.swift in Sources */,
 				2F7F7BCE296418C900AA554B /* DeleteAllDataSheet.swift in Sources */,
 				2F7F7BCA2963F84C00AA554B /* TodoListRowView.swift in Sources */,
@@ -336,6 +347,7 @@
 				2F35217B2965BD440092B587 /* Entities.xcdatamodeld in Sources */,
 				2F7F7BB52963C1C300AA554B /* SettingsScreen.swift in Sources */,
 				2F7F7BA42963BF0400AA554B /* CoreDataProvider+Extensions.swift in Sources */,
+				2F7241CB29672C4300E85C81 /* Collection+Extensions.swift in Sources */,
 				2F3521892965C9FB0092B587 /* Todo+CoreDataClass.swift in Sources */,
 				2F7241C32966C30100E85C81 /* TodosViewModel.swift in Sources */,
 			);

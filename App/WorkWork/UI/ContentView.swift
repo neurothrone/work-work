@@ -19,9 +19,7 @@ struct ContentView: View {
         .toolbar {
           //MARK: Navigation Bar
           ToolbarItem(placement: .navigationBarTrailing) {
-            NavigationLink {
-              SettingsScreen()
-            } label: {
+            NavigationLink(destination: SettingsScreen()) {
               Label(
                 "Settings",
                 systemImage: MyApp.SystemImage.settings

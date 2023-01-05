@@ -13,6 +13,7 @@ struct SettingsScreen: View {
   
   var body: some View {
     Form {
+      //MARK: App Color Theme
       Section {
         HStack {
           ForEach(CustomColor.allCases) { customColor in
@@ -27,14 +28,13 @@ struct SettingsScreen: View {
               )
               .resizable()
               .aspectRatio(contentMode: .fit)
-              .frame(width: 44, height: 44)
               .foregroundColor(customColor.color)
             }
             .buttonStyle(.plain)
           }
         }
       } header: {
-        Text("App Color Style")
+        Text("App Color Theme")
       }
       
       // TODO: Manual Dark / Light Theme toggle

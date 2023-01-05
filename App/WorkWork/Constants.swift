@@ -26,6 +26,8 @@ enum MyApp {
   
   enum SystemImage {
     static let settings = "gear"
+    static let heartFill = "heart.fill"
+    static let copyright = "c.circle"
     static let showAddListTextField = "folder.badge.plus"
     static let quickAddList = "folder.fill.badge.plus"
     static let moreOptionsAddList = "square.grid.3x1.folder.fill.badge.plus"
@@ -45,5 +47,7 @@ enum MyApp {
     
     static let delete = "trash"
     static let edit = "pencil"
+    
+    static let linkCircleFill = "link.circle.fill"
   }
 }

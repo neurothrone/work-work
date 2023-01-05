@@ -8,23 +8,36 @@
 import SwiftUI
 
 struct SettingsScreen: View {
-  @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
+  @EnvironmentObject var appState: AppState
   
   var body: some View {
     Form {
+      //MARK: Dark / Light Theme
+      Section {
+        Toggle(
+          "Prefers dark theme",
+          isOn: $appState.prefersDarkMode
+        )
+          
+        
+      } header: {
+        Text("App Color Theme")
+      }
+
+      
       //MARK: App Color Theme
       Section {
         HStack {
           ForEach(CustomColor.allCases) { customColor in
             Button {
               withAnimation(.easeInOut) {
-                selectedColor = customColor
+                appState.selectedColor = customColor
               }
             } label: {
-              Image(systemName: selectedColor == customColor
-                    ? MyApp.SystemImage.circleFill
-                    : MyApp.SystemImage.circle
+              Image(
+                systemName: appState.selectedColor == customColor
+                ? MyApp.SystemImage.circleFill
+                : MyApp.SystemImage.circle
               )
               .resizable()
               .aspectRatio(contentMode: .fit)
@@ -34,10 +47,8 @@ struct SettingsScreen: View {
           }
         }
       } header: {
-        Text("App Color Theme")
+        Text("App Color Style")
       }
-      
-      // TODO: Manual Dark / Light Theme toggle
       
       Text("Todo isDone style. Swipe only, Tap Only, Both")
             
@@ -46,6 +57,7 @@ struct SettingsScreen: View {
       Text("Allow users to add padding vertically to list items to make swiping easier?")
     }
     .navigationTitle("Settings")
+//    .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
   }
 }
 
@@ -53,7 +65,7 @@ struct SettingsScreen_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       SettingsScreen()
-        .preferredColorScheme(.dark)
+        .environmentObject(AppState())
     }
   }
 }

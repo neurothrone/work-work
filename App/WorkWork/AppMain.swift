@@ -9,14 +9,20 @@ import SwiftUI
 
 @main
 struct AppMain: App {
-  @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
+  @Environment(\.colorScheme) var colorScheme
+  @StateObject private var appState: AppState = .init()
+
   
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .onAppear {
+          appState.registerDefaults(colorScheme: colorScheme)
+        }
         .environment(\.managedObjectContext, CoreDataProvider.shared.viewContext)
-        .tint(selectedColor.color)
+        .environmentObject(appState)
+        .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
+        .tint(appState.selectedColor.color)
     }
   }
 }

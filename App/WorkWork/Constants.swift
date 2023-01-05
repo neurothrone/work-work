@@ -8,6 +8,16 @@
 enum MyApp {
   static let name = "WorkWork"
   
+  enum AppStorage {
+    static let prefersDarkMode = "prefersDarkMode"
+    static let isOnboardingPresented = true
+    static let selectedColor = "selectedColor"
+  }
+  
+  enum Link {
+    static let svgRepo = "https://www.svgrepo.com/"
+  }
+  
   enum CKConfig {
     static let containerName = "Entities"
     static let sharedAppGroup = "group.workWork"
@@ -35,14 +45,5 @@ enum MyApp {
     
     static let delete = "trash"
     static let edit = "pencil"
-  }
-  
-  enum AppStorage {
-    static let selectedColor = "selectedColor"
-    static let isOnboardingPresented = true
-  }
-  
-  enum Link {
-    static let svgRepo = "https://www.svgrepo.com/"
   }
 }

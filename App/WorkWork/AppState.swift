@@ -30,7 +30,7 @@ extension TodoCompletionStyle: Identifiable, CaseIterable {
 
 //MARK: - AppState
 final class AppState: ObservableObject {
-  //MARK: - Properties
+  //MARK: Properties
 
   @AppStorage(MyApp.AppStorage.prefersDarkMode)
   var prefersDarkMode: Bool = true
@@ -60,7 +60,7 @@ final class AppState: ObservableObject {
   @Published var idForChangingAllSegmentedControls: UUID = .init()
   
   
-  //MARK: - Methods
+  //MARK: Methods
   
   func setUp(colorScheme: ColorScheme) {
     registerDefaults(colorScheme: colorScheme)

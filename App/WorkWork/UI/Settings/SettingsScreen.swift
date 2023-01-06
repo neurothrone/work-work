@@ -49,8 +49,7 @@ struct SettingsScreen: View {
           "Prefers Dark Theme",
           isOn: $appState.prefersDarkMode
         )
-        
-        
+        .tint(appState.selectedColor.color.opacity(0.75))        
       } header: {
         Text("App Color Theme")
       }
@@ -80,29 +79,34 @@ struct SettingsScreen: View {
         Text("App Color Style")
       }
       
-      //MARK: - List Style
-      Section {
-        Picker("List Style", selection: $appState.listStyle) {
-          ForEach(ListStyle.allCases) { listStyle in
-            Text(listStyle.rawValue)
+      Group {
+        //MARK: - List Style
+        Section {
+          Picker("List Style", selection: $appState.listStyle) {
+            ForEach(ListStyle.allCases) { listStyle in
+              Text(listStyle.rawValue)
+            }
           }
+        } header: {
+          Text("List Style")
         }
-        .pickerStyle(.segmented)
-      } header: {
-        Text("List Style")
+        
+        //MARK: - Todo Completion Style
+        Section {
+          Picker("Todo Completion Style", selection: $appState.todoCompletionStyle) {
+            ForEach(TodoCompletionStyle.allCases) { style in
+              Text(style.rawValue)
+            }
+          }
+        } header: {
+          Text("Todo Completion Style")
+        }
       }
+      .id(appState.idForChangingAllSegmentedControls)
+      .pickerStyle(.segmented)
+      .listRowBackground(EmptyView())
+      .listRowInsets(EdgeInsets())
       
-      //MARK: - Todo Completion Style
-      Section {
-        Picker("Todo Completion Style", selection: $appState.todoCompletionStyle) {
-          ForEach(TodoCompletionStyle.allCases) { style in
-            Text(style.rawValue)
-          }
-        }
-        .pickerStyle(.segmented)
-      } header: {
-        Text("Todo Completion Style")
-      }
       
       //MARK: - Todo Row Vertical Padding
       Section {

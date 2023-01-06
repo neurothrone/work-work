@@ -30,30 +30,65 @@ extension TodoCompletionStyle: Identifiable, CaseIterable {
 
 //MARK: - AppState
 final class AppState: ObservableObject {
-  //MARK: Properties
-  
+  //MARK: - Properties
+
   @AppStorage(MyApp.AppStorage.prefersDarkMode)
   var prefersDarkMode: Bool = true
   
   @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
+  var selectedColor: CustomColor = .purple {
+    didSet {
+      DispatchQueue.main.async {
+        self.changeSegmentedControlColor(to: self.selectedColor.color)
+
+        withAnimation(.easeInOut) {
+          self.idForChangingAllSegmentedControls = .init()
+        }
+      }
+    }
+  }
   
-  @AppStorage("listStyle")
+  @AppStorage(MyApp.AppStorage.listStyle)
   var listStyle: ListStyle = .insetGrouped
   
-  @AppStorage("todoCompletionStyle")
+  @AppStorage(MyApp.AppStorage.todoCompletionStyle)
   var todoCompletionStyle: TodoCompletionStyle = .both
   
-  @AppStorage("todoRowVerticalPadding")
+  @AppStorage(MyApp.AppStorage.todoRowVerticalPadding)
   var todoRowVerticalPadding: Int = .zero
 
+  @Published var idForChangingAllSegmentedControls: UUID = .init()
   
-  //MARK: Methods
   
-  func registerDefaults(colorScheme: ColorScheme) {
+  //MARK: - Methods
+  
+  func setUp(colorScheme: ColorScheme) {
+    registerDefaults(colorScheme: colorScheme)
+    changeSegmentedControlColor(to: selectedColor.color)
+  }
+  
+  
+  private func registerDefaults(colorScheme: ColorScheme) {
     UserDefaults.standard.register(defaults: [
       MyApp.AppStorage.prefersDarkMode: colorScheme == .dark ? true : false,
     ])
+  }
+  
+  func changeSegmentedControlColor(to color: Color) {
+    UISegmentedControl.appearance()
+      .selectedSegmentTintColor = UIColor(color.opacity(0.5))
+    UISegmentedControl.appearance()
+      .backgroundColor = UIColor(color.opacity(0.3))
+    UISegmentedControl.appearance()
+      .setTitleTextAttributes(
+        [.foregroundColor: UIColor(Color.primary)],
+        for: .selected
+      )
+    UISegmentedControl.appearance()
+      .setTitleTextAttributes(
+        [.foregroundColor: UIColor(Color.secondary)],
+        for: .normal
+      )
   }
   
   func deleteAllData(using context: NSManagedObjectContext) {

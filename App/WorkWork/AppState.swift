@@ -46,7 +46,6 @@ final class AppState: ObservableObject {
     changeSegmentedControlColor(to: selectedColor.color)
   }
   
-  
   private func registerDefaults(colorScheme: ColorScheme) {
     UserDefaults.standard.register(defaults: [
       MyApp.AppStorage.prefersDarkMode: colorScheme == .dark ? true : false,

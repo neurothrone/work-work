@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct TodoListScreen: View {
-  @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
-  
   @Environment(\.managedObjectContext) var moc
+  @EnvironmentObject var appState: AppState
+  
   @FetchRequest private var todos: FetchedResults<Todo>
   
   @FocusState var isTextFieldFocused: Bool
@@ -62,7 +61,7 @@ struct TodoListScreen: View {
                 systemImage: viewModel.activeModeSystemName
               )
             }
-            .tint(selectedColor.color)
+            .tint(appState.selectedColor.color)
             .frame(maxWidth: .infinity, alignment: .trailing)
           }
         }        
@@ -104,12 +103,23 @@ struct TodoListScreen: View {
             }
             .buttonStyle(.bordered)
           }
-          .tint(selectedColor.color)
+          .tint(appState.selectedColor.color)
         }
       }
   }
   
+  @ViewBuilder
   private var content: some View {
+    if appState.listStyle == .insetGrouped {
+      list
+        .listStyle(.insetGrouped)
+    } else {
+      list
+        .listStyle(.grouped)
+    }
+  }
+  
+  private var list: some View {
     List {
       if viewModel.actionMode != nil {
         CustomTextFieldView(
@@ -154,7 +164,6 @@ struct TodoListScreen: View {
         }
       }
     }
-    .listStyle(.insetGrouped)
     .scrollContentBackground(.hidden)
     // NOTE: one-line fix for slow SwiftUI lists. Trade-off is gain in speed for loss in animation
     //    .id(UUID())
@@ -169,6 +178,7 @@ struct TodoListScreen_Previews: PreviewProvider {
     return NavigationStack {
       TodoListScreen(todoList: todoList)
         .environment(\.managedObjectContext, context)
+        .environmentObject(AppState())
         .preferredColorScheme(.dark)
     }
   }

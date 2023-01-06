@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AllTodoListsScreen: View {
   @Environment(\.managedObjectContext) var moc
+  @EnvironmentObject var appState: AppState
   
   @AppStorage(MyApp.AppStorage.selectedColor)
   var selectedColor: CustomColor = .purple
@@ -127,7 +128,18 @@ struct AllTodoListsScreen: View {
       }
   }
   
+  @ViewBuilder
   private var content: some View {
+    if appState.listStyle == .insetGrouped {
+      list
+        .listStyle(.insetGrouped)
+    } else {
+      list
+        .listStyle(.grouped)
+    }
+  }
+  
+  private var list: some View {
     List {
       if viewModel.actionMode != nil {
         CustomTextFieldView(
@@ -174,7 +186,6 @@ struct AllTodoListsScreen: View {
         }
       }
     }
-    .listStyle(.insetGrouped)
     .scrollContentBackground(.hidden)
   }
 }
@@ -186,7 +197,8 @@ struct AllTodoListsScreen_Previews: PreviewProvider {
     NavigationStack {
       AllTodoListsScreen()
         .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
-      .preferredColorScheme(.dark)
+        .environmentObject(AppState())
+        .preferredColorScheme(.dark)
     }
   }
 }

@@ -156,6 +156,10 @@ struct TodoListScreen: View {
             onToggle: {
               Todo.toggleIsDone(for: todo, using: moc)
             })
+          .padding(
+            .vertical,
+            CGFloat(appState.todoRowVerticalPadding)
+          )
         }
         .onMove { source, destination in
           moc.perform {

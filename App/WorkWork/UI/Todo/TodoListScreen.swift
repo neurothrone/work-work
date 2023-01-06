@@ -42,6 +42,11 @@ struct TodoListScreen: View {
   
   var body: some View {
     content
+      .background(
+        appState.prefersDarkMode
+        ? .black
+        : Color.lightModeBackground
+      )
       .navigationTitle(viewModel.todoList.title)
       .onChange(of: viewModel.isTextFieldFocused) {
         isTextFieldFocused = $0

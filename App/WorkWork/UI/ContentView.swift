@@ -10,12 +10,14 @@ import SwiftUI
 struct ContentView: View {
   @EnvironmentObject var appState: AppState
   
-  @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
-  
   var body: some View {
     NavigationStack {
       AllTodoListsScreen()
+        .background(
+          appState.prefersDarkMode
+          ? .black
+          : Color.lightModeBackground
+        )
         .navigationTitle("Folders")
         .toolbar {
           //MARK: Navigation Bar
@@ -28,7 +30,7 @@ struct ContentView: View {
                 "Settings",
                 systemImage: MyApp.SystemImage.settings
               )
-              .tint(selectedColor.color)
+              .tint(appState.selectedColor.color)
             }
           }
         }

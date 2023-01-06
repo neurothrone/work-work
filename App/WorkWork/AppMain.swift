@@ -12,17 +12,20 @@ struct AppMain: App {
   @Environment(\.colorScheme) var colorScheme
   @StateObject private var appState: AppState = .init()
 
-  
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .onAppear {
-          appState.registerDefaults(colorScheme: colorScheme)
-        }
+        .onAppear(perform: setUp)
         .environment(\.managedObjectContext, CoreDataProvider.shared.viewContext)
         .environmentObject(appState)
         .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
         .tint(appState.selectedColor.color)
     }
+  }
+}
+
+extension AppMain {
+  private func setUp() {
+    appState.setUp(colorScheme: colorScheme)
   }
 }

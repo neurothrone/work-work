@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct TodoListRowView: View {
-  @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
-  
   @Environment(\.managedObjectContext) var moc
+  @EnvironmentObject var appState: AppState
   
   @ObservedObject var todoList: TodoList
   
@@ -29,14 +27,14 @@ struct TodoListRowView: View {
         Button(action: onEdit) {
           Label("Edit", systemImage: MyApp.SystemImage.edit)
         }
-        .tint(selectedColor.color.opacity(0.75))
+        .tint(appState.selectedColor.color.opacity(0.75))
       }
   }
   
   private var content: some View {
     HStack {
       Image(systemName: MyApp.SystemImage.folder)
-        .foregroundColor(selectedColor.color)
+        .foregroundColor(appState.selectedColor.color)
       
       Text(todoList.title)
       
@@ -55,8 +53,13 @@ struct TodoListRowView_Previews: PreviewProvider {
     let todoList = TodoList.Preview.generateSample(using: context)
     
     return List {
-      TodoListRowView(todoList: todoList, onDelete: {}, onEdit: {})
-        .environment(\.managedObjectContext, context)
+      TodoListRowView(
+        todoList: todoList,
+        onDelete: {},
+        onEdit: {}
+      )
+      .environment(\.managedObjectContext, context)
+      .environmentObject(AppState())
     }
     .listStyle(.grouped)
   }

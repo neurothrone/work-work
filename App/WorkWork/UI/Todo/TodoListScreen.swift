@@ -112,7 +112,7 @@ struct TodoListScreen: View {
   private var content: some View {
     List {
       if viewModel.actionMode != nil {
-        CustomTextField(
+        CustomTextFieldView(
           text: $viewModel.title,
           placeholder: "Todo Title",
           onSubmit: {

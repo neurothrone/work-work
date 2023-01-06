@@ -1,5 +1,5 @@
 //
-//  CustomTextField.swift
+//  CustomTextFieldView.swift
 //  WorkWork
 //
 //  Created by Zaid Neurothrone on 2023-01-05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomTextField: View {
+struct CustomTextFieldView: View {
   @Binding var text: String
   
   let placeholder: String
@@ -25,8 +25,8 @@ struct CustomTextField: View {
   }
 }
 
-struct CustomTextField_Previews: PreviewProvider {
+struct CustomTextFieldView_Previews: PreviewProvider {
   static var previews: some View {
-    CustomTextField(text: .constant(""), placeholder: "Todo Title", onSubmit: {})
+    CustomTextFieldView(text: .constant(""), placeholder: "Todo Title", onSubmit: {})
   }
 }

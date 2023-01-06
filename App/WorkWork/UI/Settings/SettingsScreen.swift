@@ -111,7 +111,9 @@ struct SettingsScreen: View {
       //MARK: - Todo Row Vertical Padding
       Section {
         Stepper(
-          appState.todoRowVerticalPadding.description,
+          appState.todoRowVerticalPadding == .zero
+          ? "\(appState.todoRowVerticalPadding) (default)"
+          : "\(appState.todoRowVerticalPadding)",
           value: $appState.todoRowVerticalPadding,
           in: .zero...20,
           step: 5

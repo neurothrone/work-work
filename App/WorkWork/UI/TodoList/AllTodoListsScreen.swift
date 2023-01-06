@@ -11,9 +11,6 @@ struct AllTodoListsScreen: View {
   @Environment(\.managedObjectContext) var moc
   @EnvironmentObject var appState: AppState
   
-  @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
-  
   @FetchRequest(
     fetchRequest: TodoList.allByOrder(),
     animation: .default
@@ -67,7 +64,7 @@ struct AllTodoListsScreen: View {
                 systemImage: viewModel.activeModeSystemName
               )
             }
-            .tint(selectedColor.color)
+            .tint(appState.selectedColor.color)
             .frame(maxWidth: .infinity, alignment: .trailing)
           }
         }
@@ -105,7 +102,7 @@ struct AllTodoListsScreen: View {
                 .labelStyle(.titleAndIcon)
               }
               .buttonStyle(.borderedProminent)
-              .tint(selectedColor.color.opacity(0.5))
+              .tint(appState.selectedColor.color.opacity(0.5))
             }
             
             Spacer()
@@ -123,7 +120,7 @@ struct AllTodoListsScreen: View {
             }
             .buttonStyle(.bordered)
           }
-          .tint(selectedColor.color)
+          .tint(appState.selectedColor.color)
         }
       }
   }

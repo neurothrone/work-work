@@ -8,29 +8,8 @@
 import CoreData
 import SwiftUI
 
-//MARK: - Enums
-enum ListStyle: String {
-  case insetGrouped = "Inset Grouped",
-       grouped = "Grouped"
-}
-
-extension ListStyle: Identifiable, CaseIterable {
-  var id: Self { self }
-}
-
-enum TodoCompletionStyle: String {
-  case both = "Both",
-       swipeOnly = "Swipe Only",
-       tapOnly = "Tap Only"
-}
-
-extension TodoCompletionStyle: Identifiable, CaseIterable {
-  var id: Self { self }
-}
-
-//MARK: - AppState
 final class AppState: ObservableObject {
-  //MARK: Properties
+  //MARK: - Properties
 
   @AppStorage(MyApp.AppStorage.prefersDarkMode)
   var prefersDarkMode: Bool = true
@@ -60,7 +39,7 @@ final class AppState: ObservableObject {
   @Published var idForChangingAllSegmentedControls: UUID = .init()
   
   
-  //MARK: Methods
+  //MARK: - Methods
   
   func setUp(colorScheme: ColorScheme) {
     registerDefaults(colorScheme: colorScheme)

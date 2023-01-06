@@ -1,5 +1,5 @@
 //
-//  CustomColor.swift
+//  Enums.swift
 //  WorkWork
 //
 //  Created by Zaid Neurothrone on 2023-01-05.
@@ -7,6 +7,28 @@
 
 import SwiftUI
 
+//MARK: - ListStyle
+enum ListStyle: String {
+  case insetGrouped = "Inset Grouped",
+       grouped = "Grouped"
+}
+
+extension ListStyle: Identifiable, CaseIterable {
+  var id: Self { self }
+}
+
+//MARK: - TodoCompletionStyle
+enum TodoCompletionStyle: String {
+  case both = "Both",
+       swipeOnly = "Swipe Only",
+       tapOnly = "Tap Only"
+}
+
+extension TodoCompletionStyle: Identifiable, CaseIterable {
+  var id: Self { self }
+}
+
+//MARK: - CustomColor
 enum CustomColor: String {
   case red,
        green,

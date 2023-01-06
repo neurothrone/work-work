@@ -22,7 +22,7 @@
 		2F687502296841DA005B43EA /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F687501296841DA005B43EA /* Color+Extensions.swift */; };
 		2F7241C32966C30100E85C81 /* TodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C22966C30100E85C81 /* TodosViewModel.swift */; };
 		2F7241C529671BEC00E85C81 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C429671BEC00E85C81 /* TodoListViewModel.swift */; };
-		2F7241C92967257A00E85C81 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C82967257A00E85C81 /* CustomColor.swift */; };
+		2F7241C92967257A00E85C81 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C82967257A00E85C81 /* Enums.swift */; };
 		2F7241CB29672C4300E85C81 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */; };
 		2F7241CD2967380300E85C81 /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CC2967380300E85C81 /* IconPickerView.swift */; };
 		2F7241D029673E3400E85C81 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CF29673E3400E85C81 /* BaseViewModel.swift */; };
@@ -65,7 +65,7 @@
 		2F687501296841DA005B43EA /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		2F7241C22966C30100E85C81 /* TodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewModel.swift; sourceTree = "<group>"; };
 		2F7241C429671BEC00E85C81 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
-		2F7241C82967257A00E85C81 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		2F7241C82967257A00E85C81 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		2F7241CA29672C4300E85C81 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		2F7241CC2967380300E85C81 /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		2F7241CF29673E3400E85C81 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			children = (
 				2F124BFB2962A6BD00E84795 /* AppMain.swift */,
 				2F0EF4FC29676F11009342E0 /* AppState.swift */,
-				2F7241C82967257A00E85C81 /* CustomColor.swift */,
+				2F7241C82967257A00E85C81 /* Enums.swift */,
 				2F7F7B972962C10500AA554B /* Constants.swift */,
 				2F124BFF2962A6BE00E84795 /* Assets.xcassets */,
 				2F7F7BBB2963C32800AA554B /* Info.plist */,
@@ -360,7 +360,7 @@
 				2F7241D529674FBF00E85C81 /* CustomTextFieldView.swift in Sources */,
 				2F124BFC2962A6BD00E84795 /* AppMain.swift in Sources */,
 				2F7F7BB02963C07D00AA554B /* URL+Extensions.swift in Sources */,
-				2F7241C92967257A00E85C81 /* CustomColor.swift in Sources */,
+				2F7241C92967257A00E85C81 /* Enums.swift in Sources */,
 				2F7F7BCC296418C000AA554B /* AboutSheet.swift in Sources */,
 				2F7F7BCE296418C900AA554B /* DeleteAllDataSheet.swift in Sources */,
 				2F7F7BCA2963F84C00AA554B /* TodoListRowView.swift in Sources */,

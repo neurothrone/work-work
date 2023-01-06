@@ -133,6 +133,8 @@ struct SettingsScreen: View {
 }
 
 struct SettingsScreen_Previews: PreviewProvider {
+  @Environment(\.colorScheme) static var colorScheme
+  
   static var previews: some View {
     let appState = AppState()
     
@@ -142,6 +144,9 @@ struct SettingsScreen_Previews: PreviewProvider {
         .environmentObject(appState)
         .tint(appState.selectedColor.color)
         .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
+        .onAppear {
+          appState.setUp(colorScheme: colorScheme)
+        }
     }
   }
 }

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct SettingsScreen: View {
   @Environment(\.managedObjectContext) private var moc
   @EnvironmentObject var appState: AppState

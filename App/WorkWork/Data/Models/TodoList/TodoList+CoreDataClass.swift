@@ -15,6 +15,7 @@ public class TodoList: MoveableEntity {
     return NSFetchRequest<TodoList>(entityName: String(String(describing: TodoList.self)))
   }
 
+  @NSManaged public var systemImage: String
   @NSManaged public var todos: [Todo]
   
   @objc var todosCount: Int {

@@ -10,10 +10,12 @@ import CoreData
 extension TodoList {
   static func create(
     with title: String,
+    icon: Icon = .default,
     using context: NSManagedObjectContext
   ) -> TodoList {
     let todoList = TodoList(context: context)
     todoList.title = title
+    todoList.systemImage = icon.rawValue
     todoList.order = TodoList.nextOrder(for: TodoList.self, using: context)
     todoList.save(using: context)
 

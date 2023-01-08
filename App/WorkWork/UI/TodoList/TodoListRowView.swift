@@ -33,7 +33,7 @@ struct TodoListRowView: View {
   
   private var content: some View {
     HStack {
-      Image(systemName: MyApp.SystemImage.folder)
+      Image(systemName: todoList.systemImage)
         .foregroundColor(appState.selectedColor.color)
       
       Text(todoList.title)

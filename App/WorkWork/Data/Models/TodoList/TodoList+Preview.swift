@@ -10,8 +10,7 @@ import CoreData
 extension TodoList {
   enum Preview {
     static func generateSample(using context: NSManagedObjectContext) -> TodoList {
-      let todoList = TodoList(context: context)
-      todoList.title = "Preview List"
+      let todoList = TodoList.create(with: "Preview List", using: context)
       
       for index in 1...5 {
         let todo = Todo(context: context)
@@ -25,11 +24,8 @@ extension TodoList {
     
     static func generateSamples(using context: NSManagedObjectContext) {
       for index in 1...5 {
-        let todoList = TodoList(context: context)
-        todoList.title = "Preview List \(index)"
+        _ = TodoList.create(with: "Preview List \(index)", using: context)
       }
-      
-      CoreDataProvider.save(using: context)
     }
   }
 }

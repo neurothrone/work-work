@@ -10,8 +10,18 @@ import SwiftUI
 struct AddTodoListSheet: View {
   @Environment(\.dismiss) var dismiss
   @Environment(\.managedObjectContext) var moc
+  @EnvironmentObject var appState: AppState
   
   @State private var title = ""
+  @State private var selectedIcon: Icon = .default
+  
+  private let columns = [
+    GridItem(
+      .adaptive(minimum: 60),
+      spacing: 20,
+      alignment: .leading
+    )
+  ]
   
   var body: some View {
     content
@@ -28,23 +38,36 @@ struct AddTodoListSheet: View {
             dismiss()
           }
           .disabled(title.isEmpty)
-          .tint(.purple)
+          .tint(appState.selectedColor.color)
         }
       }
   }
   
   private var content: some View {
-    VStack {
-      VStack {
-        TextField("Folder title", text: $title)
-          .autocorrectionDisabled(true)
-          .textFieldStyle(.roundedBorder)
-          .textInputAutocapitalization(.sentences)
+    Form {
+      CustomTextFieldView(
+        text: $title,
+        placeholder: "Folder title",
+        onSubmit: { /* hideKeyboard() */ }
+      )
+      .listRowInsets(EdgeInsets(
+        top: 15,
+        leading: 15,
+        bottom: .zero,
+        trailing: 15)
+      )
+      
+      Section {
+        LazyVGrid(columns: columns) {
+          IconPickerView(
+            selectedIcon: $selectedIcon,
+            selectionColor: appState.selectedColor.color
+          )
+        }
+      } header: {
+        Text("Select an icon")
       }
-        
-      Spacer()
     }
-    .padding()
   }
 }
 
@@ -53,6 +76,8 @@ struct AddTodoListSheet_Previews: PreviewProvider {
     NavigationStack {
       AddTodoListSheet()
         .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+        .environmentObject(AppState())
+//        .preferredColorScheme(.dark)
     }
   }
 }

@@ -7,51 +7,42 @@
 
 import SwiftUI
 
-enum Icon: String {
-  case none = "x.square.fill",
-       folder
-}
-
-extension Icon: Identifiable, CaseIterable {
-  var id: Self { self }
-}
-
 struct IconPickerView: View {
-  @AppStorage(MyApp.AppStorage.selectedColor)
-  var selectedColor: CustomColor = .purple
+  @Binding var selectedIcon: Icon
   
-  @State private var selectedIcon: Icon = .none
-  
-  private let columns = [
-    GridItem(.adaptive(minimum: 60))
-  ]
+  let selectionColor: Color
   
   var body: some View {
-    ScrollView {
-      Text("Select an icon")
-      
-      LazyVGrid(columns: columns) {
-        ForEach(Icon.allCases) { icon in
-          Button(action: { selectedIcon = icon }) {
-            Image(systemName: icon.rawValue)
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 50, height: 50)
-              .foregroundColor(
-                icon == .none
-                ? .secondary
-                : selectedColor.color
-              )
-          }
-        }
+    ForEach(Icon.allCases) { icon in
+      Button(action: { selectedIcon = icon }) {
+        Image(systemName: icon.rawValue)
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .frame(width: 50, height: 50)
+          .foregroundColor(
+            icon == selectedIcon
+            ? selectionColor
+            : .secondary
+          )
       }
-      .padding()
+      .buttonStyle(.plain)
     }
   }
 }
 
 struct IconPickerView_Previews: PreviewProvider {
+  private static let columns = [GridItem(.adaptive(minimum: 60))]
+  
   static var previews: some View {
-    IconPickerView()
+    ScrollView {
+      LazyVGrid(columns: columns) {
+        StatefulPreviewWrapper(Icon.default) {
+          IconPickerView(
+            selectedIcon: $0,
+            selectionColor: .purple
+          )
+        }
+      }
+    }
   }
 }

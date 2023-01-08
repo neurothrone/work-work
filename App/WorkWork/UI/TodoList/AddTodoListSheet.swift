@@ -15,7 +15,7 @@ struct AddTodoListSheet: View {
   
   var body: some View {
     content
-      .navigationTitle("Add List")
+      .navigationTitle("Add Folder")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
@@ -36,7 +36,7 @@ struct AddTodoListSheet: View {
   private var content: some View {
     VStack {
       VStack {
-        TextField("List title", text: $title)
+        TextField("Folder title", text: $title)
           .autocorrectionDisabled(true)
           .textFieldStyle(.roundedBorder)
           .textInputAutocapitalization(.sentences)

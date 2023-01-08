@@ -48,6 +48,7 @@
 		2F7F7BCC296418C000AA554B /* AboutSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCB296418C000AA554B /* AboutSheet.swift */; };
 		2F7F7BCE296418C900AA554B /* DeleteAllDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */; };
 		2F913290296B73ED00F88754 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91328F296B73ED00F88754 /* StatefulPreviewWrapper.swift */; };
+		2F913292296B840B00F88754 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F913291296B840B00F88754 /* Icon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		2F7F7BCB296418C000AA554B /* AboutSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSheet.swift; sourceTree = "<group>"; };
 		2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataSheet.swift; sourceTree = "<group>"; };
 		2F91328F296B73ED00F88754 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
+		2F913291296B840B00F88754 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		2FE9578C296425BD008C5636 /* WorkWorkKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WorkWorkKit; path = ../WorkWorkKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 				2F7241D429674FBF00E85C81 /* CustomTextFieldView.swift */,
 				2F0EF4FE29677CE6009342E0 /* CustomLinkView.swift */,
 				2F7241CC2967380300E85C81 /* IconPickerView.swift */,
+				2F913291296B840B00F88754 /* Icon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				2F7241C529671BEC00E85C81 /* TodoListViewModel.swift in Sources */,
 				2F7F7BB32963C1BC00AA554B /* AllTodoListsScreen.swift in Sources */,
 				2F7241D529674FBF00E85C81 /* CustomTextFieldView.swift in Sources */,
+				2F913292296B840B00F88754 /* Icon.swift in Sources */,
 				2F124BFC2962A6BD00E84795 /* AppMain.swift in Sources */,
 				2F7F7BB02963C07D00AA554B /* URL+Extensions.swift in Sources */,
 				2F7241C92967257A00E85C81 /* Enums.swift in Sources */,

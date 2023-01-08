@@ -40,7 +40,7 @@ struct TodoListRowView: View {
       
       if todoList.todos.isNotEmpty {
         Spacer()
-        Text(todoList.todosCount.description)
+        Text("\(todoList.todosCount)")
           .foregroundColor(.primary.opacity(0.8))
       }
     }

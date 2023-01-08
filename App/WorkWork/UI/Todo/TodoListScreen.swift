@@ -99,6 +99,10 @@ struct TodoListScreen: View {
               // TODO: Temporary fix until root cause is discovered
               hideKeyboard()
 //              viewModel.isTextFieldFocused = false
+              
+              withAnimation(.linear) {
+                viewModel.actionMode = nil
+              }
             } label: {
               Label(
                 "Dismiss",

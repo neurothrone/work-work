@@ -94,7 +94,7 @@ struct AllTodoListsScreen: View {
             if viewModel.actionMode == .add {
               Spacer()
               
-              Button(action: {}) {
+              Button(action: { isAddSheetPresented.toggle() }) {
                 Label(
                   "More",
                   systemImage: MyApp.SystemImage.moreOptionsAddList

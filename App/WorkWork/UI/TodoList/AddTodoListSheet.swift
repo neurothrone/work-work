@@ -32,12 +32,37 @@ struct AddTodoListSheet: View {
           Button("Cancel", role: .cancel, action: { dismiss() })
         }
         
+        //MARK: Navigation Bar
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Add") {
-            _ = TodoList.create(with: title, using: moc)
+            _ = TodoList.create(
+              with: title,
+              icon: selectedIcon,
+              using: moc
+            )
+            
             dismiss()
           }
           .disabled(title.isEmpty)
+          .tint(appState.selectedColor.color)
+        }
+        
+        //MARK: Keyboard
+        ToolbarItemGroup(placement: .keyboard) {
+          Spacer()
+          
+          Button(role: .cancel) {
+            // TODO: Temporary fix until root cause is discovered
+            hideKeyboard()
+            //              viewModel.isTextFieldFocused = false
+          } label: {
+            Label(
+              "Dismiss",
+              systemImage: MyApp.SystemImage.dismissKeyboard
+            )
+            .labelStyle(.titleAndIcon)
+          }
+          .buttonStyle(.bordered)
           .tint(appState.selectedColor.color)
         }
       }
@@ -77,7 +102,7 @@ struct AddTodoListSheet_Previews: PreviewProvider {
       AddTodoListSheet()
         .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
         .environmentObject(AppState())
-//        .preferredColorScheme(.dark)
+      //        .preferredColorScheme(.dark)
     }
   }
 }

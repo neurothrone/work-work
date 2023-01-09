@@ -12,10 +12,12 @@ struct AddOrEditTodoListSheet: View {
   @Environment(\.managedObjectContext) var moc
   @EnvironmentObject var appState: AppState
   
-  @State private var title = ""
-  @State private var selectedIcon: Icon = .default
+  @StateObject private var viewModel: AddOrEditTodoListViewModel
   
-  var todoList: TodoList? = nil
+  init(todoListToUpdate: TodoList? = nil) {
+    let vm = AddOrEditTodoListViewModel(todoList: todoListToUpdate)
+    _viewModel = StateObject(wrappedValue: vm)
+  }
   
   private let columns = [
     GridItem(
@@ -25,9 +27,21 @@ struct AddOrEditTodoListSheet: View {
     )
   ]
   
+  private var isValid: Bool {
+    if viewModel.title.isEmpty {
+      return false
+    }
+    
+    guard let todoListToUpdate = viewModel.todoList,
+          let currentIcon = Icon(rawValue: todoListToUpdate.systemImage)
+    else { return true }
+    
+    return todoListToUpdate.title != viewModel.title || currentIcon != viewModel.selectedIcon
+  }
+  
   var body: some View {
     content
-      .navigationTitle("Add Folder")
+      .navigationTitle("\(viewModel.actionText) Folder")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
@@ -36,17 +50,9 @@ struct AddOrEditTodoListSheet: View {
         
         //MARK: Navigation Bar
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Add") {
-            _ = TodoList.create(
-              with: title,
-              icon: selectedIcon,
-              using: moc
-            )
-            
-            dismiss()
-          }
-          .disabled(title.isEmpty)
-          .tint(appState.selectedColor.color)
+          Button(viewModel.actionText, action: addOrUpdate)
+            .disabled(!isValid)
+            .tint(appState.selectedColor.color)
         }
         
         //MARK: Keyboard
@@ -73,7 +79,7 @@ struct AddOrEditTodoListSheet: View {
   private var content: some View {
     Form {
       CustomTextFieldView(
-        text: $title,
+        text: $viewModel.title,
         placeholder: "Folder title",
         onSubmit: { /* hideKeyboard() */ }
       )
@@ -87,7 +93,7 @@ struct AddOrEditTodoListSheet: View {
       Section {
         LazyVGrid(columns: columns) {
           IconPickerView(
-            selectedIcon: $selectedIcon,
+            selectedIcon: $viewModel.selectedIcon,
             selectionColor: appState.selectedColor.color
           )
         }
@@ -96,12 +102,17 @@ struct AddOrEditTodoListSheet: View {
       }
     }
   }
+  
+  private func addOrUpdate() {
+    viewModel.addOrUpdate(using: moc)
+    dismiss()
+  }
 }
 
 struct AddOrEditTodoListSheet_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
-      AddOrEditTodoListSheet()
+      AddOrEditTodoListSheet(todoListToUpdate: nil)
         .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
         .environmentObject(AppState())
       //        .preferredColorScheme(.dark)

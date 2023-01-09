@@ -18,7 +18,7 @@ struct AllTodoListsScreen: View {
   private var todoLists: FetchedResults<TodoList>
   
   @FocusState var isTextFieldFocused: Bool
-  @State private var isAddSheetPresented = false
+  @State private var isAddOrEditSheetPresented = false
   @StateObject private var viewModel: TodoListViewModel = .init()
   
   private var isValid: Bool {
@@ -37,13 +37,13 @@ struct AllTodoListsScreen: View {
   
   var body: some View {
     content
-      .sheet(isPresented: $isAddSheetPresented) {
+      .sheet(isPresented: $isAddOrEditSheetPresented) {
 #if DEBUG
         NavigationStack {
-          AddOrEditTodoListSheet()
+          AddOrEditTodoListSheet(todoListToUpdate: viewModel.selection ?? nil)
         }
 #else
-        AddTodoListSheet()
+        AddOrEditTodoListSheet(todoListToUpdate: viewModel.selection ?? nil)
 #endif
       }
       .onChange(of: viewModel.isTextFieldFocused) {
@@ -91,10 +91,11 @@ struct AllTodoListsScreen: View {
             .buttonStyle(.borderedProminent)
             .disabled(!isValid)
             
-            if viewModel.actionMode == .add {
+            // TODO: This if statement is now redundant?
+            if viewModel.actionMode != nil {
               Spacer()
               
-              Button(action: { isAddSheetPresented.toggle() }) {
+              Button(action: { isAddOrEditSheetPresented.toggle() }) {
                 Label(
                   "More",
                   systemImage: MyApp.SystemImage.moreOptionsAddList

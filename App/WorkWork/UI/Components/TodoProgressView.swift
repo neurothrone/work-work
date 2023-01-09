@@ -8,37 +8,59 @@
 import SwiftUI
 
 struct TodoProgressView: View {
-  let label: String
+  let text: String
   let color: Color
   let value: Double
   let minValue: Double
   let maxValue: Double
+  let style: TodosProgressBarStyle
   
   var body: some View {
+    if style == .linear {
+      gauge
+        .gaugeStyle(.linearCapacity)
+    } else {
+      VStack {
+        label
+        gauge
+          .gaugeStyle(.accessoryCircularCapacity)
+      }
+    }
+  }
+  
+  private var gauge: some View {
     Gauge(
       value: value,
       in: minValue...maxValue) {
-        Text(label)
+        label
       } currentValueLabel: {
         Text("\(Int(value))")
+          .font(.title3.bold())
+          .foregroundColor(color)
       } minimumValueLabel: {
         Text("\(Int(minValue))")
       } maximumValueLabel: {
         Text("\(Int(maxValue))")
       }
-      .gaugeStyle(.linearCapacity)
       .tint(color)
+  }
+  
+  private var label: some View {
+    Text(text)
+      .font(.headline)
+      .foregroundColor(.secondary)
   }
 }
 
 struct TodoProgressView_Previews: PreviewProvider {
   static var previews: some View {
     TodoProgressView(
-      label: "Todos Progress",
+      text: "Todos Progress",
       color: .purple,
       value: 2,
       minValue: .zero,
-      maxValue: 10
+      maxValue: 10,
+      style: .linear
     )
   }
 }

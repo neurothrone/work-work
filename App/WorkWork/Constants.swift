@@ -12,6 +12,8 @@ enum MyApp {
     static let prefersDarkMode = "prefersDarkMode"
     static let isOnboardingPresented = true
     static let selectedColor = "selectedColor"
+    static let showTodosProgressBar = "showTodosProgressBar"
+    static let todosProgressBarStyle = "todosProgressBarStyle"
     static let listStyle = "listStyle"
     static let todoCompletionStyle = "todoCompletionStyle"
     static let todoRowVerticalPadding = "todoRowVerticalPadding"

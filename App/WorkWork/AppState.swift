@@ -33,6 +33,12 @@ final class AppState: ObservableObject {
   @AppStorage(MyApp.AppStorage.todoCompletionStyle)
   var todoCompletionStyle: TodoCompletionStyle = .both
   
+  @AppStorage(MyApp.AppStorage.showTodosProgressBar)
+  var showTodosProgressBar: Bool = true
+  
+  @AppStorage(MyApp.AppStorage.todosProgressBarStyle)
+  var todosProgressBarStyle: TodosProgressBarStyle = .linear
+  
   @AppStorage(MyApp.AppStorage.todoRowVerticalPadding)
   var todoRowVerticalPadding: Int = .zero
 

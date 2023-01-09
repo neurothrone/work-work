@@ -77,7 +77,33 @@ struct SettingsScreen: View {
         Text("App Color Style")
       }
       
+      //MARK: - Todos Progress Bar
+      Section {
+        Toggle(
+          "Show Progress Bar",
+          isOn: $appState.showTodosProgressBar
+        )
+      } header: {
+        Text("Todos Progress Bar")
+      }
+      
       Group {
+        //MARK: - Todos Progress Bar Style
+        Section {
+          Picker(
+            "Progress Bar Style",
+            selection: $appState.todosProgressBarStyle
+          ) {
+            ForEach(TodosProgressBarStyle.allCases) { style in
+              Text(style.rawValue)
+            }
+          }
+          .listRowInsets(EdgeInsets())
+          .disabled(!appState.showTodosProgressBar)
+        } header: {
+          Text("Todos Progress Bar Style")
+        }
+        
         //MARK: - List Style
         Section {
           Picker("List Style", selection: $appState.listStyle) {
@@ -85,6 +111,7 @@ struct SettingsScreen: View {
               Text(listStyle.rawValue)
             }
           }
+          .listRowInsets(EdgeInsets())
         } header: {
           Text("List Style")
         }
@@ -96,6 +123,7 @@ struct SettingsScreen: View {
               Text(style.rawValue)
             }
           }
+          .listRowInsets(EdgeInsets())
         } header: {
           Text("Todo Completion Style")
         }
@@ -103,8 +131,6 @@ struct SettingsScreen: View {
       .id(appState.idForChangingAllSegmentedControls)
       .pickerStyle(.segmented)
       .listRowBackground(EmptyView())
-      .listRowInsets(EdgeInsets())
-      
       
       //MARK: - Todo Row Vertical Padding
       Section {

@@ -91,20 +91,17 @@ struct AllTodoListsScreen: View {
             .buttonStyle(.borderedProminent)
             .disabled(!isValid)
             
-            // TODO: This if statement is now redundant?
-            if viewModel.actionMode != nil {
-              Spacer()
-              
-              Button(action: { isAddOrEditSheetPresented.toggle() }) {
-                Label(
-                  "More",
-                  systemImage: MyApp.SystemImage.moreOptionsAddList
-                )
-                .labelStyle(.titleAndIcon)
-              }
-              .buttonStyle(.borderedProminent)
-              .tint(appState.selectedColor.color.opacity(0.5))
+            Spacer()
+            
+            Button(action: { isAddOrEditSheetPresented.toggle() }) {
+              Label(
+                "More",
+                systemImage: MyApp.SystemImage.moreOptionsAddList
+              )
+              .labelStyle(.titleAndIcon)
             }
+            .buttonStyle(.borderedProminent)
+            .tint(appState.selectedColor.color.opacity(0.5))
             
             Spacer()
             
@@ -114,7 +111,7 @@ struct AllTodoListsScreen: View {
               //              viewModel.isTextFieldFocused = false
               
               withAnimation(.linear) {
-                viewModel.actionMode = nil                
+                viewModel.changeActionMode()
               }
             } label: {
               Label(

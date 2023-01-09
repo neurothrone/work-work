@@ -8,9 +8,6 @@
 import SwiftUI
 
 //MARK: - Todos Progress Bar
-// .linearCapacity (default)
-// .accessoryCircularCapacity
-
 enum TodosProgressBarStyle: String {
   case linear = "Linear",
        circular = "Circular"

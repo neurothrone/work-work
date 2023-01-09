@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+//MARK: - Todos Progress Bar
+// .linearCapacity (default)
+// .accessoryCircularCapacity
+
+enum TodosProgressBarStyle: String {
+  case linear = "Linear",
+       circular = "Circular"
+}
+
+extension TodosProgressBarStyle: Identifiable, CaseIterable {
+  var id: Self { self }
+}
+
 //MARK: - ListStyle
 enum ListStyle: String {
   case insetGrouped = "Inset Grouped",

@@ -198,9 +198,9 @@ struct AllTodoListsScreen_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       AllTodoListsScreen()
-        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
-        .environmentObject(AppState())
-        .preferredColorScheme(.dark)
     }
+    .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+    .environmentObject(AppState())
+    .preferredColorScheme(.dark)
   }
 }

@@ -42,9 +42,9 @@ struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       ContentView()
-        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
-        .environmentObject(AppState())
-        .preferredColorScheme(.dark)
     }
+    .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+    .environmentObject(AppState())
+    .preferredColorScheme(.dark)
   }
 }

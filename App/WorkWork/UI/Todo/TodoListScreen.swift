@@ -40,6 +40,10 @@ struct TodoListScreen: View {
     return true
   }
   
+  private var completedTodosCount: Int {
+    todos.reduce(.zero) { $0 + ($1.isDone ? 1 : .zero) }
+  }
+  
   var body: some View {
     content
       .background(
@@ -130,6 +134,18 @@ struct TodoListScreen: View {
   
   private var list: some View {
     List {
+      if appState.showTodosProgressBar {
+        TodoProgressView(
+          text: "Todos Progress",
+          color: appState.selectedColor.color,
+          value: Double(completedTodosCount),
+          minValue: .zero,
+          maxValue: Double(viewModel.todoList.todosCount),
+          style: appState.todosProgressBarStyle
+        )
+        .frame(maxWidth: .infinity, alignment: .center)
+      }
+      
       if viewModel.actionMode != nil {
         CustomTextFieldView(
           text: $viewModel.title,
@@ -151,6 +167,7 @@ struct TodoListScreen: View {
       
       if todos.isEmpty {
         Text("No todos yet.")
+          .foregroundColor(.secondary)
       } else {
         ForEach(todos) { todo in
           TodoRowView(

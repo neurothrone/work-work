@@ -15,6 +15,10 @@ struct TodoProgressView: View {
   let maxValue: Double
   let style: TodosProgressBarStyle
   
+  private var hasNoValue: Bool {
+    value.isZero && maxValue.isZero
+  }
+  
   var body: some View {
     if style == .linear {
       gauge
@@ -42,7 +46,11 @@ struct TodoProgressView: View {
       } maximumValueLabel: {
         Text("\(Int(maxValue))")
       }
-      .tint(color)
+      .tint(
+        hasNoValue
+        ? .clear
+        : color
+      )
   }
   
   private var label: some View {
@@ -57,9 +65,9 @@ struct TodoProgressView_Previews: PreviewProvider {
     TodoProgressView(
       text: "Todos Progress",
       color: .purple,
-      value: 2,
+      value: 0,
       minValue: .zero,
-      maxValue: 10,
+      maxValue: 0,
       style: .linear
     )
   }

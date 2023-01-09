@@ -164,6 +164,7 @@ struct AllTodoListsScreen: View {
       
       if todoLists.isEmpty {
         Text("No list yet.")
+          .foregroundColor(.secondary)
       } else {
         ForEach(todoLists) { todoList in
           NavigationLink {

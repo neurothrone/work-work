@@ -22,6 +22,17 @@ extension TodoList {
     return todoList
   }
   
+  static func update(
+    list: TodoList,
+    with newTitle: String,
+    newIcon: Icon,
+    using context: NSManagedObjectContext
+  ) {
+    list.title = newTitle
+    list.systemImage = newIcon.rawValue
+    list.save(using: context)
+  }
+  
   static func deleteAll(using context: NSManagedObjectContext) {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: TodoList.self))
     let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

@@ -40,7 +40,7 @@ struct AllTodoListsScreen: View {
       .sheet(isPresented: $isAddSheetPresented) {
 #if DEBUG
         NavigationStack {
-          AddTodoListSheet()
+          AddOrEditTodoListSheet()
         }
 #else
         AddTodoListSheet()

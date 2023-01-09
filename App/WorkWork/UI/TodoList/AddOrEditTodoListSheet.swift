@@ -1,5 +1,5 @@
 //
-//  AddTodoListSheet.swift
+//  AddOrEditTodoListSheet.swift
 //  WorkWork
 //
 //  Created by Zaid Neurothrone on 2023-01-03.
@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct AddTodoListSheet: View {
+struct AddOrEditTodoListSheet: View {
   @Environment(\.dismiss) var dismiss
   @Environment(\.managedObjectContext) var moc
   @EnvironmentObject var appState: AppState
   
   @State private var title = ""
   @State private var selectedIcon: Icon = .default
+  
+  var todoList: TodoList? = nil
   
   private let columns = [
     GridItem(
@@ -96,10 +98,10 @@ struct AddTodoListSheet: View {
   }
 }
 
-struct AddTodoListSheet_Previews: PreviewProvider {
+struct AddOrEditTodoListSheet_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
-      AddTodoListSheet()
+      AddOrEditTodoListSheet()
         .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
         .environmentObject(AppState())
       //        .preferredColorScheme(.dark)

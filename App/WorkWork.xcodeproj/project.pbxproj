@@ -43,7 +43,7 @@
 		2F7F7BC12963DFE600AA554B /* Todo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BC02963DFE600AA554B /* Todo+Extensions.swift */; };
 		2F7F7BC32963E66F00AA554B /* TodoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BC22963E66F00AA554B /* TodoRowView.swift */; };
 		2F7F7BC52963E6A700AA554B /* Todo+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BC42963E6A700AA554B /* Todo+Preview.swift */; };
-		2F7F7BC72963F65900AA554B /* AddTodoListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BC62963F65900AA554B /* AddTodoListSheet.swift */; };
+		2F7F7BC72963F65900AA554B /* AddOrEditTodoListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BC62963F65900AA554B /* AddOrEditTodoListSheet.swift */; };
 		2F7F7BCA2963F84C00AA554B /* TodoListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BC92963F84C00AA554B /* TodoListRowView.swift */; };
 		2F7F7BCC296418C000AA554B /* AboutSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCB296418C000AA554B /* AboutSheet.swift */; };
 		2F7F7BCE296418C900AA554B /* DeleteAllDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */; };
@@ -91,7 +91,7 @@
 		2F7F7BC02963DFE600AA554B /* Todo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+Extensions.swift"; sourceTree = "<group>"; };
 		2F7F7BC22963E66F00AA554B /* TodoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRowView.swift; sourceTree = "<group>"; };
 		2F7F7BC42963E6A700AA554B /* Todo+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+Preview.swift"; sourceTree = "<group>"; };
-		2F7F7BC62963F65900AA554B /* AddTodoListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoListSheet.swift; sourceTree = "<group>"; };
+		2F7F7BC62963F65900AA554B /* AddOrEditTodoListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditTodoListSheet.swift; sourceTree = "<group>"; };
 		2F7F7BC92963F84C00AA554B /* TodoListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRowView.swift; sourceTree = "<group>"; };
 		2F7F7BCB296418C000AA554B /* AboutSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSheet.swift; sourceTree = "<group>"; };
 		2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataSheet.swift; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 			children = (
 				2F7F7BB22963C1BC00AA554B /* AllTodoListsScreen.swift */,
 				2F7F7BC92963F84C00AA554B /* TodoListRowView.swift */,
-				2F7F7BC62963F65900AA554B /* AddTodoListSheet.swift */,
+				2F7F7BC62963F65900AA554B /* AddOrEditTodoListSheet.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 				2F7F7BC32963E66F00AA554B /* TodoRowView.swift in Sources */,
 				2F7F7BA22963BE1E00AA554B /* CoreDataProvider.swift in Sources */,
 				2F913290296B73ED00F88754 /* StatefulPreviewWrapper.swift in Sources */,
-				2F7F7BC72963F65900AA554B /* AddTodoListSheet.swift in Sources */,
+				2F7F7BC72963F65900AA554B /* AddOrEditTodoListSheet.swift in Sources */,
 				2F7F7B982962C10500AA554B /* Constants.swift in Sources */,
 				2F7F7BBF2963DD8600AA554B /* TodoListScreen.swift in Sources */,
 				2F35217B2965BD440092B587 /* Entities.xcdatamodeld in Sources */,

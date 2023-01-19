@@ -54,5 +54,9 @@ enum MyApp {
     static let edit = "pencil"
     
     static let linkCircleFill = "link.circle.fill"
+    
+    static let moreOptions = "ellipsis.circle"
+    static let uncheckAllTodos = "arrow.counterclockwise"
+    static let deleteAllTodos = "trash"
   }
 }

@@ -72,6 +72,37 @@ struct AllTodoListsScreen: View {
         //MARK: Keyboard
         ToolbarItemGroup(placement: .keyboard) {
           HStack {
+            Button(role: .cancel) {
+              // TODO: Temporary fix until root cause is discovered
+              hideKeyboard()
+              //              viewModel.isTextFieldFocused = false
+              
+              withAnimation(.linear) {
+                viewModel.changeActionMode()
+              }
+            } label: {
+              Label(
+                "Dismiss",
+                systemImage: MyApp.SystemImage.dismissKeyboard
+              )
+              .labelStyle(.titleAndIcon)
+            }
+            .buttonStyle(.bordered)
+            
+            Spacer()
+            
+            Button(action: { isAddOrEditSheetPresented.toggle() }) {
+              Label(
+                "More",
+                systemImage: MyApp.SystemImage.moreOptionsAddList
+              )
+              .labelStyle(.titleAndIcon)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(appState.selectedColor.color.opacity(0.5))
+            
+            Spacer()
+            
             Button(action: { viewModel.addOrUpdate(using: moc) }) {
               Group {
                 if viewModel.actionMode == .add {
@@ -91,36 +122,6 @@ struct AllTodoListsScreen: View {
             .buttonStyle(.borderedProminent)
             .disabled(!isValid)
             
-            Spacer()
-            
-            Button(action: { isAddOrEditSheetPresented.toggle() }) {
-              Label(
-                "More",
-                systemImage: MyApp.SystemImage.moreOptionsAddList
-              )
-              .labelStyle(.titleAndIcon)
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(appState.selectedColor.color.opacity(0.5))
-            
-            Spacer()
-            
-            Button(role: .cancel) {
-              // TODO: Temporary fix until root cause is discovered
-              hideKeyboard()
-              //              viewModel.isTextFieldFocused = false
-              
-              withAnimation(.linear) {
-                viewModel.changeActionMode()
-              }
-            } label: {
-              Label(
-                "Dismiss",
-                systemImage: MyApp.SystemImage.dismissKeyboard
-              )
-              .labelStyle(.titleAndIcon)
-            }
-            .buttonStyle(.bordered)
           }
           .tint(appState.selectedColor.color)
         }

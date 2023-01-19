@@ -79,8 +79,6 @@ struct TodoListScreen: View {
             )
             .foregroundColor(appState.selectedColor.color)
           }
-
-          
         }
         
         //MARK: Bottom Bar
@@ -105,6 +103,25 @@ struct TodoListScreen: View {
         //MARK: Keyboard
         ToolbarItemGroup(placement: .keyboard) {
           HStack {
+            Button(role: .cancel) {
+              // TODO: Temporary fix until root cause is discovered
+              hideKeyboard()
+//              viewModel.isTextFieldFocused = false
+              
+              withAnimation(.linear) {
+                viewModel.actionMode = nil
+              }
+            } label: {
+              Label(
+                "Dismiss",
+                systemImage: MyApp.SystemImage.dismissKeyboard
+              )
+              .labelStyle(.titleAndIcon)
+            }
+            .buttonStyle(.bordered)
+            
+            Spacer()
+            
             Button(action: { viewModel.addOrUpdate(using: moc) }) {
               Group {
                 if viewModel.actionMode == .add {
@@ -123,25 +140,6 @@ struct TodoListScreen: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(!isValid)
-            
-            Spacer()
-            
-            Button(role: .cancel) {
-              // TODO: Temporary fix until root cause is discovered
-              hideKeyboard()
-//              viewModel.isTextFieldFocused = false
-              
-              withAnimation(.linear) {
-                viewModel.actionMode = nil
-              }
-            } label: {
-              Label(
-                "Dismiss",
-                systemImage: MyApp.SystemImage.dismissKeyboard
-              )
-              .labelStyle(.titleAndIcon)
-            }
-            .buttonStyle(.bordered)
           }
           .tint(appState.selectedColor.color)
         }

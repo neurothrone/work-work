@@ -56,6 +56,33 @@ struct TodoListScreen: View {
         isTextFieldFocused = $0
       }
       .toolbar {
+        //MARK: Navigation Bar
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
+          Menu {
+            Button(action: {}) {
+              Label(
+                "Uncheck all Todos",
+                systemImage: MyApp.SystemImage.uncheckAllTodos
+              )
+            }
+            
+            Button(role: .destructive, action: {}) {
+              Label(
+                "Delete all Todos",
+                systemImage: MyApp.SystemImage.deleteAllTodos
+              )
+            }
+          } label: {
+            Label(
+              "More",
+              systemImage: MyApp.SystemImage.moreOptions
+            )
+            .foregroundColor(appState.selectedColor.color)
+          }
+
+          
+        }
+        
         //MARK: Bottom Bar
         ToolbarItemGroup(placement: .bottomBar) {
           ZStack {

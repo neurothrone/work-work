@@ -19,11 +19,11 @@ struct AppMain: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .onAppear(perform: setUp)
         .environment(\.managedObjectContext, coreDataProvider.viewContext)
         .environmentObject(appState)
         .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
         .tint(appState.selectedColor.color)
+        .onAppear(perform: setUp)
         .onChange(of: scenePhase) { newScenePhase in
           if newScenePhase == .background {
             CoreDataProvider.save(using: coreDataProvider.viewContext)

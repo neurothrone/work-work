@@ -47,6 +47,7 @@ final class AppState: ObservableObject {
 
   @Published var idForChangingAllSegmentedControls: UUID = .init()
   
+  @Published var path: [TodoList] = []
   
   //MARK: - Methods
   

@@ -8,33 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-  @EnvironmentObject var appState: AppState
-  
   var body: some View {
-    NavigationStack {
-      AllTodoListsScreen()
-        .background(
-          appState.prefersDarkMode
-          ? .black
-          : Color.lightModeBackground
-        )
-        .navigationTitle("Folders")
-        .toolbar {
-          //MARK: Navigation Bar
-          ToolbarItem(placement: .navigationBarTrailing) {
-            NavigationLink {
-              SettingsScreen()
-                .environmentObject(appState)
-            } label: {
-              Label(
-                "Settings",
-                systemImage: MyApp.SystemImage.settings
-              )
-              .tint(appState.selectedColor.color)
-            }
-          }
-        }
-    }
+    AllTodoListsScreen()
   }
 }
 

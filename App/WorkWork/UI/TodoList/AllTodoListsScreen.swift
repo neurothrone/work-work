@@ -21,6 +21,8 @@ struct AllTodoListsScreen: View {
   @State private var isAddOrEditSheetPresented = false
   @StateObject private var viewModel: TodoListViewModel = .init()
   
+//  @State private var path: [TodoList] = []
+  
   private var isValid: Bool {
     if viewModel.title.isEmpty {
       return false
@@ -36,50 +38,72 @@ struct AllTodoListsScreen: View {
   }
   
   var body: some View {
-    content
-      .sheet(isPresented: $isAddOrEditSheetPresented) {
+    NavigationStack(path: $appState.path) {
+      content
+        .background(
+          appState.prefersDarkMode
+          ? .black
+          : Color.lightModeBackground
+        )
+        .navigationTitle("Folders")
+        .sheet(isPresented: $isAddOrEditSheetPresented) {
 #if DEBUG
-        NavigationStack {
-          AddOrEditTodoListSheet(todoListToUpdate: viewModel.selection ?? nil)
-        }
+          NavigationStack {
+            AddOrEditTodoListSheet(todoListToUpdate: viewModel.selection ?? nil)
+          }
 #else
-        AddOrEditTodoListSheet(todoListToUpdate: viewModel.selection ?? nil)
+          AddOrEditTodoListSheet(todoListToUpdate: viewModel.selection ?? nil)
 #endif
-      }
-      .onChange(of: viewModel.isTextFieldFocused) {
-        isTextFieldFocused = $0
-      }
-      .toolbar {
-        //MARK: Bottom Bar
-        ToolbarItemGroup(placement: .bottomBar) {
-          ZStack {
-            Text("\(todoLists.count) Folders")
-              .font(.callout.bold())
-              .foregroundColor(.secondary)
-              .frame(maxWidth: .infinity, alignment: .center)
-            
-            Button(action: viewModel.changeActionMode) {
+        }
+        .onChange(of: viewModel.isTextFieldFocused) {
+          isTextFieldFocused = $0
+        }
+        .toolbar {
+          //MARK: Navigation Bar
+          ToolbarItem(placement: .navigationBarTrailing) {
+            NavigationLink {
+              SettingsScreen()
+                .environmentObject(appState)
+            } label: {
               Label(
-                viewModel.activeModeText,
-                systemImage: viewModel.activeModeSystemName
+                "Settings",
+                systemImage: MyApp.SystemImage.settings
+              )
+              .tint(appState.selectedColor.color)
+            }
+          }
+          
+          //MARK: Bottom Bar
+          ToolbarItemGroup(placement: .bottomBar) {
+            ZStack {
+              Text("\(todoLists.count) Folders")
+                .font(.callout.bold())
+                .foregroundColor(.secondary)
+                .frame(maxWidth: .infinity, alignment: .center)
+              
+              Button(action: viewModel.changeActionMode) {
+                Label(
+                  viewModel.activeModeText,
+                  systemImage: viewModel.activeModeSystemName
+                )
+              }
+              .tint(appState.selectedColor.color)
+              .frame(
+                maxWidth: .infinity,
+                alignment: appState.primaryButtonHandedness == .right
+                ? .trailing
+                : .leading
               )
             }
-            .tint(appState.selectedColor.color)
-            .frame(
-              maxWidth: .infinity,
-              alignment: appState.primaryButtonHandedness == .right
-              ? .trailing
-              : .leading
-            )
+          }
+          
+          //MARK: Keyboard
+          ToolbarItemGroup(placement: .keyboard) {
+            keyboard
+              .tint(appState.selectedColor.color)
           }
         }
-        
-        //MARK: Keyboard
-        ToolbarItemGroup(placement: .keyboard) {
-          keyboard
-            .tint(appState.selectedColor.color)
-        }
-      }
+    }
   }
   
   @ViewBuilder
@@ -220,9 +244,7 @@ struct AllTodoListsScreen: View {
           .foregroundColor(.secondary)
       } else {
         ForEach(todoLists) { todoList in
-          NavigationLink {
-            TodoListScreen(todoList: todoList)
-          } label: {
+          NavigationLink(value: todoList) {
             TodoListRowView(
               todoList: todoList,
               onDelete: {
@@ -240,6 +262,9 @@ struct AllTodoListsScreen: View {
           }
         }
       }
+    }
+    .navigationDestination(for: TodoList.self) { todoList in
+      TodoListScreen(todoList: todoList)
     }
     .scrollContentBackground(.hidden)
   }

@@ -24,11 +24,16 @@ struct TodoProgressView: View {
       gauge
         .gaugeStyle(.linearCapacity)
     } else {
+#if os(iOS)
       VStack {
         label
         gauge
           .gaugeStyle(.accessoryCircularCapacity)
       }
+#elseif os(watchOS)
+      gauge
+        .gaugeStyle(.accessoryCircularCapacity)
+#endif
     }
   }
   
@@ -65,9 +70,9 @@ struct TodoProgressView_Previews: PreviewProvider {
     TodoProgressView(
       text: "Todos Progress",
       color: .purple,
-      value: 0,
+      value: .zero,
       minValue: .zero,
-      maxValue: 0,
+      maxValue: 5,
       style: .linear
     )
   }

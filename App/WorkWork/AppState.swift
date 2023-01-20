@@ -15,18 +15,23 @@ final class AppState: ObservableObject {
   @AppStorage(MyApp.AppStorage.prefersDarkMode)
   var prefersDarkMode: Bool = true
   
+#if os(iOS)
   @AppStorage(MyApp.AppStorage.selectedColor)
   var selectedColor: CustomColor = .purple {
     didSet {
       DispatchQueue.main.async {
         self.changeSegmentedControlColor(to: self.selectedColor.color)
-
+        
         withAnimation(.easeInOut) {
           self.idForChangingAllSegmentedControls = .init()
         }
       }
     }
   }
+#elseif os(watchOS)
+  @AppStorage(MyApp.AppStorage.selectedColor)
+  var selectedColor: CustomColor = .purple
+#endif
   
   @AppStorage(MyApp.AppStorage.listStyle)
   var listStyle: ListStyle = .insetGrouped
@@ -54,7 +59,10 @@ final class AppState: ObservableObject {
   
   func setUp(colorScheme: ColorScheme) {
     registerDefaults(colorScheme: colorScheme)
+    
+#if os(iOS)
     changeSegmentedControlColor(to: selectedColor.color)
+#endif
   }
   
   private func registerDefaults(colorScheme: ColorScheme) {
@@ -65,6 +73,7 @@ final class AppState: ObservableObject {
       ])
   }
   
+#if os(iOS)
   func changeSegmentedControlColor(to color: Color) {
     UISegmentedControl.appearance()
       .selectedSegmentTintColor = UIColor(color.opacity(0.5))
@@ -81,6 +90,7 @@ final class AppState: ObservableObject {
         for: .normal
       )
   }
+#endif
   
   public func deleteAllData(using context: NSManagedObjectContext) {
     TodoList.deleteAll(using: context)

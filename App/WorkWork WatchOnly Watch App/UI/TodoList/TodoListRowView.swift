@@ -1,9 +1,11 @@
 //
 //  TodoListRowView.swift
-//  WorkWork
+//  WorkWork WatchOnly Watch App
 //
-//  Created by Zaid Neurothrone on 2023-01-03.
+//  Created by Zaid Neurothrone on 2023-01-20.
 //
+
+import SwiftUI
 
 import SwiftUI
 import WorkWorkKit
@@ -41,9 +43,8 @@ struct TodoListRowView: View {
       .foregroundColor(appState.selectedColor.color)
       
       Text(todoList.title)
-      // TODO: Test with this later
-        .lineLimit(appState.todoRowVerticalPadding == .zero ? 1 : 2)
-      
+        .lineLimit(1)
+
       if todoList.todos.isNotEmpty {
         Spacer()
         Text(todoList.completedTodosCount == .zero
@@ -70,6 +71,6 @@ struct TodoListRowView_Previews: PreviewProvider {
       .environment(\.managedObjectContext, context)
       .environmentObject(AppState())
     }
-    .listStyle(.grouped)
+    .listStyle(.plain)
   }
 }

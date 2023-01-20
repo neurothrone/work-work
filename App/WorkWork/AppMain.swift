@@ -23,18 +23,14 @@ struct AppMain: App {
         .environmentObject(appState)
         .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
         .tint(appState.selectedColor.color)
-        .onAppear(perform: setUp)
+        .onAppear {
+          appState.setUp(colorScheme: colorScheme)
+        }
         .onChange(of: scenePhase) { newScenePhase in
           if newScenePhase == .background {
             CoreDataProvider.save(using: coreDataProvider.viewContext)
           }
         }
     }
-  }
-}
-
-extension AppMain {
-  private func setUp() {
-    appState.setUp(colorScheme: colorScheme)
   }
 }

@@ -6,21 +6,21 @@
 //
 
 import SwiftUI
+import WorkWorkKit
 
 struct ContentView: View {
   var body: some View {
-    VStack {
-      Image(systemName: "globe")
-        .imageScale(.large)
-        .foregroundColor(.accentColor)
-      Text("Hello, world!")
-    }
-    .padding()
+    AllTodoListsScreen()
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    NavigationStack {
+      ContentView()
+    }
+    .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+    .environmentObject(AppState())
+    .preferredColorScheme(.dark)
   }
 }

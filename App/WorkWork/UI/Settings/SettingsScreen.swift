@@ -32,10 +32,10 @@ struct SettingsScreen: View {
       .toolbar {
         Menu {
           Button(action: { isAboutSheetPresented.toggle() }) {
-            Label("About", systemImage: "info.circle")
+            Label("About", systemImage: MyApp.SystemImage.infoCircle)
           }
         } label: {
-          Image(systemName: "ellipsis.circle")
+          Image(systemName: MyApp.SystemImage.ellipsisCircle)
         }
       }
   }
@@ -45,7 +45,7 @@ struct SettingsScreen: View {
       //MARK: - App Color Theme
       Section {
         Toggle(
-          "Prefers Dark Theme",
+          "Dark Theme",
           isOn: $appState.prefersDarkMode
         )
         .tint(appState.selectedColor.color.opacity(0.75))        

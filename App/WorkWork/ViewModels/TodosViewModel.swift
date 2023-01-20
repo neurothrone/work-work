@@ -22,4 +22,12 @@ final class TodosViewModel: BaseViewModel<Todo> {
   override func createEntity(using context: NSManagedObjectContext) {
     Todo.create(with: title, in: todoList, using: context)
   }
+  
+  func uncheckTodos(using context: NSManagedObjectContext) {
+    TodoList.uncheckAllTodos(in: todoList, using: context)
+  }
+  
+  func deleteTodos(using context: NSManagedObjectContext) {
+    TodoList.deleteAllTodos(in: todoList, using: context)
+  }
 }

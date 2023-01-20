@@ -59,19 +59,21 @@ struct TodoListScreen: View {
         //MARK: Navigation Bar
         ToolbarItemGroup(placement: .navigationBarTrailing) {
           Menu {
-            Button(action: {}) {
+            Button(action: { viewModel.uncheckTodos(using: moc) }) {
               Label(
                 "Uncheck all Todos",
                 systemImage: MyApp.SystemImage.uncheckAllTodos
               )
             }
             
-            Button(role: .destructive, action: {}) {
-              Label(
-                "Delete all Todos",
-                systemImage: MyApp.SystemImage.deleteAllTodos
-              )
-            }
+            Button(
+              role: .destructive,
+              action: { viewModel.deleteTodos(using: moc) }) {
+                Label(
+                  "Delete all Todos",
+                  systemImage: MyApp.SystemImage.deleteAllTodos
+                )
+              }
           } label: {
             Label(
               "More",

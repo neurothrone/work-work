@@ -43,4 +43,47 @@ extension TodoList {
     let changes: [AnyHashable: Any] = [NSDeletedObjectsKey: result.result as! [NSManagedObjectID]]
     NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
   }
+  
+  static func uncheckAllTodos(
+    in todoList: TodoList,
+    using context: NSManagedObjectContext
+  ) {
+    let request: NSFetchRequest<Todo> = Todo.fetchRequest()
+    
+    let todoInListPredicate = NSPredicate(format: "%K == %@", "list.id", todoList.id as CVarArg)
+    let isDonePredicate = NSPredicate(format: "%K == %@", #keyPath(Todo.isDone), NSNumber(value: true))
+    let compoundPredicate = NSCompoundPredicate(
+      andPredicateWithSubpredicates: [
+        todoInListPredicate,
+        isDonePredicate
+      ])
+    request.predicate = compoundPredicate
+    
+    do {
+      let todos = try context.fetch(request)
+      
+      for todo in todos {
+        todo.isDone = false
+      }
+      
+      CoreDataProvider.save(using: context)
+    } catch {
+      print("❌ -> Failed to fetch Todos. Error: \(error.localizedDescription)")
+    }
+  }
+  
+  static func deleteAllTodos(
+    in todoList: TodoList,
+    using context: NSManagedObjectContext
+  ) {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
+    fetchRequest.predicate = NSPredicate(format: "%K == %@", "list.id", todoList.id as CVarArg)
+    let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    batchDeleteRequest.resultType = .resultTypeObjectIDs
+
+    guard let result = try? context.execute(batchDeleteRequest) as? NSBatchDeleteResult else { return }
+
+    let changes: [AnyHashable: Any] = [NSDeletedObjectsKey: result.result as! [NSManagedObjectID]]
+    NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
+  }
 }

@@ -10,16 +10,24 @@ import SwiftUI
 @main
 struct AppMain: App {
   @Environment(\.colorScheme) var colorScheme
+  @Environment(\.scenePhase) var scenePhase
   @StateObject private var appState: AppState = .init()
+  
+  private let coreDataProvider: CoreDataProvider = .shared
 
   var body: some Scene {
     WindowGroup {
       ContentView()
         .onAppear(perform: setUp)
-        .environment(\.managedObjectContext, CoreDataProvider.shared.viewContext)
+        .environment(\.managedObjectContext, coreDataProvider.viewContext)
         .environmentObject(appState)
         .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
         .tint(appState.selectedColor.color)
+        .onChange(of: scenePhase) { newValue in
+          if newValue == .background {
+            CoreDataProvider.save(using: coreDataProvider.viewContext)
+          }
+        }
     }
   }
 }

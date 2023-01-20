@@ -57,6 +57,11 @@
 		2F7F7BCE296418C900AA554B /* DeleteAllDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */; };
 		2F913290296B73ED00F88754 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91328F296B73ED00F88754 /* StatefulPreviewWrapper.swift */; };
 		2F913294296B898100F88754 /* TodoProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F913293296B898100F88754 /* TodoProgressView.swift */; };
+		2FB95C03297B27F40034E82D /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF4FE29677CE6009342E0 /* CustomLinkView.swift */; };
+		2FB95C04297B289B0034E82D /* AboutSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCB296418C000AA554B /* AboutSheet.swift */; };
+		2FB95C05297B289B0034E82D /* DeleteAllDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */; };
+		2FB95C07297B29300034E82D /* WKApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C06297B29300034E82D /* WKApplication+Extensions.swift */; };
+		2FB95C09297B2C5A0034E82D /* CustomLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C08297B2C5A0034E82D /* CustomLabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +134,8 @@
 		2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataSheet.swift; sourceTree = "<group>"; };
 		2F91328F296B73ED00F88754 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
 		2F913293296B898100F88754 /* TodoProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoProgressView.swift; sourceTree = "<group>"; };
+		2FB95C06297B29300034E82D /* WKApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKApplication+Extensions.swift"; sourceTree = "<group>"; };
+		2FB95C08297B2C5A0034E82D /* CustomLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelView.swift; sourceTree = "<group>"; };
 		2FE9578C296425BD008C5636 /* WorkWorkKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WorkWorkKit; path = ../WorkWorkKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				2F3CDA81297AE680006B0855 /* AppMain.swift */,
+				2FB95C06297B29300034E82D /* WKApplication+Extensions.swift */,
 				2F3CDAB1297B1EE8006B0855 /* Watch App Info.plist */,
 				2F3CDAB0297B1EE3006B0855 /* Watch App.entitlements */,
 				2F3CDA9E297B0C47006B0855 /* UI */,
@@ -270,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				2F3CDA95297AFB9B006B0855 /* SectionHeaderView.swift */,
+				2FB95C08297B2C5A0034E82D /* CustomLabelView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -528,6 +537,8 @@
 				2F3CDAAC297B0CEB006B0855 /* AddOrEditTodoListViewModel.swift in Sources */,
 				2F3CDAA8297B0C8C006B0855 /* TodoRowView.swift in Sources */,
 				2F3CDAAA297B0CEB006B0855 /* TodoListViewModel.swift in Sources */,
+				2FB95C03297B27F40034E82D /* CustomLinkView.swift in Sources */,
+				2FB95C07297B29300034E82D /* WKApplication+Extensions.swift in Sources */,
 				2F3CDA96297AFB9B006B0855 /* SectionHeaderView.swift in Sources */,
 				2F3CDAA4297B0C7A006B0855 /* TodoListRowView.swift in Sources */,
 				2F3CDA99297B0ADB006B0855 /* AppState.swift in Sources */,
@@ -539,6 +550,9 @@
 				2F3CDAA6297B0C85006B0855 /* TodoListScreen.swift in Sources */,
 				2F3CDA82297AE680006B0855 /* AppMain.swift in Sources */,
 				2F3CDA9B297B0AE2006B0855 /* Enums.swift in Sources */,
+				2FB95C04297B289B0034E82D /* AboutSheet.swift in Sources */,
+				2FB95C05297B289B0034E82D /* DeleteAllDataSheet.swift in Sources */,
+				2FB95C09297B2C5A0034E82D /* CustomLabelView.swift in Sources */,
 				2F3CDA9D297B0BB7006B0855 /* AllTodoListsScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -760,7 +774,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -792,7 +806,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};

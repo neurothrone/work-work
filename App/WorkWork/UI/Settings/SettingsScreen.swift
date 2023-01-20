@@ -127,6 +127,21 @@ struct SettingsScreen: View {
         } header: {
           Text("Todo Completion Style")
         }
+        
+        //MARK: - Primary Button Handedness
+        Section {
+          Picker(
+            "Primary Button Handedness",
+            selection: $appState.primaryButtonHandedness
+          ) {
+            ForEach(PrimaryButtonHandedness.allCases) { choice in
+              Text(choice.rawValue)
+            }
+          }
+          .listRowInsets(EdgeInsets())
+        } header: {
+          Text("Primary Button Handedness")
+        }
       }
       .id(appState.idForChangingAllSegmentedControls)
       .pickerStyle(.segmented)

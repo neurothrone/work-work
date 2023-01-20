@@ -23,8 +23,8 @@ struct AppMain: App {
         .environmentObject(appState)
         .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
         .tint(appState.selectedColor.color)
-        .onChange(of: scenePhase) { newValue in
-          if newValue == .background {
+        .onChange(of: scenePhase) { newScenePhase in
+          if newScenePhase == .background {
             CoreDataProvider.save(using: coreDataProvider.viewContext)
           }
         }

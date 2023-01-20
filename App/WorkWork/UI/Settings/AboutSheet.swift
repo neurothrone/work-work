@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct AboutSheet: View {
   @EnvironmentObject var appState: AppState
   
@@ -18,9 +16,12 @@ struct AboutSheet: View {
         Text("Made with ")
         Image(systemName: MyApp.SystemImage.heartFill)
           .foregroundColor(appState.selectedColor.color)
-        Text(" by Zaid Neurothrone")
-        
+        Text(" by")
       }
+      
+      Text("Zaid Neurothrone")
+        .font(.headline)
+        .foregroundColor(appState.selectedColor.color)
       
       HStack(spacing: .zero) {
         Text("Copyright ")
@@ -29,8 +30,13 @@ struct AboutSheet: View {
         Text(Date.now, format: .dateTime.year())
       }
       
+#if os(iOS)
       Text("Version \(UIApplication.appVersion)")
         .foregroundColor(appState.selectedColor.color)
+#elseif os(watchOS)
+      Text("Version \(WKApplication.appVersion)")
+        .foregroundColor(appState.selectedColor.color)
+#endif
       
       CustomLinkView(
         urlString: MyApp.Link.svgRepo,
@@ -39,10 +45,17 @@ struct AboutSheet: View {
       .padding(.top)
     }
     .padding()
+#if os(iOS)
     .background(
       RoundedRectangle(cornerRadius: 20)
         .fill(.ultraThickMaterial)
     )
+#elseif os(watchOS)
+    .background(
+      RoundedRectangle(cornerRadius: 20)
+        .fill(appState.selectedColor.color.opacity(0.25))
+    )
+#endif
   }
 }
 

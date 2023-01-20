@@ -22,7 +22,7 @@ struct AllTodoListsScreen: View {
   @State private var isAddOrEditSheetPresented = false
   @StateObject private var viewModel: TodoListViewModel = .init()
   
-  @SceneStorage("AllTodoListsScreen.selectedList")
+  @SceneStorage(MyApp.SceneStorage.storedTodoListId)
   var storedTodoListId: String?
   
   private var isValid: Bool {

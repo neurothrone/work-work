@@ -20,6 +20,10 @@ enum MyApp {
     static let todoRowVerticalPadding = "todoRowVerticalPadding"
   }
   
+  enum SceneStorage {
+    static let storedTodoListId = "AllTodoListsScreen.selectedList"
+  }
+  
   enum Link {
     static let svgRepo = "https://www.svgrepo.com/"
   }

@@ -55,10 +55,7 @@ struct AllTodoListsScreen: View {
   var body: some View {
     NavigationStack(path: $appState.path) {
       list
-        .navigationTitle {
-          Text("WorkWork")
-            .foregroundColor(.secondary)
-        }
+        .navigationTitle("WorkWork")
         .onChange(of: scenePhase) { newScenePhase in
           if newScenePhase == .inactive {
             // Set stored id to nil if we are in TodoListsScreen
@@ -89,11 +86,12 @@ struct AllTodoListsScreen: View {
               SettingsScreen()
                 .environmentObject(appState)
             } label: {
-              HStack(spacing: .zero) {
-                Image(systemName: MyApp.SystemImage.settings)
-                Text("Settings")
-              }
-              .foregroundColor(appState.selectedColor.color)
+              CustomLabelView(
+                text: "Settings",
+                systemImage: MyApp.SystemImage.settings,
+                color: appState.selectedColor.color,
+                spacing: .zero
+              )
             }
           }
         }
@@ -106,11 +104,11 @@ struct AllTodoListsScreen: View {
         // TODO: Add Folder Sheet
         Text("Add Folder")
       } label: {
-        HStack {
-          Image(systemName: MyApp.SystemImage.showAddListTextField)
-          Text("Add Folder")
-        }
-        .foregroundColor(.purple)
+        CustomLabelView(
+          text: "Add Folder",
+          systemImage: MyApp.SystemImage.showAddListTextField,
+          color: appState.selectedColor.color
+        )
       }
       
       Section {

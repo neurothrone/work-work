@@ -17,7 +17,6 @@ struct CustomTextFieldView: View {
       .autocorrectionDisabled(true)
       .textInputAutocapitalization(.sentences)
       .textFieldStyle(.roundedBorder)
-      .submitLabel(.done)
       .listRowSeparator(.hidden)
       .padding(.bottom)
   }

@@ -181,8 +181,6 @@ struct AllTodoListsScreen: View {
   }
 }
 
-
-
 struct AllTodoListsScreen_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {

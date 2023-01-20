@@ -24,10 +24,9 @@ struct AboutSheet: View {
     .navigationTitle("About")
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
-        Button(role: .cancel, action: { dismiss() }) {
-          Text("Cancel")
-            .foregroundColor(.secondary)
-        }
+        Button("Cancel", role: .cancel, action: { dismiss() })
+          .buttonStyle(.plain)
+          .foregroundColor(.secondary)
       }
     }
 #endif
@@ -84,8 +83,10 @@ struct AboutSheet: View {
 
 struct AboutSheet_Previews: PreviewProvider {
   static var previews: some View {
-    AboutSheet()
-      .preferredColorScheme(.dark)
-      .environmentObject(AppState())
+    NavigationStack {
+      AboutSheet()
+        .preferredColorScheme(.dark)
+        .environmentObject(AppState())
+    }
   }
 }

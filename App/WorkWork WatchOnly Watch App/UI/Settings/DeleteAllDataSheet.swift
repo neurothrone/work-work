@@ -29,10 +29,7 @@ struct DeleteAllDataSheet: View {
       .navigationTitle("Delete All Data")
       .toolbar {
         ToolbarItem(placement: .confirmationAction) {
-          Button(role: .cancel, action: { dismiss() }) {
-            Text("Cancel")
-              .foregroundColor(.secondary)
-          }
+          Button("Cancel", role: .cancel, action: { dismiss() })
         }
       }
     }

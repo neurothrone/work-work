@@ -65,7 +65,12 @@ struct AllTodoListsScreen: View {
               )
             }
             .tint(appState.selectedColor.color)
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            .frame(
+              maxWidth: .infinity,
+              alignment: appState.primaryButtonHandedness == .right
+              ? .trailing
+              : .leading
+            )
           }
         }
         

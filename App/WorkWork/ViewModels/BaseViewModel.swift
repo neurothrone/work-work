@@ -28,17 +28,16 @@ class BaseViewModel<T: MoveableEntity>: ObservableObject, CanCreateEntity {
   @Published var selection: T? = nil
   
   var addSystemImage: String {
-    "plus.circle"
+    MyApp.SystemImage.plusCircle
   }
   
+  // Returns the icon to show when showing or hiding the text field
   var activeModeSystemName: String {
     switch actionMode {
-    case .add:
-      return addSystemImage
-    case .edit:
-      return MyApp.SystemImage.editActionMode
-    default:
+    case .add, .edit:
       return MyApp.SystemImage.noActionMode
+    default:
+      return addSystemImage
     }
   }
   

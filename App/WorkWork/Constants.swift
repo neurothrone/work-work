@@ -39,14 +39,14 @@ enum MyApp {
     static let dismissKeyboard = "keyboard.chevron.compact.down.fill"
     
     static let showAddTodoTextField = "plus.circle.fill"
-    static let addTodo = "plus.circle"
+    static let plusCircle = "plus.circle"
     static let todoIsDone = "checkmark.circle.fill"
     static let todoIsNotDone = "x.circle"
     static let circle = "circle"
     static let circleFill = "circle.fill"
     
     static let editActionMode = "pencil.circle"
-    static let noActionMode = "circle.slash"
+    static let noActionMode = "square.slash"
     
     static let folder = "folder"
     

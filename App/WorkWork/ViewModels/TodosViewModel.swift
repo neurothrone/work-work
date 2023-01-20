@@ -16,7 +16,7 @@ final class TodosViewModel: BaseViewModel<Todo> {
   }
   
   override var addSystemImage: String {
-    MyApp.SystemImage.addTodo
+    MyApp.SystemImage.plusCircle
   }
 
   override func createEntity(using context: NSManagedObjectContext) {

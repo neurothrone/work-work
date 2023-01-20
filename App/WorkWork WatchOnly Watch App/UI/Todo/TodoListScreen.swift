@@ -33,13 +33,13 @@ struct TodoListScreen: View {
   var body: some View {
     List {
       HStack {
-        Text("Completed todos")
+        Text("Completed Todos")
           .foregroundColor(.secondary)
 
         Spacer()
         
         TodoProgressView(
-          text: "Completed todos",
+          text: "Completed Todos",
           color: appState.selectedColor.color,
           value: Double(completedTodosCount),
           minValue: .zero,

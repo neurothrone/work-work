@@ -12,12 +12,12 @@ struct CustomLabelView: View {
   let text: String
   let systemImage: String
   let color: Color
-  let spacing: CGFloat
+  var spacing: CGFloat? = nil
   
   var body: some View {
-    HStack(spacing: 2) {
-      Image(systemName: "info.circle")
-      Text("About")
+    HStack(spacing: spacing) {
+      Image(systemName: systemImage)
+      Text(text)
     }
     .foregroundColor(color)
   }

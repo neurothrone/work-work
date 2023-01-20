@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AllTodoListsScreen: View {
   @Environment(\.managedObjectContext) var moc
+  @Environment(\.scenePhase) var scenePhase
   @EnvironmentObject var appState: AppState
   
   @FetchRequest(
@@ -21,7 +22,8 @@ struct AllTodoListsScreen: View {
   @State private var isAddOrEditSheetPresented = false
   @StateObject private var viewModel: TodoListViewModel = .init()
   
-//  @State private var path: [TodoList] = []
+  @SceneStorage("AllTodoListsScreen.selectedList")
+  var storedTodoListId: String?
   
   private var isValid: Bool {
     if viewModel.title.isEmpty {
@@ -57,6 +59,27 @@ struct AllTodoListsScreen: View {
         }
         .onChange(of: viewModel.isTextFieldFocused) {
           isTextFieldFocused = $0
+        }
+        .onChange(of: scenePhase) { newScenePhase in
+          if newScenePhase == .inactive {
+            // Set stored id to nil if we are in TodoListsScreen
+            if appState.path.isEmpty {
+              storedTodoListId = nil
+            }
+            
+            // Save the id of a TodoList if we have navigated to it
+            if let selectedList = appState.path.first {
+              storedTodoListId = selectedList.id
+            }
+          }
+          
+          // Navigate to a TodoList if there is an id stored in SceneStorage
+          if newScenePhase == .active {
+            if let listId = storedTodoListId,
+               let list: TodoList = todoLists.first(where: { $0.id == listId }) {
+              appState.path = [list]
+            }
+          }
         }
         .toolbar {
           //MARK: Navigation Bar

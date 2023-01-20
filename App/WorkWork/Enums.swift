@@ -38,6 +38,18 @@ extension TodoCompletionStyle: Identifiable, CaseIterable {
   var id: Self { self }
 }
 
+//MARK: - PrimaryButtonHandedness
+enum PrimaryButtonHandedness: String {
+  case left = "Left",
+       right = "Right"
+}
+
+extension PrimaryButtonHandedness: Identifiable, CaseIterable {
+  var id: Self { self}
+  
+  static var `default`: PrimaryButtonHandedness { .right }
+}
+
 //MARK: - CustomColor
 enum CustomColor: String {
   case red,

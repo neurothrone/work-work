@@ -16,6 +16,7 @@ enum MyApp {
     static let todosProgressBarStyle = "todosProgressBarStyle"
     static let listStyle = "listStyle"
     static let todoCompletionStyle = "todoCompletionStyle"
+    static let primaryButtonHandedness = "primaryButtonHandedness"
     static let todoRowVerticalPadding = "todoRowVerticalPadding"
   }
   

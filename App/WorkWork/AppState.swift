@@ -39,6 +39,9 @@ final class AppState: ObservableObject {
   @AppStorage(MyApp.AppStorage.todosProgressBarStyle)
   var todosProgressBarStyle: TodosProgressBarStyle = .linear
   
+  @AppStorage(MyApp.AppStorage.primaryButtonHandedness)
+  var primaryButtonHandedness: PrimaryButtonHandedness = .default
+  
   @AppStorage(MyApp.AppStorage.todoRowVerticalPadding)
   var todoRowVerticalPadding: Int = .zero
 

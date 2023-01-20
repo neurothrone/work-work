@@ -8,23 +8,10 @@
 import SwiftUI
 import WorkWorkKit
 
-struct TList: Identifiable, Hashable {
-  let name: String
-  let completedTodosCount: Int
-  let todosCount: Int
-  
-  var id: String { name }
-  
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(name)
-  }
-}
-
-
 struct AllTodoListsScreen: View {
   private enum Sheet: Identifiable {
     case add,
-         edit(todoList: TList)
+         edit(todoList: TodoList)
     
     var id: String {
       switch self {

@@ -16,6 +16,7 @@ struct CustomLinkView: View {
       HStack(alignment: .center) {
         Text(text)
           .font(.footnote)
+          .fixedSize(horizontal: false, vertical: true)
         Image(systemName: MyApp.SystemImage.linkCircleFill)
       }
       .foregroundColor(.blue)

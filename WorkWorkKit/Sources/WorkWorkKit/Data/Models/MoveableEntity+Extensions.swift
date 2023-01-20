@@ -10,7 +10,7 @@ import SwiftUI
 
 extension MoveableEntity {
   //MARK: - Requests
-  static func allByOrder<T: MoveableEntity>(predicate: NSPredicate? = nil) -> NSFetchRequest<T> {
+  public static func allByOrder<T: MoveableEntity>(predicate: NSPredicate? = nil) -> NSFetchRequest<T> {
     let request: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
     request.sortDescriptors = [NSSortDescriptor(keyPath: \T.order, ascending: true)]
     request.predicate = predicate
@@ -18,7 +18,7 @@ extension MoveableEntity {
   }
   
   //MARK: - Data  
-  static func nextOrder<T: MoveableEntity>(
+  public static func nextOrder<T: MoveableEntity>(
     for: T.Type,
     using context: NSManagedObjectContext
   ) -> Int16 {
@@ -32,7 +32,7 @@ extension MoveableEntity {
     }
   }
   
-  static func moveEntities<T: MoveableEntity>(
+  public static func moveEntities<T: MoveableEntity>(
     _ entities: FetchedResults<T>,
     from source: IndexSet,
     to destination: Int,

@@ -8,7 +8,7 @@
 import CoreData
 
 extension TodoList {
-  static func create(
+  public static func create(
     with title: String,
     icon: Icon = .default,
     using context: NSManagedObjectContext
@@ -22,7 +22,7 @@ extension TodoList {
     return todoList
   }
   
-  static func update(
+  public static func update(
     list: TodoList,
     with newTitle: String,
     newIcon: Icon,
@@ -33,7 +33,7 @@ extension TodoList {
     list.save(using: context)
   }
   
-  static func deleteAll(using context: NSManagedObjectContext) {
+  public static func deleteAll(using context: NSManagedObjectContext) {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: TodoList.self))
     let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     batchDeleteRequest.resultType = .resultTypeObjectIDs
@@ -44,7 +44,7 @@ extension TodoList {
     NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
   }
   
-  static func uncheckAllTodos(
+  public static func uncheckAllTodos(
     in todoList: TodoList,
     using context: NSManagedObjectContext
   ) {
@@ -72,7 +72,7 @@ extension TodoList {
     }
   }
   
-  static func deleteAllTodos(
+  public static func deleteAllTodos(
     in todoList: TodoList,
     using context: NSManagedObjectContext
   ) {
@@ -89,7 +89,7 @@ extension TodoList {
     resetCompletedTodosCount(in: todoList, using: context)
   }
   
-  static func resetCompletedTodosCount(in todoList: TodoList, using context: NSManagedObjectContext) {
+  public static func resetCompletedTodosCount(in todoList: TodoList, using context: NSManagedObjectContext) {
     todoList.completedTodosCount = .zero
     todoList.save(using: context)
   }

@@ -7,6 +7,7 @@
 
 import CoreData
 import SwiftUI
+import WorkWorkKit
 
 final class TodoListViewModel: BaseViewModel<TodoList> {
   // NOTE: Can add other published properties here and change body of createEntity to include them

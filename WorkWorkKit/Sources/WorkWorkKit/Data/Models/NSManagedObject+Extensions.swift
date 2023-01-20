@@ -8,15 +8,15 @@
 import CoreData
 
 extension NSManagedObject {
-  func save(using context: NSManagedObjectContext) {
+  public func save(using context: NSManagedObjectContext) {
     CoreDataProvider.save(using: context)
   }
   
-  func delete(using context: NSManagedObjectContext) {
+  public func delete(using context: NSManagedObjectContext) {
     CoreDataProvider.delete(object: self, using: context)
   }
   
-  static func getBy<T: NSManagedObject>(id: String, using context: NSManagedObjectContext) -> T? {
+  public static func getBy<T: NSManagedObject>(id: String, using context: NSManagedObjectContext) -> T? {
     let request: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
     request.fetchLimit = 1
     
@@ -28,7 +28,7 @@ extension NSManagedObject {
     }
   }
   
-  static func all<T: NSManagedObject>(using context: NSManagedObjectContext) -> [T] {
+  public static func all<T: NSManagedObject>(using context: NSManagedObjectContext) -> [T] {
     let request: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
     
     do {

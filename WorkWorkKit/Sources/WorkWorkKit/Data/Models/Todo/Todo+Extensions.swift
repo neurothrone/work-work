@@ -9,14 +9,14 @@ import CoreData
 
 extension Todo {
   //MARK: - Requests
-  static func all(in list: TodoList) -> NSFetchRequest<Todo> {
+  public static func all(in list: TodoList) -> NSFetchRequest<Todo> {
     MoveableEntity.allByOrder(
       predicate: NSPredicate(format: "%K == %@", "list.id", list.id as CVarArg)
     )
   }
   
   //MARK: - Data
-  static func create(
+  public static func create(
     with title: String,
     in list: TodoList,
     using context: NSManagedObjectContext
@@ -29,7 +29,7 @@ extension Todo {
     todo.save(using: context)
   }
   
-  static func toggleIsDone(for todo: Todo, using context: NSManagedObjectContext) {
+  public static func toggleIsDone(for todo: Todo, using context: NSManagedObjectContext) {
     todo.isDone.toggle()
     todo.list.completedTodosCount += todo.isDone ? 1 : -1
     todo.save(using: context)

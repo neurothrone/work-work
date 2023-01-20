@@ -7,6 +7,7 @@
 
 import CoreData
 import SwiftUI
+import WorkWorkKit
 
 final class AppState: ObservableObject {
   //MARK: - Properties
@@ -79,7 +80,7 @@ final class AppState: ObservableObject {
       )
   }
   
-  func deleteAllData(using context: NSManagedObjectContext) {
+  public func deleteAllData(using context: NSManagedObjectContext) {
     TodoList.deleteAll(using: context)
   }
 }

@@ -31,6 +31,7 @@ extension Todo {
   
   static func toggleIsDone(for todo: Todo, using context: NSManagedObjectContext) {
     todo.isDone.toggle()
+    todo.list.completedTodosCount += todo.isDone ? 1 : -1
     todo.save(using: context)
   }
 }

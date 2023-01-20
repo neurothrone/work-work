@@ -65,8 +65,8 @@ extension TodoList {
       for todo in todos {
         todo.isDone = false
       }
-      
-      CoreDataProvider.save(using: context)
+            
+      resetCompletedTodosCount(in: todoList, using: context)
     } catch {
       print("❌ -> Failed to fetch Todos. Error: \(error.localizedDescription)")
     }
@@ -85,5 +85,12 @@ extension TodoList {
 
     let changes: [AnyHashable: Any] = [NSDeletedObjectsKey: result.result as! [NSManagedObjectID]]
     NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
+    
+    resetCompletedTodosCount(in: todoList, using: context)
+  }
+  
+  static func resetCompletedTodosCount(in todoList: TodoList, using context: NSManagedObjectContext) {
+    todoList.completedTodosCount = .zero
+    todoList.save(using: context)
   }
 }

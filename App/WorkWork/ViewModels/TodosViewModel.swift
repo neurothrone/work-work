@@ -23,6 +23,14 @@ final class TodosViewModel: BaseViewModel<Todo> {
     Todo.create(with: title, in: todoList, using: context)
   }
   
+  override func delete(_ entity: Todo, using context: NSManagedObjectContext) {
+    if entity.isDone {
+      todoList.completedTodosCount -= 1
+    }
+    
+    super.delete(entity, using: context)
+  }
+  
   func uncheckTodos(using context: NSManagedObjectContext) {
     TodoList.uncheckAllTodos(in: todoList, using: context)
   }

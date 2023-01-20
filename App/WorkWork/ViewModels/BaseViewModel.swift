@@ -7,6 +7,7 @@
 
 import CoreData
 import SwiftUI
+import WorkWorkKit
 
 protocol CanCreateEntity {
   func createEntity(using context: NSManagedObjectContext)

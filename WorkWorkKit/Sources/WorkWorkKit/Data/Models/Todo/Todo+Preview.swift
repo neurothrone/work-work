@@ -8,8 +8,8 @@
 import CoreData
 
 extension Todo {
-  enum Preview {
-    static func generateSample(using context: NSManagedObjectContext) -> Todo {
+  public enum Preview {
+    public static func generateSample(using context: NSManagedObjectContext) -> Todo {
       let todo = Todo(context: context)
       todo.title = "Preview Todo"
       todo.save(using: context)

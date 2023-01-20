@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CustomError: Swift.Error, CustomLocalizedStringResourceConvertible {
+public enum CustomError: Swift.Error, CustomLocalizedStringResourceConvertible {
   case notFound(entityName: String),
        coreDataSave,
        unknownId(entityName: String, id: String),
@@ -15,7 +15,7 @@ enum CustomError: Swift.Error, CustomLocalizedStringResourceConvertible {
        deletionFailed(entityName: String),
        addFailed(entityName: String)
   
-  var localizedStringResource: LocalizedStringResource {
+  public var localizedStringResource: LocalizedStringResource {
     switch self {
     case .addFailed(let entityName): return "❌ -> An error occurred trying to add \(entityName)"
     case .deletionFailed(let entityName): return "❌ -> An error occurred trying to delete \(entityName)"

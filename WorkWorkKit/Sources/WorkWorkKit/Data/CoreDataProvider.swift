@@ -7,10 +7,10 @@
 
 import CoreData
 
-final class CoreDataProvider {
-  static let shared: CoreDataProvider = .init()
+public final class CoreDataProvider {
+  public static let shared: CoreDataProvider = .init()
 
-  static var preview: CoreDataProvider = {
+  public static var preview: CoreDataProvider = {
     let provider = CoreDataProvider(inMemory: true)
     let context = provider.viewContext
 
@@ -22,12 +22,22 @@ final class CoreDataProvider {
   private let inMemory: Bool
 
   private lazy var container: NSPersistentCloudKitContainer = {
-    let container = NSPersistentCloudKitContainer(name: MyApp.CKConfig.containerName)
+    let dataModelFileName = CKConfig.containerName
+    
+    // NOTE: Bundle.module and not Bundle.main
+    // NOTE: Extension must be "momd"
+    guard let modelURL = Bundle.module.url(
+      forResource: dataModelFileName,
+      withExtension: "momd"),
+          let model = NSManagedObjectModel(contentsOf: modelURL)
+    else { fatalError("Failed to find Data Model by the name \(dataModelFileName)") }
+    
+    container = NSPersistentCloudKitContainer(name: dataModelFileName, managedObjectModel: model)
 
 #if !os(macOS)
     let storeURL = URL.storeURL(
-      for: MyApp.CKConfig.sharedAppGroup,
-      databaseName: MyApp.CKConfig.containerName
+      for: CKConfig.sharedAppGroup,
+      databaseName: CKConfig.containerName
     )
 
     if inMemory {
@@ -44,7 +54,7 @@ final class CoreDataProvider {
       )
 
       storeDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
-        containerIdentifier: MyApp.CKConfig.cloudContainerID)
+        containerIdentifier: CKConfig.cloudContainerID)
       container.persistentStoreDescriptions = [storeDescription]
     }
 #else
@@ -66,7 +76,7 @@ final class CoreDataProvider {
     return container
   }()
 
-  var viewContext: NSManagedObjectContext { container.viewContext }
+  public var viewContext: NSManagedObjectContext { container.viewContext }
 
   init(inMemory: Bool = false) {
     self.inMemory = inMemory

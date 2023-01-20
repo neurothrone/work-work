@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WorkWorkKit
 
 struct IconPickerView: View {
   @Binding var selectedIcon: Icon

@@ -28,12 +28,6 @@ enum MyApp {
     static let svgRepo = "https://www.svgrepo.com/"
   }
   
-  enum CKConfig {
-    static let containerName = "Entities"
-    static let sharedAppGroup = "group.workWork"
-    static let cloudContainerID = "iCloud.workWork"
-  }
-  
   enum SystemImage {
     static let settings = "gear"
     static let heartFill = "heart.fill"

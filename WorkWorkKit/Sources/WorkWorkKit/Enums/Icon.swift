@@ -5,7 +5,7 @@
 //  Created by Zaid Neurothrone on 2023-01-09.
 //
 
-enum Icon: String {
+public enum Icon: String {
   case folder,
        folderFill = "folder.fill",
        folderCircle = "folder.circle",
@@ -41,9 +41,9 @@ enum Icon: String {
        figureWalkCircleFill = "figure.walk.circle.fill",
        figureWalkMotion = "figure.walk.motion"
   
-  static let `default`: Icon = .folder
+  public static let `default`: Icon = .folder
 }
 
 extension Icon: Identifiable, CaseIterable {
-  var id: Self { self }
+  public var id: Self { self }
 }

@@ -47,7 +47,7 @@ enum PrimaryButtonHandedness: String {
 extension PrimaryButtonHandedness: Identifiable, CaseIterable {
   var id: Self { self}
   
-  static var `default`: PrimaryButtonHandedness { .right }
+  static let `default`: PrimaryButtonHandedness = .right
 }
 
 //MARK: - CustomColor

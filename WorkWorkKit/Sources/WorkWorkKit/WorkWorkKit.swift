@@ -5,3 +5,9 @@ public struct WorkWorkKit {
   public init() {
   }
 }
+
+public enum CKConfig {
+  static let containerName = "Entities"
+  static let sharedAppGroup = "group.workWork"
+  static let cloudContainerID = "iCloud.workWork"
+}

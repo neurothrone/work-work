@@ -8,7 +8,7 @@
 import CoreData
 
 extension CoreDataProvider {
-  static func save(using context: NSManagedObjectContext) {
+  public static func save(using context: NSManagedObjectContext) {
     guard context.hasChanges else { return }
     
     do {
@@ -22,7 +22,7 @@ extension CoreDataProvider {
     }
   }
   
-  static func delete<T: NSManagedObject>(
+  public static func delete<T: NSManagedObject>(
     object: T,
     using context: NSManagedObjectContext
   ) {

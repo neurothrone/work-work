@@ -19,7 +19,8 @@ public class TodoList: MoveableEntity {
   @NSManaged public var completedTodosCount: Int16
   @NSManaged public var todos: [Todo]
   
-  @objc var todosCount: Int {
+  @objc
+  public var todosCount: Int {
     willAccessValue(forKey: "todos")
     let count = todos.count
     didAccessValue(forKey: "todos")

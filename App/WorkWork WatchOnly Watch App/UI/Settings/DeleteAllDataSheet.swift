@@ -1,14 +1,15 @@
 //
 //  DeleteAllDataSheet.swift
-//  WorkWork
+//  WorkWork WatchOnly Watch App
 //
-//  Created by Zaid Neurothrone on 2023-01-03.
+//  Created by Zaid Neurothrone on 2023-01-20.
 //
 
 import SwiftUI
 
 struct DeleteAllDataSheet: View {
   @Environment(\.dismiss) private var dismiss
+  @EnvironmentObject var appState: AppState
   
   @State private var sliderValue: Double = .zero
   @State private var isConfirmingDeletion = false
@@ -22,17 +23,18 @@ struct DeleteAllDataSheet: View {
   
   var body: some View {
     NavigationStack {
-      content
-        .navigationTitle("Delete All Data")
-        .toolbar {
-          ToolbarItem(placement: .navigationBarLeading) {
-            Button(role: .cancel, action: { dismiss() }) {
-              Image(systemName: MyApp.SystemImage.xmarkCircle)
-                .font(.title3)
-                .tint(.gray)
-            }
+      ScrollView {
+        content
+      }
+      .navigationTitle("Delete All Data")
+      .toolbar {
+        ToolbarItem(placement: .confirmationAction) {
+          Button(role: .cancel, action: { dismiss() }) {
+            Text("Cancel")
+              .foregroundColor(.secondary)
           }
         }
+      }
     }
   }
   
@@ -40,13 +42,14 @@ struct DeleteAllDataSheet: View {
     VStack(alignment: .leading, spacing: 10) {
       Text("Are you sure? This will delete all of your data on all your local devices and remotely in iCloud.")
       
-      HStack {
+      VStack(spacing: 4) {
         Image(systemName: MyApp.SystemImage.exclamationmarkCircle)
-          .bold()
+          .resizable()
+          .frame(width: 44, height: 44)
+          .aspectRatio(contentMode: .fit)
           .foregroundColor(.red)
-          .imageScale(.large)
         
-        Text("You must drag the slider to the end to confirm.")
+        Text("You must tap on the slider below and use the digital crown to move the circle to the end to confirm.")
           .font(.callout)
       }
       .padding(10)
@@ -56,10 +59,22 @@ struct DeleteAllDataSheet: View {
       )
       .frame(maxWidth: .infinity, alignment: .center)
       
-      Slider(value: $sliderValue, in: .zero...maxValue, step: 1)
-        .animation(.linear, value: sliderValue)
-        .padding(.vertical)
-        .tint(.red)
+      Gauge(value: sliderValue, in: .zero...maxValue) {
+        Text("Deletion Enabled Progress")
+      }
+      .tint(.red)
+      .gaugeStyle(.accessoryLinear)
+      .labelsHidden()
+      .focusable()
+      .digitalCrownRotation(
+        $sliderValue,
+        from: .zero,
+        through: maxValue,
+        sensitivity: .high,
+        isContinuous: false,
+        isHapticFeedbackEnabled: true
+      )
+      .padding(.vertical)
       
       if !isDeleteButtonDisabled {
         Button(role: .destructive, action: deleteAllData) {
@@ -76,7 +91,7 @@ struct DeleteAllDataSheet: View {
       
       Spacer()
     }
-    .padding()
+    .padding(.horizontal, 5)
     .animation(.easeInOut, value: isDeleteButtonDisabled)
   }
 }
@@ -91,5 +106,6 @@ extension DeleteAllDataSheet {
 struct DeleteAllDataSheet_Previews: PreviewProvider {
   static var previews: some View {
     DeleteAllDataSheet(onConfirmDelete: {})
+      .environmentObject(AppState())
   }
 }

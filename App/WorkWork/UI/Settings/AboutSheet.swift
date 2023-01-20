@@ -8,9 +8,32 @@
 import SwiftUI
 
 struct AboutSheet: View {
+#if os(watchOS)
+  @Environment(\.dismiss) var dismiss
+#endif
+  
   @EnvironmentObject var appState: AppState
   
   var body: some View {
+#if os(iOS)
+    content
+#elseif os(watchOS)
+    ScrollView {
+      content
+    }
+    .navigationTitle("About")
+    .toolbar {
+      ToolbarItem(placement: .confirmationAction) {
+        Button(role: .cancel, action: { dismiss() }) {
+          Text("Cancel")
+            .foregroundColor(.secondary)
+        }
+      }
+    }
+#endif
+  }
+  
+  private var content: some View {
     VStack(spacing: 4) {
       HStack(spacing: .zero) {
         Text("Made with ")

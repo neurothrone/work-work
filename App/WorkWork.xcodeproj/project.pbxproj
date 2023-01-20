@@ -59,9 +59,9 @@
 		2F913294296B898100F88754 /* TodoProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F913293296B898100F88754 /* TodoProgressView.swift */; };
 		2FB95C03297B27F40034E82D /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF4FE29677CE6009342E0 /* CustomLinkView.swift */; };
 		2FB95C04297B289B0034E82D /* AboutSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCB296418C000AA554B /* AboutSheet.swift */; };
-		2FB95C05297B289B0034E82D /* DeleteAllDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F7BCD296418C900AA554B /* DeleteAllDataSheet.swift */; };
 		2FB95C07297B29300034E82D /* WKApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C06297B29300034E82D /* WKApplication+Extensions.swift */; };
 		2FB95C09297B2C5A0034E82D /* CustomLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C08297B2C5A0034E82D /* CustomLabelView.swift */; };
+		2FB95C0B297B394E0034E82D /* DeleteAllDataSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C0A297B394E0034E82D /* DeleteAllDataSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +136,7 @@
 		2F913293296B898100F88754 /* TodoProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoProgressView.swift; sourceTree = "<group>"; };
 		2FB95C06297B29300034E82D /* WKApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKApplication+Extensions.swift"; sourceTree = "<group>"; };
 		2FB95C08297B2C5A0034E82D /* CustomLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelView.swift; sourceTree = "<group>"; };
+		2FB95C0A297B394E0034E82D /* DeleteAllDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataSheet.swift; sourceTree = "<group>"; };
 		2FE9578C296425BD008C5636 /* WorkWorkKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WorkWorkKit; path = ../WorkWorkKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -270,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				2F3CDAAE297B0F10006B0855 /* SettingsScreen.swift */,
+				2FB95C0A297B394E0034E82D /* DeleteAllDataSheet.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -548,10 +550,10 @@
 				2F3CDAAD297B0DA7006B0855 /* Collection+Extensions.swift in Sources */,
 				2F3CDAA9297B0CEB006B0855 /* BaseViewModel.swift in Sources */,
 				2F3CDAA6297B0C85006B0855 /* TodoListScreen.swift in Sources */,
+				2FB95C0B297B394E0034E82D /* DeleteAllDataSheet.swift in Sources */,
 				2F3CDA82297AE680006B0855 /* AppMain.swift in Sources */,
 				2F3CDA9B297B0AE2006B0855 /* Enums.swift in Sources */,
 				2FB95C04297B289B0034E82D /* AboutSheet.swift in Sources */,
-				2FB95C05297B289B0034E82D /* DeleteAllDataSheet.swift in Sources */,
 				2FB95C09297B2C5A0034E82D /* CustomLabelView.swift in Sources */,
 				2F3CDA9D297B0BB7006B0855 /* AllTodoListsScreen.swift in Sources */,
 			);

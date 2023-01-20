@@ -25,13 +25,11 @@ struct SettingsScreen: View {
       }
       .sheet(isPresented: $isAboutSheetPresented) {
         AboutSheet()
-          .presentationDetents([.fraction(0.25), .medium, .large])
       }
       .sheet(isPresented: $isDeleteDataSheetPresented) {
         DeleteAllDataSheet {
           appState.deleteAllData(using: moc)
         }
-        .presentationDetents([.fraction(0.5), .medium, .large])
       }
       .toolbar {
         ToolbarItem(placement: .confirmationAction) {

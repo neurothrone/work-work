@@ -14,6 +14,11 @@
 		2F124C002962A6BE00E84795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F124BFF2962A6BE00E84795 /* Assets.xcassets */; };
 		2F124C032962A6BE00E84795 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F124C022962A6BE00E84795 /* Preview Assets.xcassets */; };
 		2F352157296425FC0092B587 /* WorkWorkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F352156296425FC0092B587 /* WorkWorkKit */; };
+		2F3CDA7D297AE680006B0855 /* WorkWork WatchOnly Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2F3CDA7C297AE680006B0855 /* WorkWork WatchOnly Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2F3CDA82297AE680006B0855 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CDA81297AE680006B0855 /* AppMain.swift */; };
+		2F3CDA84297AE680006B0855 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CDA83297AE680006B0855 /* ContentView.swift */; };
+		2F3CDA86297AE681006B0855 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CDA85297AE681006B0855 /* Assets.xcassets */; };
+		2F3CDA89297AE681006B0855 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CDA88297AE681006B0855 /* Preview Assets.xcassets */; };
 		2F4F672A296C7F4800D98E70 /* AddOrEditTodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4F6729296C7F4800D98E70 /* AddOrEditTodoListViewModel.swift */; };
 		2F687502296841DA005B43EA /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F687501296841DA005B43EA /* Color+Extensions.swift */; };
 		2F7241C32966C30100E85C81 /* TodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241C22966C30100E85C81 /* TodosViewModel.swift */; };
@@ -38,6 +43,30 @@
 		2F913294296B898100F88754 /* TodoProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F913293296B898100F88754 /* TodoProgressView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2F3CDA7E297AE680006B0855 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F124BF02962A6BD00E84795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F3CDA7B297AE680006B0855;
+			remoteInfo = "WorkWork WatchOnly Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2F3CDA8D297AE681006B0855 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				2F3CDA7D297AE680006B0855 /* WorkWork WatchOnly Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2F0EF4FC29676F11009342E0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2F0EF4FE29677CE6009342E0 /* CustomLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkView.swift; sourceTree = "<group>"; };
@@ -46,6 +75,12 @@
 		2F124BFD2962A6BD00E84795 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F124BFF2962A6BE00E84795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F124C022962A6BE00E84795 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F3CDA77297AE680006B0855 /* WorkWork WatchOnly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WorkWork WatchOnly.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3CDA7C297AE680006B0855 /* WorkWork WatchOnly Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WorkWork WatchOnly Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3CDA81297AE680006B0855 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
+		2F3CDA83297AE680006B0855 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2F3CDA85297AE681006B0855 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F3CDA88297AE681006B0855 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F4F6729296C7F4800D98E70 /* AddOrEditTodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditTodoListViewModel.swift; sourceTree = "<group>"; };
 		2F687501296841DA005B43EA /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		2F7241C22966C30100E85C81 /* TodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewModel.swift; sourceTree = "<group>"; };
@@ -82,6 +117,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F3CDA79297AE680006B0855 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,6 +132,7 @@
 			children = (
 				2FE9578C296425BD008C5636 /* WorkWorkKit */,
 				2F124BFA2962A6BD00E84795 /* WorkWork */,
+				2F3CDA80297AE680006B0855 /* WorkWork WatchOnly Watch App */,
 				2F124BF92962A6BD00E84795 /* Products */,
 				2F352155296425FC0092B587 /* Frameworks */,
 			);
@@ -99,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				2F124BF82962A6BD00E84795 /* WorkWork.app */,
+				2F3CDA77297AE680006B0855 /* WorkWork WatchOnly.app */,
+				2F3CDA7C297AE680006B0855 /* WorkWork WatchOnly Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +180,25 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F3CDA80297AE680006B0855 /* WorkWork WatchOnly Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				2F3CDA81297AE680006B0855 /* AppMain.swift */,
+				2F3CDA83297AE680006B0855 /* ContentView.swift */,
+				2F3CDA85297AE681006B0855 /* Assets.xcassets */,
+				2F3CDA87297AE681006B0855 /* Preview Content */,
+			);
+			path = "WorkWork WatchOnly Watch App";
+			sourceTree = "<group>";
+		};
+		2F3CDA87297AE681006B0855 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2F3CDA88297AE681006B0855 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		2F7241CE29673E2700E85C81 /* ViewModels */ = {
@@ -242,6 +306,40 @@
 			productReference = 2F124BF82962A6BD00E84795 /* WorkWork.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2F3CDA76297AE680006B0855 /* WorkWork WatchOnly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F3CDA8E297AE681006B0855 /* Build configuration list for PBXNativeTarget "WorkWork WatchOnly" */;
+			buildPhases = (
+				2F3CDA75297AE680006B0855 /* Resources */,
+				2F3CDA8D297AE681006B0855 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F3CDA7F297AE680006B0855 /* PBXTargetDependency */,
+			);
+			name = "WorkWork WatchOnly";
+			productName = "WorkWork WatchOnly";
+			productReference = 2F3CDA77297AE680006B0855 /* WorkWork WatchOnly.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		2F3CDA7B297AE680006B0855 /* WorkWork WatchOnly Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F3CDA8A297AE681006B0855 /* Build configuration list for PBXNativeTarget "WorkWork WatchOnly Watch App" */;
+			buildPhases = (
+				2F3CDA78297AE680006B0855 /* Sources */,
+				2F3CDA79297AE680006B0855 /* Frameworks */,
+				2F3CDA7A297AE680006B0855 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WorkWork WatchOnly Watch App";
+			productName = "WorkWork WatchOnly Watch App";
+			productReference = 2F3CDA7C297AE680006B0855 /* WorkWork WatchOnly Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -253,6 +351,12 @@
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					2F124BF72962A6BD00E84795 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					2F3CDA76297AE680006B0855 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					2F3CDA7B297AE680006B0855 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -271,6 +375,8 @@
 			projectRoot = "";
 			targets = (
 				2F124BF72962A6BD00E84795 /* WorkWork */,
+				2F3CDA76297AE680006B0855 /* WorkWork WatchOnly */,
+				2F3CDA7B297AE680006B0855 /* WorkWork WatchOnly Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -282,6 +388,22 @@
 			files = (
 				2F124C032962A6BE00E84795 /* Preview Assets.xcassets in Resources */,
 				2F124C002962A6BE00E84795 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3CDA75297AE680006B0855 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3CDA7A297AE680006B0855 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3CDA89297AE681006B0855 /* Preview Assets.xcassets in Resources */,
+				2F3CDA86297AE681006B0855 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +443,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F3CDA78297AE680006B0855 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3CDA84297AE680006B0855 /* ContentView.swift in Sources */,
+				2F3CDA82297AE680006B0855 /* AppMain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2F3CDA7F297AE680006B0855 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F3CDA7B297AE680006B0855 /* WorkWork WatchOnly Watch App */;
+			targetProxy = 2F3CDA7E297AE680006B0855 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2F124C042962A6BE00E84795 /* Debug */ = {
@@ -502,6 +641,96 @@
 			};
 			name = Release;
 		};
+		2F3CDA8B297AE681006B0855 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WorkWork WatchOnly Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 4BP826FJGX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "WorkWork WatchOnly";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.neurothrone.WorkWork-WatchOnly.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		2F3CDA8C297AE681006B0855 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WorkWork WatchOnly Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 4BP826FJGX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "WorkWork WatchOnly";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.neurothrone.WorkWork-WatchOnly.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		2F3CDA8F297AE681006B0855 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BP826FJGX;
+				INFOPLIST_KEY_CFBundleDisplayName = "WorkWork WatchOnly";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.neurothrone.WorkWork-WatchOnly";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2F3CDA90297AE681006B0855 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BP826FJGX;
+				INFOPLIST_KEY_CFBundleDisplayName = "WorkWork WatchOnly";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.neurothrone.WorkWork-WatchOnly";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -519,6 +748,24 @@
 			buildConfigurations = (
 				2F124C072962A6BE00E84795 /* Debug */,
 				2F124C082962A6BE00E84795 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F3CDA8A297AE681006B0855 /* Build configuration list for PBXNativeTarget "WorkWork WatchOnly Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3CDA8B297AE681006B0855 /* Debug */,
+				2F3CDA8C297AE681006B0855 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F3CDA8E297AE681006B0855 /* Build configuration list for PBXNativeTarget "WorkWork WatchOnly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3CDA8F297AE681006B0855 /* Debug */,
+				2F3CDA90297AE681006B0855 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

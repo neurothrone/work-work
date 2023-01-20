@@ -144,22 +144,12 @@ struct AllTodoListsScreen: View {
       if viewModel.actionMode != nil {
         CustomTextFieldView(
           text: $viewModel.title,
-          placeholder: "Folder Title",
-          onSubmit: {
-            guard viewModel.title.isNotEmpty else { return }
-            
-            viewModel.addOrUpdate(using: moc)
-            
-            if viewModel.actionMode == .add {
-              isTextFieldFocused = true
-            }
-          }
+          placeholder: "Folder Title"
         )
         .focused($isTextFieldFocused)
         .listRowSeparator(.hidden)
         .padding(.bottom)
       }
-      
       
       if todoLists.isEmpty {
         Text("No list yet.")

@@ -11,7 +11,6 @@ struct CustomTextFieldView: View {
   @Binding var text: String
   
   let placeholder: String
-  let onSubmit: () -> Void
   
   var body: some View {
     TextField(placeholder, text: $text)
@@ -19,7 +18,6 @@ struct CustomTextFieldView: View {
       .textInputAutocapitalization(.sentences)
       .textFieldStyle(.roundedBorder)
       .submitLabel(.done)
-      .onSubmit(onSubmit)
       .listRowSeparator(.hidden)
       .padding(.bottom)
   }
@@ -27,6 +25,9 @@ struct CustomTextFieldView: View {
 
 struct CustomTextFieldView_Previews: PreviewProvider {
   static var previews: some View {
-    CustomTextFieldView(text: .constant(""), placeholder: "Todo Title", onSubmit: {})
+    CustomTextFieldView(
+      text: .constant(""),
+      placeholder: "Todo Title"
+    )
   }
 }

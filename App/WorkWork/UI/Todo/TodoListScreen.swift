@@ -174,16 +174,7 @@ struct TodoListScreen: View {
       if viewModel.actionMode != nil {
         CustomTextFieldView(
           text: $viewModel.title,
-          placeholder: "Todo title",
-          onSubmit: {
-            guard viewModel.title.isNotEmpty else { return }
-            
-            viewModel.addOrUpdate(using: moc)
-            
-            if viewModel.actionMode == .add {
-              isTextFieldFocused = true
-            }
-          }
+          placeholder: "Todo title"
         )
         .focused($isTextFieldFocused)
         .padding(.bottom)

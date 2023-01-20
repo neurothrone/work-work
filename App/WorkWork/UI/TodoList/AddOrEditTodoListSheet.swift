@@ -44,11 +44,11 @@ struct AddOrEditTodoListSheet: View {
       .navigationTitle("\(viewModel.actionText) Folder")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
+        //MARK: Navigation Bar
         ToolbarItem(placement: .navigationBarLeading) {
           Button("Cancel", role: .cancel, action: { dismiss() })
         }
         
-        //MARK: Navigation Bar
         ToolbarItem(placement: .navigationBarTrailing) {
           Button(viewModel.actionText, action: addOrUpdate)
             .disabled(!isValid)
@@ -80,8 +80,7 @@ struct AddOrEditTodoListSheet: View {
     Form {
       CustomTextFieldView(
         text: $viewModel.title,
-        placeholder: "Folder title",
-        onSubmit: { /* hideKeyboard() */ }
+        placeholder: "Folder title"
       )
       .listRowInsets(EdgeInsets(
         top: 15,

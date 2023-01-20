@@ -65,7 +65,12 @@ struct AllTodoListsScreen: View {
           }
         }
         .sheet(item: $sheet) { sheet in
-          // TODO: add & edit sheets
+          switch sheet {
+          case .add:
+            AddOrEditTodoListSheet()
+          case .edit(let todoList):
+            AddOrEditTodoListSheet(todoListToUpdate: todoList)
+          }
         }
         .toolbar {
           ToolbarItemGroup(placement: .confirmationAction) {
@@ -87,9 +92,8 @@ struct AllTodoListsScreen: View {
   
   private var list: some View {
     List {
-      NavigationLink {
-        // TODO: Add Folder Sheet
-        Text("Add Folder")
+      Button {
+        sheet = .add
       } label: {
         CustomLabelView(
           text: "Add Folder",
@@ -112,7 +116,7 @@ struct AllTodoListsScreen: View {
                   moc.perform { viewModel.delete(todoList, using: moc) }
                 },
                 onEdit: {
-                  viewModel.changeToEditingOf(todoList)
+                  sheet = .edit(todoList: todoList)
                 })
             }
           }
@@ -136,11 +140,9 @@ struct AllTodoListsScreen: View {
 
 struct AllTodoListsScreen_Previews: PreviewProvider {
   static var previews: some View {
-    NavigationStack {
-      AllTodoListsScreen()
-    }
-    .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
-    .environmentObject(AppState())
-    .preferredColorScheme(.dark)
+    AllTodoListsScreen()
+      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+      .environmentObject(AppState())
+      .preferredColorScheme(.dark)
   }
 }

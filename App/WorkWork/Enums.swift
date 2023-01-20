@@ -85,4 +85,6 @@ extension CustomColor: Identifiable, CaseIterable {
       return Color.mint
     }
   }
+  
+  public static let `default`: CustomColor = .purple
 }

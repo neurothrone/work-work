@@ -30,6 +30,8 @@ enum MyApp {
   
   enum SystemImage {
     static let settings = "gear"
+    static let infoCircle = "info.circle"
+    static let ellipsisCircle = "ellipsis.circle"
     static let heartFill = "heart.fill"
     static let copyright = "c.circle"
     static let showAddListTextField = "folder.badge.plus"

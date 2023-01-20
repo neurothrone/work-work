@@ -33,7 +33,10 @@ struct TodoListRowView: View {
   
   private var content: some View {
     HStack {
-      Image(systemName: todoList.systemImage)
+      Image(systemName: !todoList.isFault
+            ? todoList.systemImage
+            : Icon.default.rawValue
+      )
         .foregroundColor(appState.selectedColor.color)
       
       Text(todoList.title)

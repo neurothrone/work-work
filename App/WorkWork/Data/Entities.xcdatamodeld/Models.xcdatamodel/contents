@@ -11,6 +11,7 @@
         <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TodoList" inverseName="todos" inverseEntity="TodoList"/>
     </entity>
     <entity name="TodoList" representedClassName="TodoList" parentEntity="MoveableEntity" syncable="YES">
+        <attribute name="completedTodosCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="systemImage" attributeType="String" defaultValueString=""/>
         <attribute name="todosCount" transient="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="todos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Todo" inverseName="list" inverseEntity="Todo"/>

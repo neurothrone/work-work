@@ -16,6 +16,7 @@ public class TodoList: MoveableEntity {
   }
 
   @NSManaged public var systemImage: String
+  @NSManaged public var completedTodosCount: Int16
   @NSManaged public var todos: [Todo]
   
   @objc var todosCount: Int {

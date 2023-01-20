@@ -22,17 +22,28 @@ struct DeleteAllDataSheet: View {
   
   var body: some View {
     NavigationStack {
-      content
-        .navigationTitle("Delete all data")
-        .toolbar {
-          ToolbarItem(placement: .navigationBarLeading) {
-            Button(role: .cancel, action: { dismiss() }) {
-              Image(systemName: "xmark.circle")
-                .font(.title3)
-                .tint(.gray)
-            }
+      Group {
+#if os(iOS)
+        content
+        
+#elseif os(watchOS)
+        ScrollView {
+          content
+        }
+#endif
+      }
+      .navigationTitle("Delete all data")
+#if os(iOS)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button(role: .cancel, action: { dismiss() }) {
+            Image(systemName: "xmark.circle")
+              .font(.title3)
+              .tint(.gray)
           }
         }
+      }
+#endif
     }
   }
   

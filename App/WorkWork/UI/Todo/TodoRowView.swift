@@ -70,6 +70,7 @@ struct TodoRowView: View {
       }
       
       Text(todo.title)
+        .lineLimit(appState.todoRowVerticalPadding == .zero ? 1 : 2)
     }
   }
 }

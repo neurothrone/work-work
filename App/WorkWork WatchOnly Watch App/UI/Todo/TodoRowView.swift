@@ -47,8 +47,11 @@ struct TodoRowView: View {
   private var content: some View {
     if appState.todoCompletionStyle == .swipeOnly && todo.isDone {
       row
-        .listRowBackground(appState.selectedColor.color.opacity(0.4))
         .animation(.spring(), value: todo.isDone)
+        .listRowBackground(
+          RoundedRectangle(cornerRadius: 10)
+            .fill(appState.selectedColor.color.opacity(0.4))
+        )
     } else {
       row
     }
@@ -66,7 +69,6 @@ struct TodoRowView: View {
           .imageScale(.large)
         }
         .buttonStyle(.plain)
-        
       }
       
       Text(todo.title)

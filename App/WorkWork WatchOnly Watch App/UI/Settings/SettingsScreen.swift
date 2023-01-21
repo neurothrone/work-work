@@ -47,17 +47,6 @@ struct SettingsScreen: View {
   
   private var content: some View {
     Form {
-      //MARK: - Todos Progress Bar
-      Section {
-        Toggle(
-          "Show",
-          isOn: $appState.showTodosProgressBar
-        )
-        .tint(appState.selectedColor.color)
-      } header: {
-        Text("Todos Progress Bar")
-      }
-      
       //MARK: - App Color Style
       Section {
         HStack {
@@ -88,6 +77,17 @@ struct SettingsScreen: View {
         }
       } header: {
         Text("App Color Style")
+      }
+      
+      //MARK: - Todos Progress Bar
+      Section {
+        Toggle(
+          "Show",
+          isOn: $appState.showTodosProgressBar
+        )
+        .tint(appState.selectedColor.color)
+      } header: {
+        Text("Todos Progress Bar")
       }
       
       //MARK: - Todo Completion Style

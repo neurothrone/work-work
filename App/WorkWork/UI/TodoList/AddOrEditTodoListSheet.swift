@@ -48,6 +48,8 @@ struct AddOrEditTodoListSheet: View {
         //MARK: Navigation Bar
         ToolbarItem(placement: .navigationBarLeading) {
           Button("Cancel", role: .cancel, action: { dismiss() })
+            .buttonStyle(.plain)
+            .foregroundColor(.secondary)
         }
         
         ToolbarItem(placement: .navigationBarTrailing) {

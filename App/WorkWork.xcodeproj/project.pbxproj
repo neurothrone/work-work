@@ -227,9 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				2F3CDA81297AE680006B0855 /* AppMain.swift */,
-				2FB95C06297B29300034E82D /* WKApplication+Extensions.swift */,
 				2F3CDAB1297B1EE8006B0855 /* Watch App Info.plist */,
 				2F3CDAB0297B1EE3006B0855 /* Watch App.entitlements */,
+				2FB95C18297C06FC0034E82D /* Extensions */,
 				2F3CDA9E297B0C47006B0855 /* UI */,
 				2F3CDA85297AE681006B0855 /* Assets.xcassets */,
 				2F3CDA87297AE681006B0855 /* Preview Content */,
@@ -376,6 +376,14 @@
 				2F91328F296B73ED00F88754 /* StatefulPreviewWrapper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2FB95C18297C06FC0034E82D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2FB95C06297B29300034E82D /* WKApplication+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

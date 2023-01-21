@@ -8,15 +8,26 @@
 import SwiftUI
 
 struct AboutSheet: View {
-#if os(watchOS)
   @Environment(\.dismiss) var dismiss
-#endif
   
   @EnvironmentObject var appState: AppState
   
   var body: some View {
 #if os(iOS)
-    content
+    NavigationStack {
+      content
+        .navigationTitle("About")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button(role: .cancel, action: { dismiss() }) {
+              Image(systemName: MyApp.SystemImage.xmarkCircle)
+                .font(.title3)
+                .tint(.gray)
+            }
+          }
+        }
+    }
 #elseif os(watchOS)
     ScrollView {
       content

@@ -24,6 +24,7 @@ struct DeleteAllDataSheet: View {
     NavigationStack {
       content
         .navigationTitle("Delete All Data")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem(placement: .navigationBarLeading) {
             Button(role: .cancel, action: { dismiss() }) {

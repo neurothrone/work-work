@@ -48,6 +48,7 @@ enum MyApp {
     static let todoIsNotDone = "x.circle"
     static let circle = "circle"
     static let circleFill = "circle.fill"
+    static let circleSlash = "circle.slash"
     
     static let editActionMode = "pencil.circle"
     static let noActionMode = "square.slash"

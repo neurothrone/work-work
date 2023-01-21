@@ -41,8 +41,7 @@ struct TodoListRowView: View {
       .foregroundColor(appState.selectedColor.color)
       
       Text(todoList.title)
-      // TODO: Test with this later
-        .lineLimit(appState.todoRowVerticalPadding == .zero ? 1 : 2)
+        .lineLimit(1)
       
       if todoList.todos.isNotEmpty {
         Spacer()

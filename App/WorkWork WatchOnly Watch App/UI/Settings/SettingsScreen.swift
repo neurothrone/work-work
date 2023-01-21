@@ -47,17 +47,6 @@ struct SettingsScreen: View {
   
   private var content: some View {
     Form {
-      //MARK: - App Color Theme
-      Section {
-        Toggle(
-          "Dark Theme",
-          isOn: $appState.prefersDarkMode
-        )
-        .tint(appState.selectedColor.color.opacity(0.75))
-      } header: {
-        Text("App Color Theme")
-      }
-      
       //MARK: - Todos Progress Bar
       Section {
         Toggle(
@@ -144,10 +133,6 @@ struct SettingsScreen_Previews: PreviewProvider {
         .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
         .environmentObject(appState)
         .tint(appState.selectedColor.color)
-        .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
-        .onAppear {
-          appState.setUp(colorScheme: colorScheme)
-        }
     }
   }
 }

@@ -49,11 +49,6 @@ struct TodoListScreen: View {
   
   var body: some View {
     content
-//      .background(
-//        appState.prefersDarkMode
-//        ? .black
-//        : Color.gray.opacity(0.25)
-//      )
       .onChange(of: viewModel.isTextFieldFocused) {
         isTextFieldFocused = $0
       }
@@ -191,7 +186,6 @@ struct TodoListScreen_Previews: PreviewProvider {
       TodoListScreen(todoList: todoList)
         .environment(\.managedObjectContext, context)
         .environmentObject(AppState())
-//        .preferredColorScheme(.dark)
     }
   }
 }

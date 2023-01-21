@@ -143,6 +143,5 @@ struct AllTodoListsScreen_Previews: PreviewProvider {
     AllTodoListsScreen()
       .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
       .environmentObject(AppState())
-      .preferredColorScheme(.dark)
   }
 }

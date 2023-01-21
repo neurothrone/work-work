@@ -21,11 +21,7 @@ struct AppMain: App {
       ContentView()
         .environment(\.managedObjectContext, coreDataProvider.viewContext)
         .environmentObject(appState)
-        .preferredColorScheme(appState.prefersDarkMode ? .dark : .light)
         .tint(appState.selectedColor.color)
-        .onAppear {
-          appState.setUp(colorScheme: colorScheme)
-        }
         .onChange(of: scenePhase) { newScenePhase in
           if newScenePhase == .background {
             CoreDataProvider.save(using: coreDataProvider.viewContext)

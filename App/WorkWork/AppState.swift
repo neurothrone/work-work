@@ -57,12 +57,11 @@ final class AppState: ObservableObject {
   
   //MARK: - Methods
   
+#if os(iOS)
   func setUp(colorScheme: ColorScheme) {
     registerDefaults(colorScheme: colorScheme)
     
-#if os(iOS)
     changeSegmentedControlColor(to: selectedColor.color)
-#endif
   }
   
   private func registerDefaults(colorScheme: ColorScheme) {
@@ -72,8 +71,7 @@ final class AppState: ObservableObject {
         MyApp.AppStorage.prefersDarkMode: colorScheme == .dark ? true : false,
       ])
   }
-  
-#if os(iOS)
+
   func changeSegmentedControlColor(to color: Color) {
     UISegmentedControl.appearance()
       .selectedSegmentTintColor = UIColor(color.opacity(0.5))

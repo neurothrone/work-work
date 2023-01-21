@@ -112,6 +112,11 @@ struct SettingsScreen: View {
       
       //MARK: - Data
       Section {
+        Toggle(
+          "Delete Completed Todos",
+          isOn: $appState.deleteCompletedTodos
+        )
+        
         Button("Delete All Data", role: .destructive) {
           isDeleteDataSheetPresented.toggle()
         }

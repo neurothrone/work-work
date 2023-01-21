@@ -162,6 +162,12 @@ struct TodoListScreen: View {
               },
               onToggle: {
                 Todo.toggleIsDone(for: todo, using: moc)
+                
+                if todo.isDone && appState.deleteCompletedTodos {
+                  DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    moc.perform { viewModel.delete(todo, using: moc) }
+                  }
+                }
               })
           }
           .onMove { source, destination in

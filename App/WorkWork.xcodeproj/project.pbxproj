@@ -66,6 +66,7 @@
 		2FB95C0F297B51FB0034E82D /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7241CC2967380300E85C81 /* IconPickerView.swift */; };
 		2FB95C10297B520B0034E82D /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91328F296B73ED00F88754 /* StatefulPreviewWrapper.swift */; };
 		2FB95C12297B587F0034E82D /* WatchIconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C11297B587F0034E82D /* WatchIconPickerView.swift */; };
+		2FB95C16297BE0DC0034E82D /* TodoListMoreSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C15297BE0DC0034E82D /* TodoListMoreSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		2FB95C0A297B394E0034E82D /* DeleteAllDataSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataSheet.swift; sourceTree = "<group>"; };
 		2FB95C0C297B51530034E82D /* AddOrEditTodoListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditTodoListSheet.swift; sourceTree = "<group>"; };
 		2FB95C11297B587F0034E82D /* WatchIconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchIconPickerView.swift; sourceTree = "<group>"; };
+		2FB95C15297BE0DC0034E82D /* TodoListMoreSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListMoreSheet.swift; sourceTree = "<group>"; };
 		2FE9578C296425BD008C5636 /* WorkWorkKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WorkWorkKit; path = ../WorkWorkKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,6 +273,7 @@
 			children = (
 				2F3CDAA5297B0C85006B0855 /* TodoListScreen.swift */,
 				2F3CDAA7297B0C8C006B0855 /* TodoRowView.swift */,
+				2FB95C15297BE0DC0034E82D /* TodoListMoreSheet.swift */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				2F3CDAAB297B0CEB006B0855 /* TodosViewModel.swift in Sources */,
 				2F3CDAAC297B0CEB006B0855 /* AddOrEditTodoListViewModel.swift in Sources */,
 				2F3CDAA8297B0C8C006B0855 /* TodoRowView.swift in Sources */,
+				2FB95C16297BE0DC0034E82D /* TodoListMoreSheet.swift in Sources */,
 				2FB95C10297B520B0034E82D /* StatefulPreviewWrapper.swift in Sources */,
 				2FB95C0D297B51530034E82D /* AddOrEditTodoListSheet.swift in Sources */,
 				2F3CDAAA297B0CEB006B0855 /* TodoListViewModel.swift in Sources */,

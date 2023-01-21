@@ -10,6 +10,10 @@ import SwiftUI
 import WorkWorkKit
 
 final class TodosViewModel: BaseViewModel<Todo> {
+#if os(watchOS)
+  @Published var isTextFieldVisible: Bool = false
+#endif
+  
   let todoList: TodoList
   
   init(todoList: TodoList) {

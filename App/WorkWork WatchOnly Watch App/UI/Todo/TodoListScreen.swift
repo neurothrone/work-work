@@ -14,7 +14,10 @@ struct TodoListScreen: View {
   
   @FetchRequest private var todos: FetchedResults<Todo>
   
-  @StateObject private var viewModel: TodosViewModel
+  @FocusState var isTextFieldFocused: Bool
+  @State private var isMoreSheetPresented: Bool = false
+  @State private var todoTitle: String = ""
+  @StateObject private var viewModel: TodosViewModel  
   
   init(todoList: TodoList) {
     _todos = FetchRequest(
@@ -30,25 +33,118 @@ struct TodoListScreen: View {
     todos.reduce(.zero) { $0 + ($1.isDone ? 1 : .zero) }
   }
   
+  private var isValid: Bool {
+    if viewModel.title.isEmpty {
+      return false
+    }
+    
+    if let selection = viewModel.selection,
+       viewModel.actionMode == .edit,
+       viewModel.title == selection.title {
+      return false
+    }
+    
+    return true
+  }
+  
   var body: some View {
-    List {
-      HStack {
-        Text("Completed Todos")
-          .foregroundColor(.secondary)
-
-        Spacer()
-        
-        TodoProgressView(
-          text: "Completed Todos",
-          color: appState.selectedColor.color,
-          value: Double(completedTodosCount),
-          minValue: .zero,
-          maxValue: Double(todos.count),
-          style: .circular
-        )
+    content
+//      .background(
+//        appState.prefersDarkMode
+//        ? .black
+//        : Color.gray.opacity(0.25)
+//      )
+      .onChange(of: viewModel.isTextFieldFocused) {
+        isTextFieldFocused = $0
       }
-      .listRowBackground(EmptyView())
-
+      .navigationTitle(viewModel.todoList.title)
+      .navigationBarTitleDisplayMode(.inline)
+      .sheet(isPresented: $isMoreSheetPresented) {
+        TodoListMoreSheet(viewModel: viewModel)
+      }
+      .toolbar {
+        ToolbarItem(placement: .confirmationAction) {
+          Button {
+            isMoreSheetPresented.toggle()
+          } label: {
+            CustomLabelView(
+              text: "More",
+              systemImage: MyApp.SystemImage.infoCircle,
+              color: appState.selectedColor.color,
+              spacing: 2
+            )
+          }
+        }
+      }
+  }
+  
+  private var content: some View {
+    List {
+      if appState.showTodosProgressBar {
+        HStack {
+          Text("Completed Todos")
+            .foregroundColor(.secondary)
+          
+          Spacer()
+          
+          TodoProgressView(
+            text: "Completed Todos",
+            color: appState.selectedColor.color,
+            value: Double(completedTodosCount),
+            minValue: .zero,
+            maxValue: Double(todos.count),
+            style: .circular
+          )
+        }
+      }
+      
+      if viewModel.isTextFieldVisible {
+        HStack {
+          TextField("Todo title", text: $viewModel.title)
+            .textFieldStyle(.plain)
+            .focused($isTextFieldFocused)
+          
+          Button(action: { viewModel.addOrUpdate(using: moc) }) {
+            Image(systemName: viewModel.actionMode == .edit
+                  ? MyApp.SystemImage.editActionMode
+                  : MyApp.SystemImage.plusCircle
+            )
+            .resizable()
+            .frame(width: 44, height: 44)
+            .foregroundColor(appState.selectedColor.color)
+          }
+          .buttonStyle(.plain)
+          .disabled(!isValid)
+          .swipeActions(edge: .leading, allowsFullSwipe: false) {
+            Button {
+              withAnimation(.linear) {
+                viewModel.isTextFieldVisible = false
+                viewModel.changeActionMode()
+              }
+            } label: {
+              Label(
+                "Hide Text Field",
+                systemImage: MyApp.SystemImage.noActionMode
+              )
+            }
+            .tint(appState.selectedColor.color.opacity(0.75))
+          }
+          .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+            if viewModel.actionMode == .edit {
+              Button(action: viewModel.changeActionMode) {
+                Label(
+                  "Change to Add Mode",
+                  systemImage: MyApp.SystemImage.plusCircle
+                )
+              }
+              .tint(appState.selectedColor.color.opacity(0.75))
+            }
+          }
+        }
+        .listRowBackground(EmptyView())
+        .listRowInsets(EdgeInsets())
+      }
+        
       Section {
         if todos.isEmpty {
           Text("No todos yet.")
@@ -62,15 +158,16 @@ struct TodoListScreen: View {
                 moc.perform { viewModel.delete(todo, using: moc) }
               },
               onEdit: {
-                //                viewModel.changeToEditingOf(todo)
+                if !viewModel.isTextFieldVisible {
+                  withAnimation(.linear) {
+                    viewModel.isTextFieldVisible.toggle()
+                  }
+                }
+                viewModel.changeToEditingOf(todo)
               },
               onToggle: {
                 Todo.toggleIsDone(for: todo, using: moc)
               })
-            .padding(
-              .vertical,
-              CGFloat(appState.todoRowVerticalPadding)
-            )
           }
           .onMove { source, destination in
             moc.perform {
@@ -78,11 +175,10 @@ struct TodoListScreen: View {
             }
           }
         }
+      } header: {
+        SectionHeaderView(leftText: "Todos", rightText: "\(todos.count)")
       }
     }
-    .listStyle(.plain)
-    .navigationTitle(viewModel.todoList.title)
-    .navigationBarTitleDisplayMode(.inline)
   }
 }
 
@@ -95,7 +191,7 @@ struct TodoListScreen_Previews: PreviewProvider {
       TodoListScreen(todoList: todoList)
         .environment(\.managedObjectContext, context)
         .environmentObject(AppState())
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
     }
   }
 }

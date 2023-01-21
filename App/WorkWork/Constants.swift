@@ -18,6 +18,7 @@ enum MyApp {
     static let todoCompletionStyle = "todoCompletionStyle"
     static let primaryButtonHandedness = "primaryButtonHandedness"
     static let todoRowVerticalPadding = "todoRowVerticalPadding"
+    static let deleteCompletedTodos = "deleteCompletedTodos"
   }
   
   enum SceneStorage {

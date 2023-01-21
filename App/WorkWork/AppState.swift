@@ -50,6 +50,9 @@ final class AppState: ObservableObject {
   
   @AppStorage(MyApp.AppStorage.todoRowVerticalPadding)
   var todoRowVerticalPadding: Int = .zero
+  
+  @AppStorage(MyApp.AppStorage.deleteCompletedTodos)
+  var deleteCompletedTodos: Bool = false
 
   @Published var idForChangingAllSegmentedControls: UUID = .init()
   

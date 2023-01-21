@@ -26,10 +26,11 @@ struct DeleteAllDataSheet: View {
       ScrollView {
         content
       }
-      .navigationTitle("Delete All Data")
       .toolbar {
-        ToolbarItem(placement: .confirmationAction) {
+        ToolbarItem(placement: .cancellationAction) {
           Button("Cancel", role: .cancel, action: { dismiss() })
+            .buttonStyle(.plain)
+            .foregroundColor(.secondary)
         }
       }
     }

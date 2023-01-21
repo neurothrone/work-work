@@ -35,14 +35,13 @@ struct AddOrEditTodoListSheet: View {
   
   var body: some View {
     content
-      .navigationTitle("\(viewModel.actionText) Folder")
       .sheet(isPresented: $isIconPickerPresented) {
         WatchIconPickerView(viewModel: viewModel)
           .environmentObject(appState)
       }
       .toolbar {
         //MARK: Navigation Bar
-        ToolbarItem(placement: .confirmationAction) {
+        ToolbarItem(placement: .cancellationAction) {
           Button("Cancel", role: .cancel, action: { dismiss() })
             .buttonStyle(.plain)
             .foregroundColor(.secondary)
@@ -72,7 +71,7 @@ struct AddOrEditTodoListSheet: View {
         }
       }
       
-      Button(viewModel.actionText, action: addOrUpdate)
+      Button("\(viewModel.actionText) Folder", action: addOrUpdate)
         .disabled(!isValid)
         .buttonStyle(.borderedProminent)
         .listRowInsets(EdgeInsets())

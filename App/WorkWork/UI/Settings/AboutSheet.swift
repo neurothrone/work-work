@@ -21,9 +21,8 @@ struct AboutSheet: View {
     ScrollView {
       content
     }
-    .navigationTitle("About")
     .toolbar {
-      ToolbarItem(placement: .confirmationAction) {
+      ToolbarItem(placement: .cancellationAction) {
         Button("Cancel", role: .cancel, action: { dismiss() })
           .buttonStyle(.plain)
           .foregroundColor(.secondary)

@@ -17,7 +17,6 @@
 		2F3CDA7D297AE680006B0855 /* WorkWork WatchOnly Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2F3CDA7C297AE680006B0855 /* WorkWork WatchOnly Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2F3CDA82297AE680006B0855 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CDA81297AE680006B0855 /* AppMain.swift */; };
 		2F3CDA84297AE680006B0855 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CDA83297AE680006B0855 /* ContentView.swift */; };
-		2F3CDA86297AE681006B0855 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CDA85297AE681006B0855 /* Assets.xcassets */; };
 		2F3CDA89297AE681006B0855 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CDA88297AE681006B0855 /* Preview Assets.xcassets */; };
 		2F3CDA96297AFB9B006B0855 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CDA95297AFB9B006B0855 /* SectionHeaderView.swift */; };
 		2F3CDA98297B0AA5006B0855 /* WorkWorkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F3CDA97297B0AA5006B0855 /* WorkWorkKit */; };
@@ -67,6 +66,7 @@
 		2FB95C10297B520B0034E82D /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91328F296B73ED00F88754 /* StatefulPreviewWrapper.swift */; };
 		2FB95C12297B587F0034E82D /* WatchIconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C11297B587F0034E82D /* WatchIconPickerView.swift */; };
 		2FB95C16297BE0DC0034E82D /* TodoListMoreSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB95C15297BE0DC0034E82D /* TodoListMoreSheet.swift */; };
+		2FB95C19297F068A0034E82D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F124BFF2962A6BE00E84795 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +105,6 @@
 		2F3CDA7C297AE680006B0855 /* WorkWork WatchOnly Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WorkWork WatchOnly Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3CDA81297AE680006B0855 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		2F3CDA83297AE680006B0855 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2F3CDA85297AE681006B0855 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F3CDA88297AE681006B0855 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F3CDA95297AFB9B006B0855 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		2F3CDA9C297B0BB7006B0855 /* AllTodoListsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTodoListsScreen.swift; sourceTree = "<group>"; };
@@ -231,7 +230,6 @@
 				2F3CDAB0297B1EE3006B0855 /* Watch App.entitlements */,
 				2FB95C18297C06FC0034E82D /* Extensions */,
 				2F3CDA9E297B0C47006B0855 /* UI */,
-				2F3CDA85297AE681006B0855 /* Assets.xcassets */,
 				2F3CDA87297AE681006B0855 /* Preview Content */,
 			);
 			path = "WorkWork WatchOnly Watch App";
@@ -509,7 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F3CDA89297AE681006B0855 /* Preview Assets.xcassets in Resources */,
-				2F3CDA86297AE681006B0855 /* Assets.xcassets in Resources */,
+				2FB95C19297F068A0034E82D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +783,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Watch App Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "WorkWork WatchOnly";
+				INFOPLIST_KEY_CFBundleDisplayName = WorkWork;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -817,7 +815,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Watch App Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "WorkWork WatchOnly";
+				INFOPLIST_KEY_CFBundleDisplayName = WorkWork;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (

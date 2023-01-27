@@ -21,7 +21,7 @@ struct TodoListScreen: View {
   
   init(todoList: TodoList) {
     _todos = FetchRequest(
-      fetchRequest: Todo.all(in: todoList),
+      fetchRequest: Todo.allByOrder(in: todoList),
       animation: .default
     )
     

@@ -9,7 +9,7 @@ import CoreData
 
 extension Todo {
   //MARK: - Requests
-  public static func all(in list: TodoList) -> NSFetchRequest<Todo> {
+  public static func allByOrder(in list: TodoList) -> NSFetchRequest<Todo> {
     MoveableEntity.allByOrder(
       predicate: NSPredicate(format: "%K == %@", "list.id", list.id as CVarArg)
     )

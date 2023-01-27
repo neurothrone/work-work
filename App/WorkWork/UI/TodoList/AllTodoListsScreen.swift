@@ -134,15 +134,7 @@ struct AllTodoListsScreen: View {
   private var keyboard: some View {
     if appState.primaryButtonHandedness == .right {
       HStack {
-        Button(role: .cancel) {
-          // TODO: Temporary fix until root cause is discovered
-          hideKeyboard()
-          //              viewModel.isTextFieldFocused = false
-          
-          withAnimation(.linear) {
-            viewModel.changeActionMode()
-          }
-        } label: {
+        Button(role: .cancel, action: dismissKeyboard) {
           Label(
             "Dismiss",
             systemImage: MyApp.SystemImage.dismissKeyboard
@@ -261,6 +253,9 @@ struct AllTodoListsScreen: View {
         .focused($isTextFieldFocused)
         .listRowSeparator(.hidden)
         .padding(.bottom)
+        .onSubmit {
+          dismissKeyboard()
+        }
       }
       
       if todoLists.isEmpty {
@@ -291,6 +286,18 @@ struct AllTodoListsScreen: View {
       TodoListScreen(todoList: todoList)
     }
     .scrollContentBackground(.hidden)
+  }
+}
+
+extension AllTodoListsScreen {
+  private func dismissKeyboard() {
+    // TODO: Temporary fix until root cause is discovered
+    hideKeyboard()
+    //              viewModel.isTextFieldFocused = false
+    
+    withAnimation(.linear) {
+      viewModel.changeActionMode()
+    }
   }
 }
 

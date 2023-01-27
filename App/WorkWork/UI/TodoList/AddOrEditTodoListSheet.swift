@@ -68,11 +68,7 @@ struct AddOrEditTodoListSheet: View {
   @ViewBuilder
   private var keyboard: some View {
     HStack {
-      Button(role: .cancel) {
-        // TODO: Temporary fix until root cause is discovered
-        hideKeyboard()
-        //              viewModel.isTextFieldFocused = false
-      } label: {
+      Button(role: .cancel, action: self.hideKeyboard) {
         Label(
           "Dismiss",
           systemImage: MyApp.SystemImage.dismissKeyboard
@@ -117,6 +113,9 @@ struct AddOrEditTodoListSheet: View {
         bottom: .zero,
         trailing: 15)
       )
+      .onSubmit {
+        self.hideKeyboard()
+      }
       
       Section {
         LazyVGrid(columns: columns) {

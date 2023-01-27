@@ -120,15 +120,7 @@ struct TodoListScreen: View {
   private var keyboard: some View {
     if appState.primaryButtonHandedness == .right {
       HStack {
-        Button(role: .cancel) {
-          // TODO: Temporary fix until root cause is discovered
-          hideKeyboard()
-//              viewModel.isTextFieldFocused = false
-          
-          withAnimation(.linear) {
-            viewModel.actionMode = nil
-          }
-        } label: {
+        Button(role: .cancel, action: dismissKeyboard) {
           Label(
             "Dismiss",
             systemImage: MyApp.SystemImage.dismissKeyboard
@@ -183,7 +175,7 @@ struct TodoListScreen: View {
         
         Button(role: .cancel) {
           // TODO: Temporary fix until root cause is discovered
-          hideKeyboard()
+          dismissKeyboard()
 //              viewModel.isTextFieldFocused = false
           
           withAnimation(.linear) {
@@ -273,6 +265,18 @@ struct TodoListScreen: View {
     .scrollContentBackground(.hidden)
     // NOTE: one-line fix for slow SwiftUI lists. Trade-off is gain in speed for loss in animation
     //    .id(UUID())
+  }
+}
+
+extension TodoListScreen {
+  private func dismissKeyboard() {
+    // TODO: Temporary fix until root cause is discovered
+    self.hideKeyboard()
+//              viewModel.isTextFieldFocused = false
+    
+    withAnimation(.linear) {
+      viewModel.actionMode = nil
+    }
   }
 }
 

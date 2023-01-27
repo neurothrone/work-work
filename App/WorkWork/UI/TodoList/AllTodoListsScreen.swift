@@ -214,7 +214,7 @@ struct AllTodoListsScreen: View {
         
         Button(role: .cancel) {
           // TODO: Temporary fix until root cause is discovered
-          hideKeyboard()
+          dismissKeyboard()
           //              viewModel.isTextFieldFocused = false
           
           withAnimation(.linear) {
@@ -292,7 +292,7 @@ struct AllTodoListsScreen: View {
 extension AllTodoListsScreen {
   private func dismissKeyboard() {
     // TODO: Temporary fix until root cause is discovered
-    hideKeyboard()
+    self.hideKeyboard()
     //              viewModel.isTextFieldFocused = false
     
     withAnimation(.linear) {

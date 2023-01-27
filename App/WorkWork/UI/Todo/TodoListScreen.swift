@@ -225,6 +225,9 @@ struct TodoListScreen: View {
         )
         .focused($isTextFieldFocused)
         .padding(.bottom)
+        .onSubmit {
+          dismissKeyboard()
+        }
       }
       
       if todos.isEmpty {

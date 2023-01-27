@@ -60,23 +60,49 @@ struct AddOrEditTodoListSheet: View {
         
         //MARK: Keyboard
         ToolbarItemGroup(placement: .keyboard) {
-          Spacer()
-          
-          Button(role: .cancel) {
-            // TODO: Temporary fix until root cause is discovered
-            hideKeyboard()
-            //              viewModel.isTextFieldFocused = false
-          } label: {
-            Label(
-              "Dismiss",
-              systemImage: MyApp.SystemImage.dismissKeyboard
-            )
-            .labelStyle(.titleAndIcon)
-          }
-          .buttonStyle(.bordered)
-          .tint(appState.selectedColor.color)
+          keyboard
         }
       }
+  }
+  
+  @ViewBuilder
+  private var keyboard: some View {
+    HStack {
+      Button(role: .cancel) {
+        // TODO: Temporary fix until root cause is discovered
+        hideKeyboard()
+        //              viewModel.isTextFieldFocused = false
+      } label: {
+        Label(
+          "Dismiss",
+          systemImage: MyApp.SystemImage.dismissKeyboard
+        )
+        .labelStyle(.titleAndIcon)
+      }
+      .buttonStyle(.bordered)
+      .tint(appState.selectedColor.color)
+      
+      Spacer()
+      
+      Button(action: addOrUpdate) {
+        Group {
+          if viewModel.actionText == "Add" {
+            Label(
+              "Add",
+              systemImage: MyApp.SystemImage.quickAddList
+            )
+          } else {
+            Label(
+              "Update",
+              systemImage: MyApp.SystemImage.editActionMode
+            )
+          }
+        }
+        .labelStyle(.titleAndIcon)
+      }
+      .buttonStyle(.borderedProminent)
+      .disabled(!isValid)
+    }
   }
   
   private var content: some View {

@@ -173,15 +173,7 @@ struct TodoListScreen: View {
         
         Spacer()
         
-        Button(role: .cancel) {
-          // TODO: Temporary fix until root cause is discovered
-          dismissKeyboard()
-//              viewModel.isTextFieldFocused = false
-          
-          withAnimation(.linear) {
-            viewModel.actionMode = nil
-          }
-        } label: {
+        Button(role: .cancel, action: dismissKeyboard) {
           Label(
             "Dismiss",
             systemImage: MyApp.SystemImage.dismissKeyboard

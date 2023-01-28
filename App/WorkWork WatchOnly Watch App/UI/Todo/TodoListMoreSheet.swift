@@ -15,39 +15,41 @@ struct TodoListMoreSheet: View {
   @ObservedObject var viewModel: TodosViewModel
   
   var body: some View {
-    VStack {
-      Button(action: { viewModel.isTextFieldVisible.toggle() }) {
-        CustomLabelView(
-          text: viewModel.isTextFieldVisible
-          ? "Hide Text Field"
-          : "Show Text Field",
-          systemImage: viewModel.isTextFieldVisible
-          ? MyApp.SystemImage.circleSlash
-          : MyApp.SystemImage.plusCircle,
-          color: appState.selectedColor.color
-        )
-        .frame(maxWidth: .infinity, alignment: .leading)
+    NavigationStack {
+      VStack {
+        Button(action: { viewModel.isTextFieldVisible.toggle() }) {
+          CustomLabelView(
+            text: viewModel.isTextFieldVisible
+            ? "Hide Text Field"
+            : "Show Text Field",
+            systemImage: viewModel.isTextFieldVisible
+            ? MyApp.SystemImage.circleSlash
+            : MyApp.SystemImage.plusCircle,
+            color: appState.selectedColor.color
+          )
+          .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        
+        Button(action: { viewModel.uncheckTodos(using: moc) }) {
+          CustomLabelView(
+            text: "Uncheck All Todos",
+            systemImage: MyApp.SystemImage.uncheckAllTodos,
+            color: appState.selectedColor.color
+          )
+          .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        
+        Button(action: { viewModel.deleteTodos(using: moc) }) {
+          CustomLabelView(
+            text: "Delete All Todos",
+            systemImage: MyApp.SystemImage.deleteAllTodos,
+            color: .red
+          )
+          .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        
+        Spacer()
       }
-      
-      Button(action: { viewModel.uncheckTodos(using: moc) }) {
-        CustomLabelView(
-          text: "Uncheck All Todos",
-          systemImage: MyApp.SystemImage.uncheckAllTodos,
-          color: appState.selectedColor.color
-        )
-        .frame(maxWidth: .infinity, alignment: .leading)
-      }
-      
-      Button(action: { viewModel.deleteTodos(using: moc) }) {
-        CustomLabelView(
-          text: "Delete All Todos",
-          systemImage: MyApp.SystemImage.deleteAllTodos,
-          color: .red
-        )
-        .frame(maxWidth: .infinity, alignment: .leading)
-      }
-      
-      Spacer()
     }
   }
 }

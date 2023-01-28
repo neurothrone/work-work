@@ -22,30 +22,30 @@ struct WatchIconPickerView: View {
   ]
   
   var body: some View {
-    ScrollView {
-      LazyVGrid(columns: columns) {
-        IconPickerView(
-          selectedIcon: $viewModel.selectedIcon,
-          selectionColor: appState.selectedColor.color
-        )
+    NavigationStack {
+      ScrollView {
+        LazyVGrid(columns: columns) {
+          IconPickerView(
+            selectedIcon: $viewModel.selectedIcon,
+            selectionColor: appState.selectedColor.color
+          )
+        }
       }
+      .navigationTitle("Select an icon")
+      .toolbar {
+        //MARK: Navigation Bar
+        ToolbarItem(placement: .confirmationAction) {
+          Button("Done", action: { dismiss() })
+            .tint(appState.selectedColor.color)
+        }
     }
-    .navigationTitle("Select an icon")
-    .toolbar {
-      //MARK: Navigation Bar
-      ToolbarItem(placement: .confirmationAction) {
-        Button("Done", action: { dismiss() })
-          .tint(appState.selectedColor.color)
-      }
     }
   }
 }
 
 struct WatchIconPickerView_Previews: PreviewProvider {
   static var previews: some View {
-    NavigationStack {
-      WatchIconPickerView(viewModel: AddOrEditTodoListViewModel(todoList: nil))
-        .environmentObject(AppState())
-    }
+    WatchIconPickerView(viewModel: AddOrEditTodoListViewModel(todoList: nil))
+      .environmentObject(AppState())
   }
 }

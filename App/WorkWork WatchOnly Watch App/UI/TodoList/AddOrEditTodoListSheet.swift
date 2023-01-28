@@ -34,19 +34,21 @@ struct AddOrEditTodoListSheet: View {
   }
   
   var body: some View {
-    content
-      .sheet(isPresented: $isIconPickerPresented) {
-        WatchIconPickerView(viewModel: viewModel)
-          .environmentObject(appState)
-      }
-      .toolbar {
-        //MARK: Navigation Bar
-        ToolbarItem(placement: .cancellationAction) {
-          Button("Cancel", role: .cancel, action: { dismiss() })
-            .buttonStyle(.plain)
-            .foregroundColor(.secondary)
+    NavigationStack {
+      content
+        .sheet(isPresented: $isIconPickerPresented) {
+          WatchIconPickerView(viewModel: viewModel)
+            .environmentObject(appState)
         }
+        .toolbar {
+          //MARK: Navigation Bar
+          ToolbarItem(placement: .cancellationAction) {
+            Button("Cancel", role: .cancel, action: { dismiss() })
+              .buttonStyle(.plain)
+              .foregroundColor(.secondary)
+          }
       }
+    }
   }
   
   private var content: some View {
@@ -89,11 +91,9 @@ struct AddOrEditTodoListSheet: View {
 
 struct AddOrEditTodoListSheet_Previews: PreviewProvider {
   static var previews: some View {
-    NavigationStack {
-      AddOrEditTodoListSheet(todoListToUpdate: nil)
-        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
-        .environmentObject(AppState())
-    }
+    AddOrEditTodoListSheet(todoListToUpdate: nil)
+      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+      .environmentObject(AppState())
   }
 }
 

@@ -53,7 +53,7 @@ struct TodoListScreen: View {
         isTextFieldFocused = $0
       }
       .navigationTitle(viewModel.todoList.title)
-      .navigationBarTitleDisplayMode(.inline)
+      .navigationBarTitleDisplayMode(.automatic)
       .sheet(isPresented: $isMoreSheetPresented) {
         TodoListMoreSheet(viewModel: viewModel)
       }

@@ -248,7 +248,7 @@ struct AllTodoListsScreen: View {
       if viewModel.actionMode != nil {
         CustomTextFieldView(
           text: $viewModel.title,
-          placeholder: "Folder Title"
+          placeholder: "Folder title"
         )
         .focused($isTextFieldFocused)
         .listRowSeparator(.hidden)
@@ -259,7 +259,7 @@ struct AllTodoListsScreen: View {
       }
       
       if todoLists.isEmpty {
-        Text("No list yet.")
+        Text("No folders yet.")
           .foregroundColor(.secondary)
       } else {
         ForEach(todoLists) { todoList in

@@ -41,28 +41,30 @@ struct AddOrEditTodoListSheet: View {
   }
   
   var body: some View {
-    content
-      .navigationTitle("\(viewModel.actionText) Folder")
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        //MARK: Navigation Bar
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancel", role: .cancel, action: { dismiss() })
-            .buttonStyle(.plain)
-            .foregroundColor(.secondary)
-        }
-        
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button(viewModel.actionText, action: addOrUpdate)
-            .disabled(!isValid)
-            .tint(appState.selectedColor.color)
-        }
-        
-        //MARK: Keyboard
-        ToolbarItemGroup(placement: .keyboard) {
-          keyboard
-        }
+    NavigationStack {
+      content
+        .navigationTitle("\(viewModel.actionText) Folder")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          //MARK: Navigation Bar
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button("Cancel", role: .cancel, action: { dismiss() })
+              .buttonStyle(.plain)
+              .foregroundColor(.secondary)
+          }
+          
+          ToolbarItem(placement: .navigationBarTrailing) {
+            Button(viewModel.actionText, action: addOrUpdate)
+              .disabled(!isValid)
+              .tint(appState.selectedColor.color)
+          }
+          
+          //MARK: Keyboard
+          ToolbarItemGroup(placement: .keyboard) {
+            keyboard
+          }
       }
+    }
   }
   
   @ViewBuilder
@@ -138,11 +140,9 @@ struct AddOrEditTodoListSheet: View {
 
 struct AddOrEditTodoListSheet_Previews: PreviewProvider {
   static var previews: some View {
-    NavigationStack {
-      AddOrEditTodoListSheet(todoListToUpdate: nil)
-        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
-        .environmentObject(AppState())
-      //        .preferredColorScheme(.dark)
-    }
+    AddOrEditTodoListSheet(todoListToUpdate: nil)
+      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
+      .environmentObject(AppState())
+    //        .preferredColorScheme(.dark)
   }
 }
